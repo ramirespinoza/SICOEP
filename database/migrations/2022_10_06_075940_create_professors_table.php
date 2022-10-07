@@ -15,7 +15,7 @@ class CreateProfessorsTable extends Migration
     {
         Schema::create('professor', function (Blueprint $table) {
             $table->id();
-            $table->integer('dpi');
+            $table->bigInteger('dpi');
             $table->string('name', 50);
             $table->string('last_name', 50);
  /**pendiente agregar relaciòn con escuela */

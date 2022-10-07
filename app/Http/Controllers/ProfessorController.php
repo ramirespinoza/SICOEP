@@ -22,11 +22,18 @@ class ProfessorController extends Controller
         $professor->save();
         return response()->json('Catedratico Creado!');
     }
-  
+
     public function show($id)
     {
         $professor = Professor::find($id);
         return response()->json($professor);
+    }
+   
+    public function update($id, Request $request)
+    {
+        $professor = Professor::find($id);
+        $professor->update($request->all());
+        return response()->json('Catedratico Actualizado!');
     }
 
 }

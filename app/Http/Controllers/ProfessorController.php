@@ -35,5 +35,12 @@ class ProfessorController extends Controller
         $professor->update($request->all());
         return response()->json('Catedratico Actualizado!');
     }
-
+    
+    public function destroy($id)
+    {
+        $professor = Professor::find($id);
+        $professor->delete();
+        return response()->json('Catedratico Eliminado!');
+    }
+   
 }

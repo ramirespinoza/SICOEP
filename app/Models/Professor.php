@@ -17,3 +17,4 @@ class Professor extends Model
         'last_name'
     ];    
 }
+    

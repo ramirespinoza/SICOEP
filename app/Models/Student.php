@@ -13,6 +13,7 @@ class Student extends Model
 
     protected $keyType = 'string';
     protected $primaryKey = 'personal_code';
+    public $incrementing = false;
 
     protected $fillable = [
         'personal_code',

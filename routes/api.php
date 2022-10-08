@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('student', [StudentController::class, 'index'])->name('api-student-get');
+Route::get('student', [StudentController::class, 'index'])->name('api.student.get');
 
-Route::post('student/', [StudentController::class, 'store'])->name('api-student-create');
+Route::post('student/', [StudentController::class, 'store'])->name('api.student.create');
 
-Route::put('student/{personal_code}', [StudentController::class, 'update'])->name('api-student-update');
+Route::put('student/{personal_code}', [StudentController::class, 'update'])->name('api.student.update');
 
-Route::delete('student/{personal_code}', [StudentController::class, 'destroy'])->name('api-student-delete');
+Route::delete('student/{personal_code}', [StudentController::class, 'destroy'])->name('api.student.delete');

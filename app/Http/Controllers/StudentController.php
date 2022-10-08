@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Student;
 
 class StudentController extends Controller
@@ -15,7 +16,9 @@ class StudentController extends Controller
     public function index()
     {
         try {
-            $students = Student::all();
+            //Se obtiene los registros por orden de fecha de creación
+            // en forma descentiente
+            $students = Student::orderBy('created_at', 'DESC')->get();
             return $students;
         } catch (\Throwable $th) {
             return response()->json([
@@ -46,42 +49,50 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
-        try {
-            $personal_code = $request->get('personal_code');
-        
-            $customer = new Student();
+        try {        
 
-            $customer->personal_code = $request->get('personal_code');
-            $customer->name = $request->get('name');
-            $customer->last_name = $request->get('last_name');
-            $customer->grade_id = $request->get('grade_id');
-            $customer->section = $request->get('section');
-            //$customer->birth_date = $request->get('birth_date');
-            $customer->identification_document = $request->
-                get('identification_document');
-            $customer->identification_document_number = $request->
-                get('identification_document_number');
-            $customer->class_schedule_id = $request->get('class_schedule_id');
-            $customer->professor_dpi = $request->get('professor_dpi');
-            $customer->tutelary_name = $request->get('tutelary_name');
-            $customer->tutelary_dpi = $request->get('tutelary_dpi');
+            //Validación de todos los campos recibidos y el tipo
+            $this->validate($request, [
+                'personal_code'                     => 'required|string|max:10',
+                'name'                              => 'required|string|max:50',
+                'last_name'                         => 'required|string|max:50',
+                'grade_id'                          => 'required|integer',
+                'section'                           => 'required|string|max:1',
+                'birth_date'                        => 'required|date',
+                'identification_document'           => 'required|string|max:5',
+                'identification_document_number'    => 'required|numeric',
+                'class_schedule_id'                 => 'required|numeric',
+                'professor_dpi'                     => 'required|numeric',
+                'tutelary_name'                     => 'required|string:max:50',
+                'tutelary_dpi'                      => 'required|integer'
+            ]);
 
-            $customer->save();
+            //Corregir el Case de los campos string recibidos
+            $request['personal_code']          = Str::upper($request['personal_code']);
+            $request['name']                    = Str::title($request['name']);
+            $request['last_name']               = Str::title($request['last_name']);
+            $request['section']                 = Str::upper($request['section']);
+            $request['identification_document'] = Str::upper(
+                $request['identification_document']);
+            $request['tutelary_name']           = Str::title($request['tutelary_name']);
+
+            //Almacenamiendo del Student en el request
+            Student::create($request->all());
 
             return response()->json([
-                'status' => 'successful',
-                'code' => '1',
+                'status'    => 'successful',
+                'code'      => '1',
                 'operation' => 'create',
-                'student' => $request->all()
+                'student'   => $request->all()
             ]);
 
         } catch (\Throwable $th) {
             return response()->json([
-                'status' => 'failed',
-                'code' => '0',
+                'status'    => 'failed',
+                'code'      => '0',
                 'operation' => 'create',
-                'student' => $request->all(),
-                'error' => $th
+                'error'     => $th->getMessage(),
+                'student'   => $request->all()
             ]);
         }
     }
@@ -119,36 +130,48 @@ class StudentController extends Controller
     {
 
         try {
-            $student = Student::find($personal_code);
-            $customer->name = $request->get('name');
-            $customer->last_name = $request->get('last_name');
-            $customer->grade_id = $request->get('grade_id');
-            $customer->section = $request->get('section');
-            $customer->birth_date = $request->get('birth_date');
-            $customer->identification_document = $request->
-                get('identification_document');
-            $customer->identification_document_number = $request->
-                get('identification_document_number');
-            $customer->class_schedule_id = $request->get('class_schedule_id');
-            $customer->professor_dpi = $request->get('professor_dpi');
-            $customer->tutelary_name = $request->get('tutelary_name');
-            $customer->tutelary_dpi = $request->get('tutelary_dpi');
+            //Validación de todos los campos recibidos y el tipo
+            $validated = $request->validate( [
+                'name'                              => 'required|string|max:50',
+                'last_name'                         => 'required|string|max:50',
+                'grade_id'                          => 'required|integer',
+                'section'                           => 'required|string|max:1',
+                'birth_date'                        => 'required|date',
+                'identification_document'           => 'required|string|max:5',
+                'identification_document_number'    => 'required|numeric',
+                'class_schedule_id'                 => 'required|numeric',
+                'professor_dpi'                     => 'required|numeric',
+                'tutelary_name'                     => 'required|string:max:50',
+                'tutelary_dpi'                      => 'required|integer'
+            ]);
 
-            $student->save();
+            //Corregir el Case de los campos string recibidos y del personal_code
+            $personal_code                      = Str::upper($personal_code);
+            $request['name']                    = Str::title($request['name']);
+            $request['last_name']               = Str::title($request['last_name']);
+            $request['section']                 = Str::upper($request['section']);
+            $request['identification_document'] = Str::upper(
+                $request['identification_document']);
+            $request['tutelary_name']           = Str::title($request['tutelary_name']);
+
+            //Almacenamiendo del Student del el request 
+            // en el registro del personal_code recibido
+            Student::find($personal_code)->update($validated);
 
             return response()->json([
-                'status' => 'successful',
-                'code' => '1',
+                'status'    => 'successful',
+                'code'      => '1',
                 'operation' => 'edit',
-                'student' => $request->all()
+                'student'   => $validated
             ]);
 
         } catch (\Throwable $th) {
             return response()->json([
-                'status' => 'failed',
-                'code' => '0',
+                'status'    => 'failed',
+                'code'      => '0',
                 'operation' => 'edit',
-                'student' => $request->all()
+                'error'     => $th->getMessage(),
+                'student'   => $request->all()
             ]);
         }
         
@@ -163,22 +186,22 @@ class StudentController extends Controller
     public function destroy($personal_code)
     {
         try {
-            $student = Student::find(strtoupper($personal_code));
+            $student = Student::find(Str::upper($personal_code));
             $student->delete();
 
             return response()->json([
-                'status' => 'successful',
-                'code' => '1',
+                'status'    => 'successful',
+                'code'      => '1',
                 'operation' => 'delete',
-                'student' => $request->all()
+                'student'   => $student->all()
             ]);
 
         } catch (\Throwable $th) {
             return response()->json([
-                'status' => 'failed',
-                'code' => '0',
+                'status'    => 'failed',
+                'code'      => '0',
                 'operation' => 'delete',
-                'student' => $request->all()
+                'error'     => $th->getMessage()
             ]);
         }
         

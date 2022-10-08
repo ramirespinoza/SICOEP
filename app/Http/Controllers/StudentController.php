@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -13,7 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return $students;
     }
 
     /**
@@ -34,7 +36,24 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Student();
+
+        $customer->personal_code = $request->get('personal_code');
+        $customer->name = $request->get('name');
+        $customer->last_name = $request->get('last_name');
+        $customer->grade_id = $request->get('grade_id');
+        $customer->section = $request->get('section');
+        $customer->birth_date = $request->get('birth_date');
+        $customer->identification_document = $request->
+            get('identification_document');
+        $customer->identification_document_number = $request->
+            get('identification_document_number');
+        $customer->class_schedule_id = $request->get('class_schedule_id');
+        $customer->professor_dpi = $request->get('professor_dpi');
+        $customer->tutelary_name = $request->get('tutelary_name');
+        $customer->tutelary_dpi = $request->get('tutelary_dpi');
+
+        $customer->save();
     }
 
     /**

@@ -105,7 +105,18 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $student = Student::find($id);
+            return response()->json($student);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'edit',
+                'error'     => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -116,7 +127,18 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $student = Student::find($id);
+            return response()->json($student);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'edit',
+                'error'     => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -147,12 +169,12 @@ class StudentController extends Controller
 
             //Corregir el Case de los campos string recibidos y del personal_code
             $personal_code                      = Str::upper($personal_code);
-            $request['name']                    = Str::title($request['name']);
-            $request['last_name']               = Str::title($request['last_name']);
-            $request['section']                 = Str::upper($request['section']);
-            $request['identification_document'] = Str::upper(
-                $request['identification_document']);
-            $request['tutelary_name']           = Str::title($request['tutelary_name']);
+            $validated['name']                    = Str::title($validated['name']);
+            $validated['last_name']               = Str::title($validated['last_name']);
+            $validated['section']                 = Str::upper($validated['section']);
+            $validated['identification_document'] = Str::upper(
+                $validated['identification_document']);
+            $validated['tutelary_name']           = Str::title($validated['tutelary_name']);
 
             //Almacenamiendo del Student del el request 
             // en el registro del personal_code recibido

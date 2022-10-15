@@ -20,7 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('student', [StudentController::class, 'index'])->name('api.student.get');
 
 Route::post('student', [StudentController::class, 'store'])->name('api.student.create');
 

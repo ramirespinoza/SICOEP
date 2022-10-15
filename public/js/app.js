@@ -8851,8 +8851,1430 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function render() {};
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("app-layout", {
+    scopedSlots: _vm._u([{
+      key: "header",
+      fn: function fn() {
+        return [_c("h1", {
+          staticClass: "font-semibold text-xl text-gray-800 leading-tight"
+        }, [_vm._v("\n            Estudiantes\n        ")])];
+      },
+      proxy: true
+    }])
+  }, [_vm._v(" "), _c("container", [_c("button", {
+    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.showCreateModal(_vm.student.personal_code);
+      }
+    }
+  }, [_vm._v("\n                Nuevo Estudiante\n            ")]), _vm._v(" "), _c("div", {
+    staticClass: "bg-white shadow-md rounded my-6"
+  }, [_c("table", {
+    staticClass: "min-w-max w-full table-auto"
+  }, [_c("thead", [_c("tr", {
+    staticClass: "bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+  }, [_c("th", {
+    staticClass: "py-3 px-6 text-left"
+  }, [_vm._v("Código Personal")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-left"
+  }, [_vm._v("Nombre")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-center"
+  }, [_vm._v("Apellido")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-center"
+  }, [_vm._v("Actions")])])]), _vm._v(" "), _c("tbody", {
+    staticClass: "text-gray-600 text-sm font-light"
+  }, _vm._l(_vm.students, function (student) {
+    return _c("tr", {
+      key: student.personal_code,
+      staticClass: "border-b border-gray-200 hover:bg-gray-100"
+    }, [_c("td", {
+      staticClass: "py-3 px-6 text-left whitespace-nowrap"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student.personal_code))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-left"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student.name))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-center"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student.last_name))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-center"
+    }, [_c("div", {
+      staticClass: "flex item-center justify-center"
+    }, [_c("button", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.showShowModal(student.personal_code);
+        }
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      }
+    }), _vm._v(" "), _c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+      }
+    })])]), _vm._v(" "), _c("button", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.showEditModal(student.personal_code);
+        }
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+      }
+    })])]), _vm._v(" "), _c("inertia-link", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      attrs: {
+        method: "delete",
+        href: _vm.route("student.destroy", student.personal_code)
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+      }
+    })])])], 1)])]);
+  }), 0)])])]), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.showModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.showModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.modals.showModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.personal_code,
+            expression: "form.personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.name,
+            expression: "form.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.last_name,
+            expression: "form.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Grade_id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "grade_id",
+            id: "grade_id",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.grade_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "grade_id", $event.target.value);
+            }
+          }
+        })]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Section")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "section",
+            id: "section",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.section
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "section", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Fecha de cumpleaños")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.birth_date,
+            expression: "form.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Class Schedule Id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "class_schedule_id",
+            id: "class_schedule_id",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.class_schedule_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Identificacion Document")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document,
+            expression: "form.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Identification Document Number")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document_number,
+            expression: "form.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Professor DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor_dpi,
+            expression: "form.professor_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "professor_dpi",
+            id: "professor_dpi",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.professor_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "professor_dpi", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Tutelary Name")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_name,
+            expression: "form.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Tutelary DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_dpi,
+            expression: "form.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address",
+            disabled: ""
+          },
+          domProps: {
+            value: _vm.form.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          on: {
+            click: function click($event) {
+              _vm.modals.showModal = false;
+            }
+          }
+        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.createModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.createModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.submit(_vm.form);
+              _vm.modals.createModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.personal_code,
+            expression: "form.personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "name"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.name,
+            expression: "form.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "last_name"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.last_name,
+            expression: "form.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "grade_id"
+          }
+        }, [_vm._v("Grade_id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "grade_id",
+            id: "grade_id",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.grade_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "grade_id", $event.target.value);
+            }
+          }
+        })]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "section"
+          }
+        }, [_vm._v("Section")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "section",
+            id: "section",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.section
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "section", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de cumpleaños")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.birth_date,
+            expression: "form.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "class_schedule_id"
+          }
+        }, [_vm._v("Class Schedule Id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "class_schedule_id",
+            id: "class_schedule_id",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.class_schedule_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document"
+          }
+        }, [_vm._v("Identificacion Document")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document,
+            expression: "form.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document_number"
+          }
+        }, [_vm._v("Identification Document Number")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document_number,
+            expression: "form.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Professor DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor_dpi,
+            expression: "form.professor_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "professor_dpi",
+            id: "professor_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.professor_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "professor_dpi", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_name"
+          }
+        }, [_vm._v("Tutelary Name")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_name,
+            expression: "form.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_dpi"
+          }
+        }, [_vm._v("Tutelary DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_dpi,
+            expression: "form.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: _vm.cleanForm
+          }
+        }, [_vm._v("\n                            Limpiar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: function click($event) {
+              _vm.modals.createModal = false;
+            }
+          }
+        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "submit"
+          }
+        }, [_vm._v("\n                            Guardar\n                        ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.editModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.editModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.update(_vm.form);
+              _vm.modals.editModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.personal_code,
+            expression: "form.personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "name"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.name,
+            expression: "form.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "last_name"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.last_name,
+            expression: "form.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "grade_id"
+          }
+        }, [_vm._v("Grade_id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "grade_id",
+            id: "grade_id",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.grade_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "grade_id", $event.target.value);
+            }
+          }
+        })]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "section"
+          }
+        }, [_vm._v("Section")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "section",
+            id: "section",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.section
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "section", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de cumpleaños")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.birth_date,
+            expression: "form.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "class_schedule_id"
+          }
+        }, [_vm._v("Class Schedule Id")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "class_schedule_id",
+            id: "class_schedule_id",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.class_schedule_id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document"
+          }
+        }, [_vm._v("Identificacion Document")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document,
+            expression: "form.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document_number"
+          }
+        }, [_vm._v("Identification Document Number")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.identification_document_number,
+            expression: "form.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Professor DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor_dpi,
+            expression: "form.professor_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "professor_dpi",
+            id: "professor_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.professor_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "professor_dpi", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_name"
+          }
+        }, [_vm._v("Tutelary Name")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_name,
+            expression: "form.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_dpi"
+          }
+        }, [_vm._v("Tutelary DPI")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.tutelary_dpi,
+            expression: "form.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: function click($event) {
+              _vm.modals.editModal = false;
+            }
+          }
+        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "submit"
+          }
+        }, [_vm._v("\n                            Actualizar\n                        ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.errorModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.errorModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700"
+        }, [_vm._v(_vm._s(_vm.errors))])])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          on: {
+            click: function click($event) {
+              _vm.modals.errorModal = false;
+            }
+          }
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
+      },
+      proxy: true
+    }])
+  })], 1);
+};
 var staticRenderFns = [];
+render._withStripped = true;
 
 
 /***/ }),

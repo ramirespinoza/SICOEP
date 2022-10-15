@@ -3368,7 +3368,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: null
       },
       errors: "",
-      student: Array,
+      course: Array,
       form: {
         id: null,
         name: null,
@@ -7219,7 +7219,7 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.showCreateModal(_vm.course.id);
+        return _vm.showCreateModal(_vm.course);
       }
     }
   }, [_vm._v("\n            Nuevo Curso\n        ")]), _vm._v(" "), _c("div", {
@@ -7589,7 +7589,7 @@ var render = function render() {
               _vm.$set(_vm.form, "description", $event.target.value);
             }
           }
-        })]), _vm._v(" "), _c("div", {
+        })])])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
@@ -7614,7 +7614,7 @@ var render = function render() {
           attrs: {
             type: "submit"
           }
-        }, [_vm._v("\n                            Guardar\n                        ")])])])])])])];
+        }, [_vm._v("\n                            Guardar\n                        ")])])])])];
       },
       proxy: true
     }])

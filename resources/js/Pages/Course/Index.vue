@@ -8,7 +8,7 @@
 
         <container>
             <button
-                v-on:click.prevent="showCreateModal(course.id)"
+                v-on:click.prevent="showCreateModal(course)"
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
             >
                 Nuevo Curso
@@ -197,6 +197,8 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
+                            </div>
+                        </div>
             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                             <button
                                 type="button"
@@ -217,8 +219,7 @@
                             </button>
                         </div>
                     </div>
-                        </div>
-                    </div>
+
                 </form>
             </template>
         </dialog-modal>
@@ -376,7 +377,7 @@ export default {
                 title: null,
             },
             errors: "",
-            student: Array,
+            course: Array,
             form: {
                 id:                 null,
                 name:               null,

@@ -21,8 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('student', [StudentController::class, 'index'])->name('api.student.get');
-
 Route::post('student', [StudentController::class, 'store'])->name('api.student.create');
 
 Route::put('student/{id}', [StudentController::class, 'update'])->name('api.student.update');
@@ -35,7 +33,6 @@ Route::get('student', [StudentController::class, 'read'])->name('api.student.get
 
 
 
-Route::get('course', [CourseController::class, 'index'])->name('api.course.get');
 
 Route::post('course', [CourseController::class, 'store'])->name('api.course.create');
 

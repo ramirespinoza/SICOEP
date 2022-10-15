@@ -53,7 +53,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Studen/Create');
+
     }
 
     /**
@@ -135,7 +135,6 @@ class StudentController extends Controller
                     'student'   => $student
                 ]);
 
-            //return Inertia::render('Student/Show', ['student'=> $student]);
 
         } catch (\Throwable $th) {
             return response()->json([

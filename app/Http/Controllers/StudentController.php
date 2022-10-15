@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Models\Student;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\In;
+use Illuminate\Routing\ResponseFactory;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
+
 
 class StudentController extends Controller
 {
@@ -13,21 +18,32 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function read()
     {
         try {
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
             $students = Student::orderBy('created_at', 'DESC')->get();
-            return $students;
+            return response()->json([
+                'status' => 'successful',
+                'code' => '1',
+                'operation' => 'read',
+                'students' => $students
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'failed',
                 'code' => '0',
-                'operation' => 'read',
-                'student' => $request->all()
+                'operation' => 'read'
             ]);
         }
+
+    }
+    public function index()
+    {
+        $students = Student::all();
+
+        return Inertia::render('Student/Index', ['students' => $students]);
     }
 
     /**
@@ -37,7 +53,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        ////
+        return Inertia::render('Studen/Create');
     }
 
     /**
@@ -49,7 +65,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
-        try {        
+        try {
 
             //Validación de todos los campos recibidos y el tipo
             $this->validate($request, [
@@ -79,12 +95,16 @@ class StudentController extends Controller
             //Almacenamiendo del Student en el request
             Student::create($request->all());
 
-            return response()->json([
-                'status'    => 'successful',
-                'code'      => '1',
-                'operation' => 'create',
-                'student'   => $request->all()
-            ]);
+            if($request->path() == 'api/student') {
+                return response()->json([
+                    'status'    => 'successful',
+                    'code'      => '1',
+                    'operation' => 'create',
+                    'student'   => $request->all()
+                ]);
+            } else {
+                return Redirect::route('student.index');
+            }
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -103,11 +123,19 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($personal_code)
     {
         try {
-            $student = Student::find($id);
-            return response()->json($student);
+            $student = Student::find(Str::upper($personal_code));
+
+            return response()->json([
+                    'status'    => 'successful',
+                    'code'      => '1',
+                    'operation' => 'create',
+                    'student'   => $student
+                ]);
+
+            //return Inertia::render('Student/Show', ['student'=> $student]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -125,11 +153,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($personal_code)
     {
         try {
-            $student = Student::find($id);
-            return response()->json($student);
+            $student = Student::find(Str::upper($personal_code));
+
+            return Inertia::render('Student/Edit', ['student'=> $student]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -176,27 +205,30 @@ class StudentController extends Controller
                 $validated['identification_document']);
             $validated['tutelary_name']           = Str::title($validated['tutelary_name']);
 
-            //Almacenamiendo del Student del el request 
+            //Almacenamiendo del Student del el request
             // en el registro del personal_code recibido
             Student::find($personal_code)->update($validated);
 
-            return response()->json([
-                'status'    => 'successful',
-                'code'      => '1',
-                'operation' => 'edit',
-                'student'   => $validated
-            ]);
+            if($request->path() == 'api/student/'.$personal_code) {
+                return response()->json([
+                    'status'    => 'successful',
+                    'code'      => '1',
+                    'operation' => 'edit',
+                    'student'   => $request->all()
+                ]);
+            } else {
+                return Redirect::route('student.index');
+            }
 
         } catch (\Throwable $th) {
             return response()->json([
                 'status'    => 'failed',
                 'code'      => '0',
                 'operation' => 'edit',
-                'error'     => $th->getMessage(),
-                'student'   => $request->all()
+                'error'     => $th->getMessage()
             ]);
         }
-        
+
     }
 
     /**
@@ -211,12 +243,7 @@ class StudentController extends Controller
             $student = Student::find(Str::upper($personal_code));
             $student->delete();
 
-            return response()->json([
-                'status'    => 'successful',
-                'code'      => '1',
-                'operation' => 'delete',
-                'student'   => $student->all()
-            ]);
+            return Redirect::route('student.index');
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -226,6 +253,6 @@ class StudentController extends Controller
                 'error'     => $th->getMessage()
             ]);
         }
-        
+
     }
 }

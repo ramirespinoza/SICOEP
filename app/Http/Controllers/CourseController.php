@@ -141,18 +141,18 @@ class CourseController extends Controller
             //Validación de todos los campos recibidos y el tipo
             $validated = $request->validate( [
                 'name'                              => 'required|string|max:50',
-                'description'                         => 'required|string|max:100',
+                'description'                       => 'required|string|max:100',
             ]);
 
             //Corregir el Case de los campos string recibidos y del personal_code
             $id                                   = Str::upper($id);
             $validated['name']                    = Str::title($validated['name']);
-            $validated['description']               = Str::title($validated['description']);
+            $validated['description']              = Str::title($validated['description']);
 
 
             //Almacenamiendo del Student del el request
             // en el registro del personal_code recibido
-            Student::find($id)->update($validated);
+            Course::find($id)->update($validated);
 
             if($request->path() == 'api/course/'.$id) {
                 return response()->json([

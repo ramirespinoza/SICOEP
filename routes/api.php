@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\ActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,13 @@ Route::get('course', [CourseController::class, 'read'])->name('api.course.get');
 Route::middleware('api')->group(function () {
     Route::resource('professors', ProfessorController::class);
 });
+
+Route::post     ('activity',        [ActivityController::class, 'store'])->   name('api.course.create');
+
+Route::put      ('activity/{id}',   [ActivityController::class, 'update'])->  name('api.course.update');
+
+Route::delete   ('activity/{id}',   [ActivityController::class, 'destroy'])-> name('api.course.delete');
+
+Route::get      ('activity/{id}',   [ActivityController::class, 'show'])->    name('api.course.show');
+
+Route::get      ('activity',        [ActivityController::class, 'read'])->    name('api.course.get');

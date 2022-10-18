@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\Exam_ScheduleController;
+use App\Http\Controllers\ExamScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('student', StudentController::class)->middleware(['auth:sanctum', 'verified']);
 Route::resource('course', CourseController::class)->middleware(['auth:sanctum', 'verified']);
-Route::resource('exam_schedule', Exam_ScheduleController::class)->middleware(['auth:sanctum', 'verified']);
+Route::resource('exam_schedule', ExamScheduleController::class)->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/container', function () {
     return Inertia::render('Container');

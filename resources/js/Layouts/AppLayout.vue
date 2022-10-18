@@ -27,6 +27,10 @@
                                 <jet-nav-link :href="route('course.index')" :active="route().current('course.index')">
                                     Cursos
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('exam_schedule.index')" :active="route().current('exam_schedule.index')">
+                                    Horarios de Examenes
+                                </jet-nav-link>
                             </div>
                         </div>
 

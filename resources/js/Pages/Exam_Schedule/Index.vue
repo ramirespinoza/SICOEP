@@ -135,7 +135,7 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Descripcion</label>
                                     <input
-                                        type="text"
+                                        type="datetime-local"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"

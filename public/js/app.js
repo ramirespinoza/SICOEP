@@ -8278,7 +8278,7 @@ var render = function render() {
           }],
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
           attrs: {
-            type: "text",
+            type: "datetime-local",
             name: "date_",
             id: "date_",
             autocomplete: "street-address",
@@ -10804,7 +10804,7 @@ var render = function render() {
           }],
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
           attrs: {
-            type: "date",
+            type: "datetime-local",
             name: "birth_date",
             id: "birth_date",
             autocomplete: "street-address",
@@ -11637,7 +11637,7 @@ var render = function render() {
           }],
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           attrs: {
-            type: "date",
+            type: "datetime-local",
             name: "birth_date",
             id: "birth_date",
             autocomplete: "street-address"

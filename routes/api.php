@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::post('student', [StudentController::class, 'store'])->name('api.student.create');
 
 Route::put('student/{id}', [StudentController::class, 'update'])->name('api.student.update');

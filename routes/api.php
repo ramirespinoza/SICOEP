@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\Exam_ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +36,19 @@ Route::get('student', [StudentController::class, 'read'])->name('api.student.get
 
 
 Route::post('course', [CourseController::class, 'store'])->name('api.course.create');
-
 Route::put('course/{id}', [CourseController::class, 'update'])->name('api.course.update');
-
 Route::delete('course/{id}', [CourseController::class, 'destroy'])->name('api.course.delete');
-
 Route::get('course/{id}', [CourseController::class, 'show'])->name('api.course.show');
-
 Route::get('course', [CourseController::class, 'read'])->name('api.course.get');
+
+
+Route::post('exam_schedule', [Exam_ScheduleController::class, 'store'])->name('api.exam_schedule.create');
+Route::put('exam_schedule/{id}', [Exam_ScheduleController::class, 'update'])->name('api.exam_schedule.update');
+Route::delete('exam_schedule/{id}', [Exam_ScheduleController::class, 'destroy'])->name('api.exam_schedule.delete');
+Route::get('exam_schedule/{id}', [Exam_ScheduleController::class, 'show'])->name('api.exam_schedule.show');
+Route::get('exam_schedule', [Exam_ScheduleController::class, 'read'])->name('api.exam_schedule.get');
+
+
 
 Route::middleware('api')->group(function () {
     Route::resource('professors', ProfessorController::class);

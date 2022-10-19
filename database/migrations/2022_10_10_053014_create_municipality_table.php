@@ -15,8 +15,12 @@ class CreateMunicipalityTable extends Migration
     {
         Schema::create('municipality', function (Blueprint $table) {
             $table->id();
-            $table->string('name', '15 CHAR');
+            $table->string('name', '27 CHAR');
+            $table->unsignedBigInteger('departament_id');
             $table->timestamps();
+
+            // foreing keys
+            $table->foreign('departament_id')->references('id')->on('departament');
         });
     }
 

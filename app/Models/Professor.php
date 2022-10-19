@@ -11,10 +11,11 @@ class Professor extends Model
 
     protected $table = 'professor';
 
+    protected $primaryKey = 'dpi';
+
     protected $fillable = [
         'dpi',
-        'name', 
+        'name',
         'last_name'
-    ];    
+    ];
 }
-    

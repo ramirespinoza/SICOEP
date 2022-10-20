@@ -13,4 +13,9 @@ class School extends Model
     protected $table = 'school';
 
     protected $fillable = ['id','name', 'departament_id', 'municipality_id'];
+
+    public function professors()
+    {
+        return $this->hasMany(Professor::class);
+    }
 }

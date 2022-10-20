@@ -29,4 +29,8 @@ class Student extends Model
         'tutelary_name',
         'tutelary_dpi'
     ];
+
+    public function professor(){
+        return $this->belongsTo(Professor::class);
+    }
 }

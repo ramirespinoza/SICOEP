@@ -6,6 +6,7 @@ use App\Models\Municipality;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Professor;
+use App\Models\School;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -32,8 +33,10 @@ class DatabaseSeeder extends Seeder
         //Con factory
         Activity::factory(10)->create();
         Course::factory(10)->create();
-        Student::factory(50)->create();
-        Professor::factory(10)->create();
+        School::factory(10)
+            ->has(Professor::factory(10)->has(Student::factory(15), 'students'), 'professors')
+            ->create();
+
 
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\ExamScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,13 +39,9 @@ Route::get('student', [StudentController::class, 'read'])->name('api.student.get
 
 
 Route::post('course', [CourseController::class, 'store'])->name('api.course.create');
-
 Route::put('course/{id}', [CourseController::class, 'update'])->name('api.course.update');
-
 Route::delete('course/{id}', [CourseController::class, 'destroy'])->name('api.course.delete');
-
 Route::get('course/{id}', [CourseController::class, 'show'])->name('api.course.show');
-
 Route::get('course', [CourseController::class, 'read'])->name('api.course.get');
 
 
@@ -59,6 +56,15 @@ Route::get('school/{id}', [SchoolController::class, 'show'])->name('api.school.s
 
 Route::get('school', [SchoolController::class, 'read'])->name('api.school.get');
 
+
+
+
+
+Route::post('exam_schedule', [ExamScheduleController::class, 'store'])->name('api.exam_schedule.create');
+Route::put('exam_schedule/{id}', [ExamScheduleController::class, 'update'])->name('api.exam_schedule.update');
+Route::delete('exam_schedule/{id}', [ExamScheduleController::class, 'destroy'])->name('api.exam_schedule.delete');
+Route::get('exam_schedule/{id}', [ExamScheduleController::class, 'show'])->name('api.exam_schedule.show');
+Route::get('exam_schedule', [ExamScheduleController::class, 'read'])->name('api.exam_schedule.get');
 
 
 

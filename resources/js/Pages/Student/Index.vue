@@ -155,7 +155,7 @@
                                         <div class="col-span-6 sm:col-span-1">
                                             <label for="personal_code" class="block text-sm font-medium text-gray-700">Fecha de cumpleaños</label>
                                             <input
-                                                type="date"
+                                                type="datetime-local"
                                                 name="birth_date"
                                                 id="birth_date"
                                                 v-model="form.birth_date"
@@ -541,7 +541,7 @@
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de cumpleaños</label>
                                     <input
-                                        type="date"
+                                        type="datetime-local"
                                         name="birth_date"
                                         id="birth_date"
                                         v-model="form.birth_date"

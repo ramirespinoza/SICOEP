@@ -35,6 +35,10 @@
                                     Escuelas
                                 </jet-nav-link>
 
+
+                                <jet-nav-link :href="route('exam_schedule.index')" :active="route().current('exam_schedule.index')">
+                                    Horarios de Examenes
+                                </jet-nav-link>
                             </div>
                         </div>
 

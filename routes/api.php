@@ -82,3 +82,9 @@ Route::get      ('activity/{id}',   [ActivityController::class, 'show'])->    na
 
 Route::get      ('activity',        [ActivityController::class, 'read'])->    name('api.course.get');
 
+
+Route::post('professor', [ProfessorController::class, 'store'])->name('api.professor.create');
+Route::put('professor/{id}', [ProfessorController::class, 'update'])->name('api.professor.update');
+Route::delete('professor/{id}', [ProfessorController::class, 'destroy'])->name('api.professor.delete');
+Route::get('professor/{id}', [ProfessorController::class, 'show'])->name('api.professor.show');
+Route::get('professor', [ProfessorController::class, 'read'])->name('api.professor.get');

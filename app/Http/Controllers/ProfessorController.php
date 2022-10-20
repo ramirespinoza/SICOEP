@@ -30,7 +30,9 @@ class ProfessorController extends Controller
             $professor = new Professor([
                 'dpi' => $request->input('dpi'),
                 'name' => $request->input('name'),
-                'last_name' => $request->input('last_name')
+                'last_name' => $request->input('last_name'),
+                'school_id' => $request->input('school_id')
+
             ]);
             $professor->save();
             return response()->json([
@@ -78,7 +80,7 @@ class ProfessorController extends Controller
                 'status'    => 'successful',
                 'code'      => '0',
                 'operation' => 'edit',
-                'student'   => $request->all()
+                'professor'   => $request->all()
             ]);
 
         } catch (\Throwable $th) {
@@ -87,7 +89,7 @@ class ProfessorController extends Controller
                 'code'      => '0',
                 'operation' => 'edit',
                 'error'     => $th->getMessage(),
-                'student'   => $request->all()
+                'professor'   => $request->all()
             ]);
         }
         
@@ -101,8 +103,8 @@ class ProfessorController extends Controller
             return response()->json([
                 'status'    => 'successful',
                 'code'      => '0',
-                'operation' => 'delete',
-                'student'   => $request->all()
+                'operation' => 'delete'
+
             ]);
 
         } catch (\Throwable $th) {

@@ -30,7 +30,7 @@ class CreateStudentTable extends Migration
 
             /* En espera demás tablas para implementar foreing keys*/
             // foreing keys
-            //$table->foreign('professor_dpi')->references('dpi')->on('professor');
+            $table->foreign('professor_dpi')->references('dpi')->on('professor');
         });
     }
 

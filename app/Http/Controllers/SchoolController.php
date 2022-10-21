@@ -19,7 +19,7 @@ class SchoolController extends Controller
 
     public function index()
     {
-        $schools = School::all();
+        $schools = School::with('municipality', 'municipality.departament')->orderBy('created_at', 'DESC')->get();
 
 
         return Inertia::render('School/Index', ['schools' => $schools]);
@@ -31,7 +31,7 @@ class SchoolController extends Controller
         try {
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
-            $schools = School::orderBy('created_at', 'DESC')->get();
+            $schools = School::with('municipality.departament')->orderBy('created_at', 'DESC')->get();
             return response()->json([
                 'status' => 'successful',
                 'code' => '1',
@@ -51,7 +51,7 @@ class SchoolController extends Controller
     public function show($id)
     {
         try {
-            $school = School::find($id);
+            $school = School::with('municipality.departament')->find($id);
 
             return response()->json([
                 'status'    => 'successful',
@@ -83,7 +83,6 @@ class SchoolController extends Controller
         $this->validate($request, [
 
             'name' => 'required',
-            'departament_id' => 'required',
             'municipality_id' => 'required',
         ]);
 
@@ -119,7 +118,6 @@ class SchoolController extends Controller
         try {
         $this->validate($request, [
             'name' => 'required',
-            'departament_id' => 'required',
             'municipality_id' => 'required',
         ]);
 

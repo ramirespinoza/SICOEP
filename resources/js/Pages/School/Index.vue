@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
     <app-layout>
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -6,6 +6,7 @@
             </h1>
         </template>
 
+        <!-- List -->
         <container>
                 <button
                     v-on:click.prevent="showCreateModal(schools.id)"
@@ -34,10 +35,10 @@
                                 <span class="font-medium">{{ school.name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ school.departament_id }}</span>
+                                <span class="font-medium">{{ school.municipality.departament.name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ school.municipality_id }}</span>
+                                <span class="font-medium">{{ school.municipality.name }}</span>
                             </td>
 
                             <td class="py-3 px-6 text-center">
@@ -84,6 +85,7 @@
                     </table>
                 </div>
         </container>
+
         <!-- Show Modal -->
         <dialog-modal :show="modals.showModal" @close="modals.showModal = false">
             <template #title>
@@ -101,7 +103,7 @@
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="id" class="block text-sm font-medium text-gray-700">Id</label>
                                             <input
-                                                type="number"
+                                                type="text"
                                                 name="id"
                                                 id="id"
                                                 v-model="form.id"
@@ -125,10 +127,10 @@
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="departament_id" class="block text-sm font-medium text-gray-700">Departamento</label>
                                             <input
-                                                type="number"
+                                                type="text"
                                                 name="departament_id"
                                                 id="departament_id"
-                                                v-model="form.departament_id"
+                                                v-model="form.municipality.departament.name"
                                                 autocomplete="street-address"
                                                 disabled
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
@@ -137,10 +139,10 @@
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="municipality_id" class="block text-sm font-medium text-gray-700">Municipio</label>
                                             <input
-                                                type="number"
+                                                type="text"
                                                 name="municipality_id"
                                                 id="municipality_id"
-                                                v-model="form.municipality_id"
+                                                v-model="form.municipality.name"
                                                 autocomplete="street-address"
                                                 disabled
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
@@ -282,23 +284,6 @@
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
-                                <!--
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
-                                    <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-                                -->
-
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="id" class="block text-sm font-medium text-gray-700">Id</label>
                                     <input
@@ -323,25 +308,39 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="departament_id" class="block text-sm font-medium text-gray-700">Departamento</label>
-                                    <input
-                                        type="text"
-                                        name="departament_id"
-                                        id="departament_id"
-                                        v-model="form.departament_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.municipality.departament_id"
+                                        @change="changeMunicipality"
+
+                                    >
+                                        <option
+                                            v-for="departament in departaments"
+                                            v-bind:value="departament.id"
+                                        >{{ departament.name }}</option>
+                                    </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="municipality" class="block text-sm font-medium text-gray-700">Municipio</label>
-                                    <input
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.municipality_id"
+                                    >
+                                        <option
+                                            v-for="municipality in municipalities"
+                                            v-bind:value="municipality.id"
+                                        >{{ municipality.name }}</option>
+                                    </select>
+                                    <!--!<input
                                         type="text"
                                         name="municipality"
                                         id="municipality"
                                         v-model="form.municipality_id"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    />-->
                                 </div>
 
                             </div>
@@ -425,6 +424,10 @@ export default {
         Container,
     },
 
+    created: function(){
+        this.getDepartaments()
+    },
+
     data(){
         return {
             modals:{
@@ -436,12 +439,14 @@ export default {
             },
             errors: "",
             school: Object,
+            departaments: Array,
+            municipalities: Array,
 
             form: {
                 id:                 null,
                 name:               null,
-                departament_id:     null,
                 municipality_id:    null,
+                municipality: Object,
 
             },
         }
@@ -485,6 +490,7 @@ export default {
             axios.get(url).then(response => {
                 console.log(response.data.school);
                 this.form = response.data.school;
+                this.changeMunicipality();
 
                 this.modals.title = "Editar"
                 this.modals.editModal = true;
@@ -554,6 +560,17 @@ export default {
             this.modals.title = "Error";
             this.modals.errorModal = true;
 
+        },
+        getDepartaments: function (){
+            let url = 'api/departament/';
+            axios.get(url).then(response => {
+                console.log(response.data.departaments);
+                this.departaments = response.data.departaments;
+            });
+        },
+        changeMunicipality: function (){
+            this.municipalities = this.departaments[this.form.municipality.departament_id - 1].municipalities;
+            console.log(this.municipalities)
         }
     }
 

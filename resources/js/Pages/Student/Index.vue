@@ -13,8 +13,9 @@
                 >
                     Nuevo Estudiante
                 </button>
+                <input type="text" placeholder="Buscar..." v-model="q" class="mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
+                    <table v-if="q!==''" class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">Código Personal</th>
@@ -76,6 +77,9 @@
                         </tr>
                         </tbody>
                     </table>
+                    <h1 v-if="students.length===0" class="font-semibold text-xl text-gray-800 leading-tight">
+                        **Sin resultados**
+                    </h1>
                 </div>
         </container>
         <!-- Show Modal -->
@@ -709,6 +713,7 @@ export default {
             },
             errors: "",
             student: Array,
+            q:"",
             form: {
                 personal_code:      null,
                 name:               null,
@@ -837,6 +842,12 @@ export default {
             this.modals.title = "Error";
             this.modals.errorModal = true;
 
+        }
+    },
+
+    watch: {
+        q: function (value) {
+            this.$inertia.replace(this.route('student.index', {q: value}))
         }
     }
 

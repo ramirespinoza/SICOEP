@@ -39,14 +39,37 @@ class DatabaseSeeder extends Seeder
         Activity::factory(10)->create();
         Course::factory(10)->create();
 
-        $municipalities = Municipality::all();
+        $departaments = Departament::all();
 
-        foreach ($municipalities as $municipality) {
+        foreach ($departaments as $departament) {
         School::factory(4)
-            ->has(Professor::factory(4)->has(Student::factory(15), 'students'), 'professors')
-            ->for($municipality)
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 1,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 2,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 3,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 4,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 5,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 6,]), 'students'), 'professors')
+            ->has(Professor::factory()->has(Student::factory(10)->state(['grade_id' => 7,]), 'students'), 'professors')
+            ->for(
+                Municipality::query()->where('departament_id', '=', $departament->id)->first())
             ->create();
         }
+
+        /*foreach ($departaments as $departament) {
+
+            foreach ($departaments as $departament) {
+                School::factory(4)
+                    ->has(
+                        Professor::factory()->has(Student::factory(15), 'students'
+                        ), 'professors')
+                    ->has(
+                        Professor::factory()->has(Student::factory(15), 'students'
+                        ), 'professors')
+                    ->for(
+                        Municipality::query()->where('departament_id', '=', $departament->id)->first())
+                    ->create();
+            }
+        }*/
 
 
 

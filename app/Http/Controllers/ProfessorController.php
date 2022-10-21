@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Professor;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProfessorController extends Controller
 {
@@ -21,9 +23,38 @@ class ProfessorController extends Controller
                 'error'     => $th->getMessage()
             ]);
         }
-            
-            
+
+
     }
+
+    public function read(Request $request)
+    {
+        try {
+            $query = Str::upper($request->q);
+            //Se obtiene los registros por orden de fecha de creación
+            // en forma descentiente
+            $professors = Professor::orderBy('created_at', 'DESC')
+                ->whereRaw(DB::raw("upper(name) like '%$query%'"))
+                ->orWhereRaw(DB::raw("upper(last_name) like '%$query%'"))
+                ->orWhereRaw(DB::raw("upper(dpi) like '%$query%'"))
+                ->take(10)
+                ->get();
+            return response()->json([
+                'status' => 'successful',
+                'code' => '1',
+                'operation' => 'read',
+                'professors' => $professors
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'failed',
+                'code' => '0',
+                'operation' => 'read'
+            ]);
+        }
+
+    }
+
     public function store(Request $request)
     {
         try {
@@ -49,7 +80,7 @@ class ProfessorController extends Controller
                 'professor'   => $request->all()
             ]);
         }
-        
+
     }
 
     public function show($id)
@@ -66,9 +97,9 @@ class ProfessorController extends Controller
                 'error'     => $th->getMessage()
             ]);
         }
-        
+
     }
-   
+
     public function update($id, Request $request)
     {
         try {
@@ -90,9 +121,9 @@ class ProfessorController extends Controller
                 'student'   => $request->all()
             ]);
         }
-        
+
     }
-    
+
     public function destroy($id)
     {
         try {
@@ -113,7 +144,7 @@ class ProfessorController extends Controller
                 'error'     => $th->getMessage()
             ]);
         }
-        
+
     }
-   
+
 }

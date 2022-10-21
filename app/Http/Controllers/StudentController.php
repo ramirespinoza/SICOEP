@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\In;
@@ -39,9 +40,16 @@ class StudentController extends Controller
         }
 
     }
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $query = Str::upper($request->q);
+
+        $students = Student::orderBy('created_at', 'DESC')
+                        ->whereRaw(DB::raw("upper(name) like '%$query%'"))
+                        ->orWhereRaw(DB::raw("upper(last_name) like '%$query%'"))
+                        ->orWhereRaw(DB::raw("upper(personal_code) like '%$query%'"))
+                        ->take(10)
+                        ->get();
 
         return Inertia::render('Student/Index', ['students' => $students]);
     }

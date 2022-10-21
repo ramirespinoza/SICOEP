@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
 
 /*
@@ -31,10 +33,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::resource('student', StudentController::class)->middleware(['auth:sanctum', 'verified']);
-Route::resource('course', CourseController::class)->middleware(['auth:sanctum', 'verified']);
-Route::resource('exam_schedule', ExamScheduleController::class)->middleware(['auth:sanctum', 'verified']);
+Route::resource('student', StudentController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('school', SchoolController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('course', CourseController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('activity', ActivityController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('exam_schedule', ExamScheduleController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/container', function () {
-    return Inertia::render('Container');
-})->name('container');
+

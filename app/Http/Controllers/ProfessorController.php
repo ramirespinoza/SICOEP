@@ -63,7 +63,7 @@ class ProfessorController extends Controller
             //Almacenamiendo de professor en el request
             Professor::create($request->all());
 
-            if($request->path() == 'api/professors') {
+            if($request->path() == 'api/professor') {
                 return response()->json([
                     'status'    => 'successful',
                     'code'      => '1',
@@ -151,7 +151,7 @@ class ProfessorController extends Controller
             // en el registro del dpi recibido
             Professor::find($dpi)->update($validated);
 
-            if($request->path() == 'api/professors/'.$dpi) {
+            if($request->path() == 'api/professor/'.$dpi) {
                 return response()->json([
                     'status'    => 'successful',
                     'code'      => '1',

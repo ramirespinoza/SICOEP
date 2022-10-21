@@ -449,7 +449,7 @@ export default {
     methods: {
 
         getAll: function () {
-            let url = 'api/professors/';
+            let url = 'api/professor/';
             axios.get(url).then(response => {
                 console.log(response.data.professors);
                 this.professors = response.data.professors
@@ -458,7 +458,7 @@ export default {
         },
         showShowModal: function (dpi) {
 
-            let url = 'api/professors/' + dpi;
+            let url = 'api/professor/' + dpi;
             axios.get(url).then(response => {
                 console.log(response.data.professor);
                 this.form = response.data.professor
@@ -480,7 +480,7 @@ export default {
 
         },
         showEditModal: function (dpi){
-            let url = 'api/professors/' + dpi;
+            let url = 'api/professor/' + dpi;
             axios.get(url).then(response => {
                 console.log(response.data.professor);
                 this.form = response.data.professor
@@ -493,7 +493,7 @@ export default {
         },
         submit(form){
 
-            let url = 'api/professors/';
+            let url = 'api/professor/';
             axios.post(url, {
                 ...form
             }).then(response =>{
@@ -513,7 +513,7 @@ export default {
 
         },
         update(form) {
-            let url = 'api/professors/' + form.dpi;
+            let url = 'api/professor/' + form.dpi;
             axios.put(url, {
                 ...form
             }).then(response =>{

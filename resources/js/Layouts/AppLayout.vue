@@ -34,6 +34,9 @@
                                 <jet-nav-link :href="route('school.index')" :active="route().current('school.index')">
                                     Escuelas
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('professor.index')" :active="route().current('professor.index')">
+                                    Catedratico
+                                </jet-nav-link>
 
 
                                 <jet-nav-link :href="route('exam_schedule.index')" :active="route().current('exam_schedule.index')">

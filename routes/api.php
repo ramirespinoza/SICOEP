@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
+use App\Http\Controllers\DepartamentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('api.
 
 Route::get('student/{id}', [StudentController::class, 'show'])->name('api.student.show');
 
-Route::get('student', [StudentController::class, 'read'])->name('api.student.get');
+Route::get('student', [StudentController::class, 'read'])->name('api.student.get')->middleware('auth:sanctum');
 
 
 
@@ -82,3 +83,5 @@ Route::get      ('activity/{id}',   [ActivityController::class, 'show'])->    na
 
 Route::get      ('activity',        [ActivityController::class, 'read'])->    name('api.course.get');
 
+
+Route::get      ('departament',        [DepartamentController::class, 'read'])->    name('api.departament.get');

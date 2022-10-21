@@ -14,4 +14,8 @@ class Departament extends Model
     Protected $fillable = [
         'name'
     ];
+
+    public function municipalities() {
+        return $this->hasMany(Municipality::class);
+    }
 }

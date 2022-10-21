@@ -16,7 +16,6 @@ class CreateSchoolTable extends Migration
         Schema::create('school', function (Blueprint $table) {
             $table->id();
             $table->string('name', '50 char');
-            $table->bigInteger('departament_id');
             $table->bigInteger('municipality_id');
             $table->timestamps();
         });

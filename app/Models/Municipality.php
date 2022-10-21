@@ -14,4 +14,11 @@ class Municipality extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function departament(){
+        return $this->belongsTo(Departament::class);
+    }
+    public function schools() {
+        return $this->hasMany(School::class);
+    }
 }

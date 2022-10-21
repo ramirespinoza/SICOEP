@@ -16,7 +16,6 @@ class SchoolFactory extends Factory
         return [
             'name'      => $this->faker->randomElement($array = array ('EORM','EOUM')).' '.$this->faker->city(),
             'municipality_id'  => 1,
-            'departament_id'  => 1,
         ];
     }
 }

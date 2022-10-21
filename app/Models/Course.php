@@ -15,4 +15,8 @@ class Course extends Model
         'name',
         'description',
     ];use HasFactory;
+
+    public function examschedule() {
+        return $this->hasMany(ExamSchedule::class);
+    }
 }

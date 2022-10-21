@@ -18,12 +18,15 @@ class ExamScheduleController extends Controller
         try {
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
-            $exam_schedules = ExamSchedule::orderBy('created_at', 'DESC')->get();
+            $exam_schedules = ExamSchedule::with('course')->orderBy('created_at', 'DESC')->get();
+
+
             return response()->json([
                 'status' => 'successful',
                 'code' => '1',
                 'operation' => 'read',
-                'exam_schedules' => $exam_schedules
+                'exam_schedules' => $exam_schedules,
+
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -34,22 +37,13 @@ class ExamScheduleController extends Controller
         }
 
     }
-    public function index1()
+    public function index()
     {
-        $exam_schedules = ExamSchedule::all();
-        $categorys = Course::all();
+
+        $exam_schedules = ExamSchedule::with('course')->orderBy('created_at', 'DESC')->get();
 
 
         return Inertia::render('Exam_Schedule/Index', ['exam_schedules' => $exam_schedules]);
-    }
-    public function index()
-    {
-        $courses = DB::table('exam_schedule')
-            ->join('course','course.id','=', 'exam_schedule.course_id')
-            ->select('exam_schedule.*','course.name as course_id')
-            ->get();
-
-        return view('Exam_Schedule.Index', compact('courses'));
     }
 
 
@@ -102,7 +96,7 @@ class ExamScheduleController extends Controller
     public function show($id)
     {
         try {
-            $exam_schedule = ExamSchedule::find(Str::upper($id));
+            $exam_schedule = ExamSchedule::with('course')->find(Str::upper($id));
 
             return response()->json([
                 'status'    => 'successful',

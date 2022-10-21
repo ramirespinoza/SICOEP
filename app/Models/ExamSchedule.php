@@ -14,4 +14,8 @@ class ExamSchedule extends Model
     protected $fillable = [
         'course_id','bimestre','date_'
         ];
+
+    public function course(){
+        return $this->belongsTo(Course::class);
+    }
 }

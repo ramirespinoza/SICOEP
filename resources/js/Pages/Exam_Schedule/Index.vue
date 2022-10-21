@@ -30,7 +30,7 @@
                             <span class="font-medium">{{ exam_schedule.id }}</span>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <span class="font-medium">{{ exam_schedule.course_id }}</span>
+                            <span class="font-medium">{{ exam_schedule.course.name }}</span>
                         </td>
                         <td class="py-3 px-6 text-center">
                             <span class="font-medium">{{ exam_schedule.bimestre }}</span>
@@ -115,7 +115,7 @@
                                         type="text"
                                         name="course_id"
                                         id="course_id"
-                                        v-model="form.course_id"
+                                        v-model="form.course.name"
                                         autocomplete="street-address"
                                         disabled
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
@@ -182,18 +182,22 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
-
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="course_id" class="block text-sm font-medium text-gray-700">curso</label>
-                                    <input
-                                        type="text"
-                                        name="course_id"
-                                        id="course_id"
-                                        v-model="form.course_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    <select  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                             id="course_id"
+                                             name="course_id"
+                                             autocomplete="street-address"
+                                             v-model="form.course_id">
+
+                                        <option disabled value="">selecione un curso</option>
+                                        <option v-for="exam_schedule in $exam_schedules" v-bind:value="exam_schedule.id">
+                                            {{exam_schedule.course.name}}
+
+                                        </option>
+                                    </select>
                                 </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Bimestre</label>
                                     <input

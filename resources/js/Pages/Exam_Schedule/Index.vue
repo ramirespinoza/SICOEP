@@ -108,8 +108,9 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
+
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
                                     <input
                                         type="text"
                                         name="course_id"
@@ -120,6 +121,7 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Descripcion</label>
                                     <input
@@ -180,17 +182,7 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        id="id"
-                                        v-model="form.id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="course_id" class="block text-sm font-medium text-gray-700">curso</label>
                                     <input
@@ -265,17 +257,7 @@
                             <div class="grid grid-cols-6 gap-6">
 
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        id="id"
-                                        v-model="form.id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
                                     <input
@@ -287,6 +269,15 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
+                                   <option disable value="">seleciones un elemento</option>
+                                    <option v-for="option in feeModal.course" v-bind:value="option.id">
+                                        {{option.name}}
+                                    </option>
+                                </div>
+
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Bimestre</label>
                                     <input

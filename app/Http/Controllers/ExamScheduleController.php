@@ -34,13 +34,23 @@ class ExamScheduleController extends Controller
         }
 
     }
-    public function index()
+    public function index1()
     {
         $exam_schedules = ExamSchedule::all();
+        $categorys = Course::all();
+
 
         return Inertia::render('Exam_Schedule/Index', ['exam_schedules' => $exam_schedules]);
     }
+    public function index()
+    {
+        $courses = DB::table('exam_schedule')
+            ->join('course','course.id','=', 'exam_schedule.course_id')
+            ->select('exam_schedule.*','course.name as course_id')
+            ->get();
 
+        return view('Exam_Schedule.Index', compact('courses'));
+    }
 
 
 

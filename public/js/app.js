@@ -7646,36 +7646,6 @@ var render = function render() {
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
             "for": "name"
           }
         }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
@@ -7793,36 +7763,6 @@ var render = function render() {
         }, [_c("div", {
           staticClass: "grid grid-cols-6 gap-6"
         }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
@@ -8207,7 +8147,7 @@ var render = function render() {
           attrs: {
             "for": "course_id"
           }
-        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+        }, [_vm._v("Curso")]), _vm._v(" "), _c("input", {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -8339,36 +8279,6 @@ var render = function render() {
         }, [_c("div", {
           staticClass: "grid grid-cols-6 gap-6"
         }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
@@ -8524,36 +8434,6 @@ var render = function render() {
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
             "for": "course_id"
           }
         }, [_vm._v("Curso")]), _vm._v(" "), _c("input", {
@@ -8580,6 +8460,24 @@ var render = function render() {
             }
           }
         })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "course_id"
+          }
+        }, [_vm._v("Curso")]), _vm._v(" "), _c("option", {
+          attrs: {
+            disable: "",
+            value: ""
+          }
+        }, [_vm._v("seleciones un elemento")]), _vm._v(" "), _vm._l(_vm.feeModal.course, function (option) {
+          return _c("option", {
+            domProps: {
+              value: option.id
+            }
+          }, [_vm._v("\n                                    " + _vm._s(option.name) + "\n                                ")]);
+        })], 2), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",

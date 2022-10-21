@@ -14,7 +14,7 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('course', function (Blueprint $table) {
-            $table->string('id', '10 char')->unique()->primary();
+            $table->id();
             $table->string('name', '50 char');
             $table->string('description', '100 char');
             $table->timestamps();
@@ -25,11 +25,6 @@ class CreateCoursesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('courses');

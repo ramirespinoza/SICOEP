@@ -19,6 +19,8 @@ class CreateExamSchedulesTable extends Migration
             $table->string('bimestre');
             $table->date('date_');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('course');
         });
     }
 

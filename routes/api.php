@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\CnbLevelController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,9 @@ Route::get('school/{id}', [SchoolController::class, 'show'])->name('api.school.s
 
 Route::get('school', [SchoolController::class, 'read'])->name('api.school.get');
 
-
+Route::middleware('api')->group(function () {
+    Route::resource('CnbLevel', CnbLevelController::class);
+});
 
 
 Route::middleware('api')->group(function () {

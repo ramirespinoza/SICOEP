@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CnbLevel extends Model
 {
     use HasFactory;
+
+    protected $table = "cnb_level";
+    protected $fillable = ['name', 'description'];
 }

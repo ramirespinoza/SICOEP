@@ -15,6 +15,8 @@ class CreateCnbLevelTable extends Migration
     {
         Schema::create('cnb_level', function (Blueprint $table) {
             $table->id();
+            $table->string('name','15char');
+            $table->string('description', '75char');
             $table->timestamps();
         });
     }

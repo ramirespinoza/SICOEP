@@ -26,6 +26,9 @@
                                 <jet-nav-link :href="route('school.index')" :active="route().current('school.index')">
                                     Escuelas
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('CnbLevel.index')" :active="route().current('CnbLevel.index')">
+                                    CNB
+                                </jet-nav-link>
 
                             </div>
                         </div>

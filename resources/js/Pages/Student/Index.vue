@@ -550,7 +550,24 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
+                                <div class="col-span-2">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
+                                    <v-select
+                                        v-model="form.professor.school"
+                                        :filter="schoolSearch"
+                                        :options="schools"
+                                        :reduce="option => option.id"
+                                        :get-option-label="school => school.id + ' ' + school.name"
+                                        @input="form.professor.school_id = form.professor.school;changeSchool"
+                                    >
+                                        <template #option="{ dpi, name, last_name }">
+                                            {{ dpi }}
+                                            <br />
+                                            <cite>{{ name }} {{ last_name }}</cite>
+                                        </template>
+                                    </v-select>
 
+                                </div>
                                 <div class="col-span-3">
                                     <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
                                     <v-select
@@ -668,6 +685,7 @@ export default {
     props: {
         students: Array,
         professors: Array,
+        schools: Array,
     },
 
     components: {
@@ -840,6 +858,22 @@ export default {
                 : fuse.list
 
         },
+        schoolSearch(options, search) {
+            let url = 'api/school?q=' + search;
+            axios.get(url).then(response => {
+                this.schools = response.data.schools;
+            });
+
+            const fuse = new Fuse(options, {
+                keys: ['dpi', 'name', 'last_name'],
+                shouldSort: true,
+            })
+            return search.length
+                ? fuse.search(search).map(({ item }) => item)
+                : fuse.list
+
+        },
+        changeSchool() {},
 
     },
 

@@ -25,5 +25,9 @@
         "vue": "^2.5.17",
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "fuse.js": "^6.6.2",
+        "vue-select": "^3.20.0"
     }
 }

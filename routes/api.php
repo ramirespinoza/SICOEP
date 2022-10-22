@@ -34,7 +34,7 @@ Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('api.
 
 Route::get('student/{id}', [StudentController::class, 'show'])->name('api.student.show');
 
-Route::get('student', [StudentController::class, 'read'])->name('api.student.get')->middleware('auth:sanctum');
+Route::get('student', [StudentController::class, 'read'])->name('api.student.get');//->middleware('auth:sanctum');
 
 
 
@@ -69,9 +69,9 @@ Route::get('exam_schedule', [ExamScheduleController::class, 'read'])->name('api.
 
 
 
-Route::middleware('api')->group(function () {
-    Route::resource('professors', ProfessorController::class);
-});
+//Route::middleware('api')->group(function () {
+//    Route::resource('professors', ProfessorController::class);
+//});
 
 Route::post     ('activity',        [ActivityController::class, 'store'])->   name('api.course.create');
 
@@ -85,3 +85,5 @@ Route::get      ('activity',        [ActivityController::class, 'read'])->    na
 
 
 Route::get      ('departament',        [DepartamentController::class, 'read'])->    name('api.departament.get');
+
+Route::get      ('professor',        [ProfessorController::class, 'read'])->    name('api.professor.get');

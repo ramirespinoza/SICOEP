@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
+use App\Http\Controllers\CnbLevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,7 @@ Route::resource('school', SchoolController::class, ['except' => 'show', 'create'
 Route::resource('course', CourseController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 Route::resource('activity', ActivityController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 Route::resource('exam_schedule', ExamScheduleController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('school', SchoolController::class, ['except' => 'show', 'create', 'edit']);
+Route::resource('CnbLevel', CnbLevelController::class, ['except' => 'show',]);
 
 

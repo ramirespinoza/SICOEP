@@ -10,6 +10,8 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\MunicipalityController;
+use App\Http\Controllers\CnbLevelController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +65,9 @@ Route::get('school/{id}', [SchoolController::class, 'show'])->name('api.school.s
 
 Route::get('school', [SchoolController::class, 'read'])->name('api.school.get');
 
-
+Route::middleware('api')->group(function () {
+    Route::resource('CnbLevel', CnbLevelController::class);
+});
 
 
 

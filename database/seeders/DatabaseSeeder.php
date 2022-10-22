@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CnbLevel;
 use App\Models\Departament;
 use App\Models\Municipality;
 use App\Models\Activity;
@@ -33,11 +34,12 @@ class DatabaseSeeder extends Seeder
         //Con seeder
         $this->call(DepartamentSeeder::class);
         $this->call(MunicipalitySeeder::class);
+        $this->call(CnbSeeder::class);
 
 
         //Con factory
         Activity::factory(10)->create();
-        Course::factory(10)->create();
+
 
         $departaments = Departament::all();
 

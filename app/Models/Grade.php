@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Grade extends Model
 {
     use HasFactory;
 
-    protected $table = 'course';
+    protected $table = 'grade';
 
     protected $fillable = [
         'id',
@@ -22,8 +22,11 @@ class Course extends Model
         return $this->belongsTo(CnbLevel::class);
     }
 
+    public function students() {
+        return $this->hasMany(Student::class);
+    }
+
     public function grade_course() {
         return $this->hasMany(GradeCourse::class);
     }
-
 }

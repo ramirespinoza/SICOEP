@@ -86,8 +86,13 @@ class ProfessorController extends Controller
     public function show($id)
     {
         try {
-            $professor = Professor::find($id);
-            return response()->json($professor);
+            $professor = Professor::with('school.municipality.departament')->find($id);
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'edit',
+                'professor' => $professor
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([

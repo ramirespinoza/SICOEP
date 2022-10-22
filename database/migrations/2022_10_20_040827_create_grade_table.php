@@ -15,7 +15,14 @@ class CreateGradeTable extends Migration
     {
         Schema::create('grade', function (Blueprint $table) {
             $table->id();
+            $table->string('name','20 CHAR');
+            $table->string('description', '100 CHAR');
+            $table->unsignedBigInteger('cnb_level_id');
             $table->timestamps();
+
+
+            //foreing keys
+            $table->foreign('cnb_level_id')->references('id')->on('cnb_level');
         });
     }
 

@@ -51,7 +51,7 @@ class SchoolController extends Controller
     public function show($id)
     {
         try {
-            $school = School::with('municipality.departament')->find($id);
+            $school = School::with('municipality.departament', 'professors')->find($id);
 
             return response()->json([
                 'status'    => 'successful',

@@ -17,11 +17,13 @@ class CreateCourseTable extends Migration
             $table->id();
             $table->string('name', '50 char');
             $table->string('description', '100 char');
+            $table->unsignedBigInteger('cnb_level_id');
             $table->timestamps();
 
             /* En espera demás tablas para implementar foreing keys*/
             // foreing keys
             //$table->foreign('professor_dpi')->references('dpi')->on('professor');
+            $table->foreign('cnb_level_id')->references('id')->on('cnb_level');
         });
     }
 

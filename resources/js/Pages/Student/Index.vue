@@ -551,32 +551,59 @@
                                     />
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                    <v-select
-                                        v-model="form.professor.school"
-                                        :filter="schoolSearch"
-                                        :options="schools"
-                                        :reduce="option => option.id"
-                                        :get-option-label="school => school.id + ' ' + school.name"
-                                        @input="form.professor.school_id = form.professor.school;changeSchool"
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.departament.id"
+                                        @change="changeMunicipality"
+
                                     >
-                                        <template #option="{ dpi, name, last_name }">
-                                            {{ dpi }}
-                                            <br />
-                                            <cite>{{ name }} {{ last_name }}</cite>
-                                        </template>
-                                    </v-select>
+                                        <option
+                                            v-for="departament in departaments"
+                                            v-bind:value="departament.id"
+                                        >{{ departament.name }}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.id"
+                                        @change="changeSchool"
+                                    >
+                                        <option
+                                            v-for="municipality in municipalities"
+                                            v-bind:value="municipality.id"
+                                        >{{ municipality.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.id"
+                                        @change="changeProfessor"
+                                    >
+                                        <option
+                                            v-for="school in schools"
+                                            v-bind:value="school.id"
+                                        >{{ school.name }}</option>
+                                    </select>
 
                                 </div>
                                 <div class="col-span-3">
                                     <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
                                     <v-select
-                                        v-model="form.professor"
+                                        v-model="professor"
                                         :filter="professorSearch"
                                         :options="professors"
-                                        :reduce="option => option.dpi"
+
                                         :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
-                                        @input="form.professor_dpi = form.professor"
+                                        @input="professorChanged"
                                     >
                                         <template #option="{ dpi, name, last_name }">
                                             {{ dpi }}
@@ -584,7 +611,6 @@
                                             <cite>{{ name }} {{ last_name }}</cite>
                                         </template>
                                     </v-select>
-
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="tutelary_name" class="block text-sm font-medium text-gray-700">Tutelary Name</label>
@@ -685,7 +711,6 @@ export default {
     props: {
         students: Array,
         professors: Array,
-        schools: Array,
     },
 
     components: {
@@ -693,6 +718,9 @@ export default {
         AppLayout,
         Container,
         vSelect,
+    },
+    created: function(){
+        this.getDepartaments()
     },
 
     data(){
@@ -706,6 +734,10 @@ export default {
             },
             errors: "",
             student: Array,
+            municipalities: Array,
+            departaments: Array,
+            schools: Array,
+            professor: Object,
             q:"",
             form: {
                 personal_code:      null,
@@ -720,7 +752,16 @@ export default {
                 professor_dpi:      null,
                 tutelary_name:      null,
                 tutelary_dpi:       null,
-                professor: {dpi: null},
+                professor: {
+                    dpi: null,
+                    school:  {
+                        id:null,
+                        municipality: {
+                            id: null,
+                            departament: Object,
+                        },
+                    }
+                },
             },
         }
     },
@@ -735,8 +776,9 @@ export default {
             });
 
         },
-        showShowModal: function (personal_code) {
 
+        /*************************** MODALS */
+        showShowModal: function (personal_code) {
             let url = 'api/student/' + personal_code;
             axios.get(url).then(response => {
                 console.log(response.data.student);
@@ -748,8 +790,6 @@ export default {
                 this.modals.title = "Ver"
                 this.modals.showModal = true;
             });
-
-
         },
         showCreateModal: function (){
 
@@ -759,10 +799,12 @@ export default {
 
         },
         showEditModal: function (personal_code){
+
             let url = 'api/professor?' + this.form.professor_dpi;
             axios.get(url).then(response => {
-                this.professors  = response.data.professors;
+                //this.$emit('professors', response.data.professors);
                 console.log(this.professors);
+                this.professors  = response.data.professors;
                 let url = 'api/student/' + personal_code;
                 axios.get(url).then(response => {
                     console.log(response.data.student);
@@ -770,14 +812,24 @@ export default {
 
                     this.modals.title = "Editar"
                     this.modals.editModal = true;
-                });
 
+                    //Actualización options
+                    this.changeMunicipality();
+                    this.changeSchool();
+                    this.professor = this.form.professor;
+                });
             });
 
 
+        },
 
+        showErrorModal: function () {
+            this.modals.title = "Error";
+            this.modals.errorModal = true;
 
         },
+
+        /*************************** FUNCTIONS */
         submit(form){
 
             let url = 'api/student';
@@ -822,7 +874,7 @@ export default {
         cleanForm: function (){
             console.log("hello cleanform");
             this.form = {
-                    personal_code:      null,
+                personal_code:      null,
                     name:               null,
                     last_name:          null,
                     grade_id:           null,
@@ -834,46 +886,77 @@ export default {
                     professor_dpi:      null,
                     tutelary_name:      null,
                     tutelary_dpi:       null,
+                    professor: {
+                    dpi: null,
+                        school:  {
+                        id:null,
+                            municipality: {
+                            id: null,
+                                departament: Object,
+                        },
+                    }
+                },
             };
 
         },
 
-        showErrorModal: function () {
-            this.modals.title = "Error";
-            this.modals.errorModal = true;
 
-        },
+        /*************************** SEARCH */
         professorSearch(options, search) {
             let url = 'api/professor?q=' + search;
             axios.get(url).then(response => {
                 this.professors = response.data.professors;
+                //this.$emit('professors', response.data.professors);
             });
 
             const fuse = new Fuse(options, {
                 keys: ['dpi', 'name', 'last_name'],
-                shouldSort: true,
+                shouldSort: false,
             })
             return search.length
                 ? fuse.search(search).map(({ item }) => item)
                 : fuse.list
-
         },
-        schoolSearch(options, search) {
-            let url = 'api/school?q=' + search;
+
+        /*************************** CHANGE VALUES */
+        changeSchool() {
+            let url = 'api/municipality/' + this.form.professor.school.municipality.id;
             axios.get(url).then(response => {
-                this.schools = response.data.schools;
+                this.schools = response.data.municipality.schools;
             });
 
-            const fuse = new Fuse(options, {
-                keys: ['dpi', 'name', 'last_name'],
-                shouldSort: true,
-            })
-            return search.length
-                ? fuse.search(search).map(({ item }) => item)
-                : fuse.list
+        },
+        changeProfessor() {
+            let url = 'api/school/' + this.form.professor.school.id;
+            axios.get(url).then(response => {
+                this.professors = response.data.school.professors;
+            });
 
         },
-        changeSchool() {},
+
+        professorChanged() {
+            this.form.professor_dpi = this.professor.dpi;
+            let url = 'api/professor/' + this.professor.dpi;
+            axios.get(url).then(response => {
+                console.log(response.data.departaments);
+                this.form.professor = response.data.professor;
+                console.log(this.professor);
+                console.log(this.form.professor)
+                this.changeMunicipality();
+                this.changeSchool();
+
+            });
+        },
+        getDepartaments: function (){
+            let url = 'api/departament/';
+            axios.get(url).then(response => {
+                console.log(response.data.departaments);
+                this.departaments = response.data.departaments;
+            });
+        },
+        changeMunicipality: function (){
+            this.municipalities = this.departaments[this.form.professor.school.municipality.departament.id - 1].municipalities;
+        }
 
     },
 

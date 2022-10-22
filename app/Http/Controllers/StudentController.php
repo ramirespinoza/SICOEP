@@ -140,7 +140,7 @@ class StudentController extends Controller
     public function show($personal_code)
     {
         try {
-            $student = Student::with('professor.school')->find(Str::upper($personal_code));
+            $student = Student::with('professor.school.municipality.departament')->find(Str::upper($personal_code));
 
             return response()->json([
                     'status'    => 'successful',

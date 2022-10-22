@@ -33,4 +33,8 @@ class Student extends Model
     public function professor(){
         return $this->belongsTo(Professor::class);
     }
+
+    public function grade(){
+        return $this->belongsTo(Grade::class);
+    }
 }

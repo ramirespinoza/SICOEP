@@ -9,6 +9,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
 use App\Http\Controllers\DepartamentController;
+use App\Http\Controllers\MunicipalityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,11 @@ Route::put('course/{id}', [CourseController::class, 'update'])->name('api.course
 Route::delete('course/{id}', [CourseController::class, 'destroy'])->name('api.course.delete');
 Route::get('course/{id}', [CourseController::class, 'show'])->name('api.course.show');
 Route::get('course', [CourseController::class, 'read'])->name('api.course.get');
+
+
+
+Route::get('municipality/{id}', [MunicipalityController::class, 'show'])->name('api.municipality.show');
+
 
 
 
@@ -87,3 +93,4 @@ Route::get      ('activity',        [ActivityController::class, 'read'])->    na
 Route::get      ('departament',        [DepartamentController::class, 'read'])->    name('api.departament.get');
 
 Route::get      ('professor',        [ProfessorController::class, 'read'])->    name('api.professor.get');
+Route::get      ('professor/{id}',        [ProfessorController::class, 'show'])->    name('api.professor.get');

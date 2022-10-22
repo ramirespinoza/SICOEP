@@ -4567,14 +4567,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     students: Array,
-    professors: Array,
-    schools: Array
+    professors: Array
   },
   components: {
     DialogModal: _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__["default"],
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
     vSelect: (vue_select__WEBPACK_IMPORTED_MODULE_4___default())
+  },
+  created: function created() {
+    this.getDepartaments();
   },
   data: function data() {
     return {
@@ -4587,6 +4589,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       errors: "",
       student: Array,
+      municipalities: Array,
+      departaments: Array,
+      schools: Array,
+      professor: Object,
       q: "",
       form: {
         personal_code: null,
@@ -4602,7 +4608,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         tutelary_name: null,
         tutelary_dpi: null,
         professor: {
-          dpi: null
+          dpi: null,
+          school: {
+            id: null,
+            municipality: {
+              id: null,
+              departament: Object
+            }
+          }
         }
       }
     };
@@ -4616,6 +4629,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.students = response.data.students;
       });
     },
+    /*************************** MODALS */
     showShowModal: function showShowModal(personal_code) {
       var _this2 = this;
       var url = 'api/student/' + personal_code;
@@ -4636,18 +4650,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this3 = this;
       var url = 'api/professor?' + this.form.professor_dpi;
       axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        _this3.professors = response.data.professors;
+        //this.$emit('professors', response.data.professors);
         console.log(_this3.professors);
+        _this3.professors = response.data.professors;
         var url = 'api/student/' + personal_code;
         axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
           console.log(response.data.student);
           _this3.form = response.data.student;
           _this3.modals.title = "Editar";
           _this3.modals.editModal = true;
+
+          //Actualización options
+          _this3.changeMunicipality();
+          _this3.changeSchool();
+          _this3.professor = _this3.form.professor;
         });
       });
     },
-    submit: function submit(form) {
+    showErrorModal: function showErrorModal() {
+      this.modals.title = "Error";
+      this.modals.errorModal = true;
+    },
+    /*************************** FUNCTIONS */submit: function submit(form) {
       var _this4 = this;
       var url = 'api/student';
       axios__WEBPACK_IMPORTED_MODULE_2___default().post(url, _objectSpread({}, form)).then(function (response) {
@@ -4695,44 +4719,74 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         class_schedule_id: null,
         professor_dpi: null,
         tutelary_name: null,
-        tutelary_dpi: null
+        tutelary_dpi: null,
+        professor: {
+          dpi: null,
+          school: {
+            id: null,
+            municipality: {
+              id: null,
+              departament: Object
+            }
+          }
+        }
       };
     },
-    showErrorModal: function showErrorModal() {
-      this.modals.title = "Error";
-      this.modals.errorModal = true;
-    },
-    professorSearch: function professorSearch(options, search) {
+    /*************************** SEARCH */professorSearch: function professorSearch(options, search) {
       var _this6 = this;
       var url = 'api/professor?q=' + search;
       axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
         _this6.professors = response.data.professors;
+        //this.$emit('professors', response.data.professors);
       });
+
       var fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_6__["default"](options, {
         keys: ['dpi', 'name', 'last_name'],
-        shouldSort: true
+        shouldSort: false
       });
       return search.length ? fuse.search(search).map(function (_ref) {
         var item = _ref.item;
         return item;
       }) : fuse.list;
     },
-    schoolSearch: function schoolSearch(options, search) {
+    /*************************** CHANGE VALUES */changeSchool: function changeSchool() {
       var _this7 = this;
-      var url = 'api/school?q=' + search;
+      var url = 'api/municipality/' + this.form.professor.school.municipality.id;
       axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        _this7.schools = response.data.schools;
+        _this7.schools = response.data.municipality.schools;
       });
-      var fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_6__["default"](options, {
-        keys: ['dpi', 'name', 'last_name'],
-        shouldSort: true
-      });
-      return search.length ? fuse.search(search).map(function (_ref2) {
-        var item = _ref2.item;
-        return item;
-      }) : fuse.list;
     },
-    changeSchool: function changeSchool() {}
+    changeProfessor: function changeProfessor() {
+      var _this8 = this;
+      var url = 'api/school/' + this.form.professor.school.id;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        _this8.professors = response.data.school.professors;
+      });
+    },
+    professorChanged: function professorChanged() {
+      var _this9 = this;
+      this.form.professor_dpi = this.professor.dpi;
+      var url = 'api/professor/' + this.professor.dpi;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        console.log(response.data.departaments);
+        _this9.form.professor = response.data.professor;
+        console.log(_this9.professor);
+        console.log(_this9.form.professor);
+        _this9.changeMunicipality();
+        _this9.changeSchool();
+      });
+    },
+    getDepartaments: function getDepartaments() {
+      var _this10 = this;
+      var url = 'api/departament/';
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        console.log(response.data.departaments);
+        _this10.departaments = response.data.departaments;
+      });
+    },
+    changeMunicipality: function changeMunicipality() {
+      this.municipalities = this.departaments[this.form.professor.school.municipality.departament.id - 1].municipalities;
+    }
   },
   watch: {
     q: function q(value) {
@@ -13408,22 +13462,121 @@ var render = function render() {
           attrs: {
             "for": "professor_dpi"
           }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("v-select", {
+        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.departament.id,
+            expression: "form.professor.school.municipality.departament.id"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           attrs: {
-            filter: _vm.schoolSearch,
-            options: _vm.schools,
-            reduce: function reduce(option) {
-              return option.id;
-            },
-            "get-option-label": function getOptionLabel(school) {
-              return school.id + " " + school.name;
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeMunicipality]
+          }
+        }, _vm._l(_vm.departaments, function (departament) {
+          return _c("option", {
+            domProps: {
+              value: departament.id
+            }
+          }, [_vm._v(_vm._s(departament.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.id,
+            expression: "form.professor.school.municipality.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeSchool]
+          }
+        }, _vm._l(_vm.municipalities, function (municipality) {
+          return _c("option", {
+            domProps: {
+              value: municipality.id
+            }
+          }, [_vm._v(_vm._s(municipality.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.id,
+            expression: "form.professor.school.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeProfessor]
+          }
+        }, _vm._l(_vm.schools, function (school) {
+          return _c("option", {
+            domProps: {
+              value: school.id
+            }
+          }, [_vm._v(_vm._s(school.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
+          attrs: {
+            filter: _vm.professorSearch,
+            options: _vm.professors,
+            "get-option-label": function getOptionLabel(professor) {
+              return professor.dpi + " " + professor.name + " " + professor.last_name;
             }
           },
           on: {
-            input: function input($event) {
-              _vm.form.professor.school_id = _vm.form.professor.school;
-              _vm.changeSchool;
-            }
+            input: _vm.professorChanged
           },
           scopedSlots: _vm._u([{
             key: "option",
@@ -13435,50 +13588,11 @@ var render = function render() {
             }
           }]),
           model: {
-            value: _vm.form.professor.school,
+            value: _vm.professor,
             callback: function callback($$v) {
-              _vm.$set(_vm.form.professor, "school", $$v);
+              _vm.professor = $$v;
             },
-            expression: "form.professor.school"
-          }
-        })], 1), _vm._v(" "), _c("div", {
-          staticClass: "col-span-3"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
-          attrs: {
-            filter: _vm.professorSearch,
-            options: _vm.professors,
-            reduce: function reduce(option) {
-              return option.dpi;
-            },
-            "get-option-label": function getOptionLabel(professor) {
-              return professor.dpi + " " + professor.name + " " + professor.last_name;
-            }
-          },
-          on: {
-            input: function input($event) {
-              _vm.form.professor_dpi = _vm.form.professor;
-            }
-          },
-          scopedSlots: _vm._u([{
-            key: "option",
-            fn: function fn(_ref3) {
-              var dpi = _ref3.dpi,
-                name = _ref3.name,
-                last_name = _ref3.last_name;
-              return [_vm._v("\n                                        " + _vm._s(dpi) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
-            }
-          }]),
-          model: {
-            value: _vm.form.professor,
-            callback: function callback($$v) {
-              _vm.$set(_vm.form, "professor", $$v);
-            },
-            expression: "form.professor"
+            expression: "professor"
           }
         })], 1), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-3"

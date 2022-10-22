@@ -182,20 +182,23 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="course_id" class="block text-sm font-medium text-gray-700">curso</label>
-                                    <select  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                             id="course_id"
-                                             name="course_id"
-                                             autocomplete="street-address"
-                                             v-model="form.course_id">
+                                <div class="col-span-3">
+                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
+                                    <v-select
+                                        v-model="form.course"
+                                        :filter="courseSearch"
+                                        :options="courses"
+                                        :reduce="option => option.id"
+                                        :get-option-label="course => course.id + ' ' + course.name"
+                                        @input="form.course_id = form.course"
+                                    >
+                                        <template #option="{ id, name}">
+                                            {{ id }}
+                                            <br />
+                                            <cite>{{ name }}</cite>
+                                        </template>
+                                    </v-select>
 
-                                        <option disabled value="">selecione un curso</option>
-                                        <option v-for="exam_schedule in $exam_schedules" v-bind:value="exam_schedule.id">
-                                            {{exam_schedule.course.name}}
-
-                                        </option>
-                                    </select>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-2">
@@ -262,23 +265,24 @@
 
 
 
-                                <div class="col-span-6 sm:col-span-2">
+
+                                <div class="col-span-3">
                                     <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
-                                    <input
-                                        type="text"
-                                        name="course_id"
-                                        id="course_id"
-                                        v-model="form.course_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
-                                   <option disable value="">seleciones un elemento</option>
-                                    <option v-for="option in feeModal.course" v-bind:value="option.id">
-                                        {{option.name}}
-                                    </option>
+                                    <v-select
+                                        v-model="form.course"
+                                        :filter="courseSearch"
+                                        :options="courses"
+                                        :reduce="option => option.id"
+                                        :get-option-label="course => course.id + ' ' + course.name"
+                                        @input="form.course_id = form.course"
+                                    >
+                                        <template #option="{ id, name}">
+                                            {{ id }}
+                                            <br />
+                                            <cite>{{ name }}</cite>
+                                        </template>
+                                    </v-select>
+
                                 </div>
 
 
@@ -374,15 +378,21 @@ import AppLayout from '@/Layouts/AppLayout'
 import Container from "@/Pages/Container";
 import axios from "axios";
 import DialogModal from "@/Pages/Modal";
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+import Fuse from 'fuse.js';
+
 export default {
     props: {
-        exam_schedules: Array
+        exam_schedules: Array,
+        courses: Array,
     },
 
     components: {
         DialogModal,
         AppLayout,
         Container,
+        vSelect,
     },
 
     data(){
@@ -396,11 +406,13 @@ export default {
             },
             errors: "",
             exam_schedule: Array,
+            q:"",
             form: {
                 id:                    null,
                 course_id:             null,
                 bimestre:              null,
                 date_:                 null,
+                course: {id: null},
             },
         }
     },
@@ -439,13 +451,19 @@ export default {
 
         },
         showEditModal: function (id){
-            let url = 'api/exam_schedule/' + id;
+            let url = 'api/course?' + this.form.course_id;
             axios.get(url).then(response => {
-                console.log(response.data.exam_schedule);
-                this.form = response.data.exam_schedule
+                this.courses  = response.data.courses;
+                console.log(this.courses);
+                let url = 'api/exam_schedule/' + id;
+                axios.get(url).then(response => {
+                    console.log(response.data.exam_schedule);
+                    this.form = response.data.exam_schedule
 
-                this.modals.title = "Editar"
-                this.modals.editModal = true;
+                    this.modals.title = "Editar"
+                    this.modals.editModal = true;
+                });
+
             });
 
 
@@ -496,9 +514,10 @@ export default {
         cleanForm: function (){
             console.log("hello cleanform");
             this.form = {
-                id:                 null,
-                name:               null,
-                description:        null,
+                id:                      null,
+                course_id:               null,
+                bimestre:                null,
+                _date:                   null,
 
             };
 
@@ -508,6 +527,27 @@ export default {
             this.modals.title = "Error";
             this.modals.errorModal = true;
 
+        },
+        courseSearch(options, search) {
+            let url = 'api/course?q=' + search;
+            axios.get(url).then(response => {
+                this.courses = response.data.courses;
+            });
+
+            const fuse = new Fuse(options, {
+                keys: ['id', 'name'],
+                shouldSort: true,
+            })
+            return search.length
+                ? fuse.search(search).map(({ item }) => item)
+                : fuse.list
+
+        }
+
+    },
+    watch: {
+        q: function (value) {
+            this.$inertia.replace(this.route('course.index', {q: value}))
         }
     }
 

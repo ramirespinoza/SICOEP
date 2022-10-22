@@ -3632,6 +3632,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Modal */ "./resources/js/Pages/Modal.vue");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3639,14 +3643,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    exam_schedules: Array
+    exam_schedules: Array,
+    courses: Array
   },
   components: {
     DialogModal: _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__["default"],
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
+    vSelect: (vue_select__WEBPACK_IMPORTED_MODULE_4___default())
   },
   data: function data() {
     return {
@@ -3659,11 +3668,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       errors: "",
       exam_schedule: Array,
+      q: "",
       form: {
         id: null,
         course_id: null,
         bimestre: null,
-        date_: null
+        date_: null,
+        course: {
+          id: null
+        }
       }
     };
   },
@@ -3694,12 +3707,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     showEditModal: function showEditModal(id) {
       var _this3 = this;
-      var url = 'api/exam_schedule/' + id;
+      var url = 'api/course?' + this.form.course_id;
       axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        console.log(response.data.exam_schedule);
-        _this3.form = response.data.exam_schedule;
-        _this3.modals.title = "Editar";
-        _this3.modals.editModal = true;
+        _this3.courses = response.data.courses;
+        console.log(_this3.courses);
+        var url = 'api/exam_schedule/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+          console.log(response.data.exam_schedule);
+          _this3.form = response.data.exam_schedule;
+          _this3.modals.title = "Editar";
+          _this3.modals.editModal = true;
+        });
       });
     },
     submit: function submit(form) {
@@ -3740,13 +3758,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log("hello cleanform");
       this.form = {
         id: null,
-        name: null,
-        description: null
+        course_id: null,
+        bimestre: null,
+        _date: null
       };
     },
     showErrorModal: function showErrorModal() {
       this.modals.title = "Error";
       this.modals.errorModal = true;
+    },
+    courseSearch: function courseSearch(options, search) {
+      var _this6 = this;
+      var url = 'api/course?q=' + search;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        _this6.courses = response.data.courses;
+      });
+      var fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_6__["default"](options, {
+        keys: ['id', 'name'],
+        shouldSort: true
+      });
+      return search.length ? fuse.search(search).map(function (_ref) {
+        var item = _ref.item;
+        return item;
+      }) : fuse.list;
+    }
+  },
+  watch: {
+    q: function q(value) {
+      this.$inertia.replace(this.route('course.index', {
+        q: value
+      }));
     }
   }
 });
@@ -8596,36 +8637,6 @@ var render = function render() {
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
             "for": "name"
           }
         }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
@@ -8743,36 +8754,6 @@ var render = function render() {
         }, [_c("div", {
           staticClass: "grid grid-cols-6 gap-6"
         }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
@@ -9004,7 +8985,7 @@ var render = function render() {
       staticClass: "py-3 px-6 text-left"
     }, [_c("span", {
       staticClass: "font-medium"
-    }, [_vm._v(_vm._s(exam_schedule.course_id))])]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(exam_schedule.course.name))])]), _vm._v(" "), _c("td", {
       staticClass: "py-3 px-6 text-center"
     }, [_c("span", {
       staticClass: "font-medium"
@@ -9157,12 +9138,12 @@ var render = function render() {
           attrs: {
             "for": "course_id"
           }
-        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+        }, [_vm._v("Curso")]), _vm._v(" "), _c("input", {
           directives: [{
             name: "model",
             rawName: "v-model",
-            value: _vm.form.course_id,
-            expression: "form.course_id"
+            value: _vm.form.course.name,
+            expression: "form.course.name"
           }],
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
           attrs: {
@@ -9173,12 +9154,12 @@ var render = function render() {
             disabled: ""
           },
           domProps: {
-            value: _vm.form.course_id
+            value: _vm.form.course.name
           },
           on: {
             input: function input($event) {
               if ($event.target.composing) return;
-              _vm.$set(_vm.form, "course_id", $event.target.value);
+              _vm.$set(_vm.form.course, "name", $event.target.value);
             }
           }
         })]), _vm._v(" "), _c("div", {
@@ -9289,66 +9270,44 @@ var render = function render() {
         }, [_c("div", {
           staticClass: "grid grid-cols-6 gap-6"
         }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
+          staticClass: "col-span-3"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
             "for": "course_id"
           }
-        }, [_vm._v("curso")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.course_id,
-            expression: "form.course_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+        }, [_vm._v("Curso")]), _vm._v(" "), _c("v-select", {
           attrs: {
-            type: "text",
-            name: "course_id",
-            id: "course_id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.course_id
+            filter: _vm.courseSearch,
+            options: _vm.courses,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(course) {
+              return course.id + " " + course.name;
+            }
           },
           on: {
             input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "course_id", $event.target.value);
+              _vm.form.course_id = _vm.form.course;
             }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref) {
+              var id = _ref.id,
+                name = _ref.name;
+              return [_vm._v("\n                                        " + _vm._s(id) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.course,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "course", $$v);
+            },
+            expression: "form.course"
           }
-        })]), _vm._v(" "), _c("div", {
+        })], 1), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
@@ -9470,66 +9429,44 @@ var render = function render() {
         }, [_c("div", {
           staticClass: "grid grid-cols-6 gap-6"
         }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "id"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "id",
-            id: "id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
+          staticClass: "col-span-3"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
             "for": "course_id"
           }
-        }, [_vm._v("Curso")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.course_id,
-            expression: "form.course_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+        }, [_vm._v("Curso")]), _vm._v(" "), _c("v-select", {
           attrs: {
-            type: "text",
-            name: "course_id",
-            id: "course_id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.course_id
+            filter: _vm.courseSearch,
+            options: _vm.courses,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(course) {
+              return course.id + " " + course.name;
+            }
           },
           on: {
             input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "course_id", $event.target.value);
+              _vm.form.course_id = _vm.form.course;
             }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref2) {
+              var id = _ref2.id,
+                name = _ref2.name;
+              return [_vm._v("\n                                        " + _vm._s(id) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.course,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "course", $$v);
+            },
+            expression: "form.course"
           }
-        })]), _vm._v(" "), _c("div", {
+        })], 1), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-2"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",

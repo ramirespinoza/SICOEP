@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ExamSchedule;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -60,11 +61,12 @@ class ExamScheduleController extends Controller
     {
 
         try {
-
+            $request['date_']                        = Carbon::parse($request['date_'])->format('Y-m-d H:i:s');
             //Validación de todos los campos recibidos y el tipo
             $this->validate($request, [
                 'course_id'                  => 'required',
                 'bimestre'                   => 'required|string|max:50',
+                'date_'                   => 'required|date',
 
 
             ]);
@@ -72,6 +74,7 @@ class ExamScheduleController extends Controller
 
             $request['course_id']                    = Str::title($request['course_id']);
             $request['bimestre']                     = Str::title($request['bimestre']);
+
 
 
 
@@ -147,9 +150,11 @@ class ExamScheduleController extends Controller
     {
 
         try {
+            $request['date_']                        = Carbon::parse($request['date_'])->format('Y-m-d H:i:s');
             $validated = $request->validate( [
                 'course_id'                              => 'required',
                 'bimestre'                               => 'required|string|max:100',
+                'date_'                                  => 'required|date',
 
             ]);
 

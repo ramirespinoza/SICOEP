@@ -215,14 +215,16 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Fecha</label>
                                     <input
-                                        type="date"
+                                        type="datetime-local"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
+
                                 </div>
+
                             </div>
                         </div>
                         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
@@ -300,7 +302,7 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Fecha</label>
                                     <input
-                                        type="datetime"
+                                        type="datetime-local"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"

@@ -30,7 +30,7 @@
                             <span class="font-medium">{{ exam_schedule.id }}</span>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <span class="font-medium">{{ exam_schedule.course.name }}</span>
+                            <span class="font-medium">{{ exam_schedule.course.name}}</span>
                         </td>
                         <td class="py-3 px-6 text-center">
                             <span class="font-medium">{{ exam_schedule.bimestre }}</span>
@@ -300,7 +300,7 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Fecha</label>
                                     <input
-                                        type="date"
+                                        type="datetime"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"

@@ -43,9 +43,10 @@ class ExamScheduleController extends Controller
     {
 
 
-        $query = Str::upper($request->q);
 
-        $exam_schedules = ExamSchedule::orderBy('created_at', 'DESC')
+
+        $query = Str::upper($request->q);
+        $exam_schedules = ExamSchedule::with('course')->orderBy('created_at', 'DESC')
             ->whereRaw(DB::raw("upper(id) like '%$query%'"))
             ->take(10)
             ->get();
@@ -64,14 +65,14 @@ class ExamScheduleController extends Controller
             $this->validate($request, [
                 'course_id'                  => 'required',
                 'bimestre'                   => 'required|string|max:50',
-                'date_'                      => 'required|date',
+
 
             ]);
 
 
             $request['course_id']                    = Str::title($request['course_id']);
             $request['bimestre']                     = Str::title($request['bimestre']);
-            $request['date_']                        = Str::title($request['date_']);
+
 
 
             //Almacenamiendo del Student en el request
@@ -149,13 +150,13 @@ class ExamScheduleController extends Controller
             $validated = $request->validate( [
                 'course_id'                              => 'required',
                 'bimestre'                               => 'required|string|max:100',
-                'date_'                                  => 'required|date',
+
             ]);
 
             $id                                    = Str::upper($id);
             $validated['course_id']                = Str::title($validated['course_id']);
             $validated['bimestre']              = Str::title($validated['bimestre']);
-            $validated['date_']              = Str::title($validated['date_']);
+
 
 
 
@@ -192,7 +193,12 @@ class ExamScheduleController extends Controller
             return Redirect::route('exam_schedule.index');
 
         } catch (\Throwable $th) {
-            return Redirect::route('exam_schedule.index');
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'delete',
+                'error'     => $th->getMessage()
+            ]);
 
         }
 

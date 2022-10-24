@@ -21,6 +21,6 @@ class GradeCourse extends Model
     }
 
     public function grade() {
-        return $this->hasMany(Grade::class);
+        return $this->belongsTo(Grade::class);
     }
 }

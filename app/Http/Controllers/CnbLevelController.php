@@ -14,7 +14,7 @@ class CnbLevelController extends Controller
     {
 
         $CnbLevel = CnbLevel::all();
-        return Inertia::render('CnbLevel/Index', ['schools' => $CnbLevel]);
+        return Inertia::render('CnbLevel/Index', ['CnbLevels' => $CnbLevel]);
 
         return Redirect::route('CnbLevel.index');
     }

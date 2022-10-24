@@ -21,4 +21,5 @@ class Municipality extends Model
     public function schools() {
         return $this->hasMany(School::class);
     }
+
 }

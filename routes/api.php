@@ -39,7 +39,7 @@ Route::get('student/{id}', [StudentController::class, 'show'])->name('api.studen
 
 Route::get('student', [StudentController::class, 'read'])->name('api.student.get');//->middleware('auth:sanctum');
 
-
+Route::get('students_by_school', [\App\Http\Controllers\DashboardController::class, 'students_by_school'])->name('api.students_by_school');
 
 
 Route::post('course', [CourseController::class, 'store'])->name('api.course.create');

@@ -16,7 +16,8 @@ class Professor extends Model
     protected $fillable = [
         'dpi',
         'name',
-        'last_name'
+        'last_name',
+        'school_id'
     ];
 
     public function school(){

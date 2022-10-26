@@ -19,7 +19,6 @@
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
                             <th class="py-3 px-6 text-left">Nombre</th>
-                            <th class="py-3 px-6 text-center">Descripción</th>
                             <th class="py-3 px-6 text-center">Actions</th>
                         </tr>
                         </thead>
@@ -31,9 +30,7 @@
                             <td class="py-3 px-6 text-left">
                                 <span class="font-medium">{{ activity.name }}</span>
                             </td>
-                            <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ activity.description }}</span>
-                            </td>
+
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
                                     <!--:href="route('student.show', student.personal_code)"-->
@@ -117,7 +114,7 @@
                                         </div>
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="personal_code" class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input
+                                            <textarea
                                                 type="text"
                                                 name="description"
                                                 id="description"

@@ -54,14 +54,14 @@ class CourseController extends Controller
 
             //Validación de todos los campos recibidos y el tipo
             $this->validate($request, [
-                'id'                     => 'required|string|max:10',
+
                 'name'                   => 'required|string|max:50',
                 'description'            => 'required|string|max:50',
 
             ]);
 
             //Corregir el Case de los campos string recibidos
-            $request['id']                      = Str::upper($request['id']);
+
             $request['name']                    = Str::title($request['name']);
             $request['description']               = Str::title($request['description']);
 
@@ -145,7 +145,7 @@ class CourseController extends Controller
             ]);
 
             //Corregir el Case de los campos string recibidos y del personal_code
-            $id                                   = Str::upper($id);
+
             $validated['name']                    = Str::title($validated['name']);
             $validated['description']              = Str::title($validated['description']);
 

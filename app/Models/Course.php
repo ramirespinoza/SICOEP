@@ -12,7 +12,6 @@ class Course extends Model
     protected $table = 'course';
 
     protected $fillable = [
-        'id',
         'name',
         'description',
         'cnb_level_id'
@@ -35,4 +34,7 @@ class Course extends Model
         return $this->belongsToMany(Grade::class,'grade_course');
     }
 
+    public function examschedule() {
+        return $this->hasMany(ExamSchedule::class);
+    }
 }

@@ -30,7 +30,7 @@
                             <span class="font-medium">{{ exam_schedule.id }}</span>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <span class="font-medium">{{ exam_schedule.course_id }}</span>
+                            <span class="font-medium">{{ exam_schedule.course.name}}</span>
                         </td>
                         <td class="py-3 px-6 text-center">
                             <span class="font-medium">{{ exam_schedule.bimestre }}</span>
@@ -108,18 +108,20 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
+
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
                                     <input
                                         type="text"
                                         name="course_id"
                                         id="course_id"
-                                        v-model="form.course_id"
+                                        v-model="form.course.name"
                                         autocomplete="street-address"
                                         disabled
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Descripcion</label>
                                     <input
@@ -180,28 +182,25 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        id="id"
-                                        v-model="form.id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                <div class="col-span-3">
+                                    <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
+                                    <v-select
+                                        v-model="form.course"
+                                        :filter="courseSearch"
+                                        :options="courses"
+                                        :reduce="option => option.id"
+                                        :get-option-label="course => course.id + ' ' + course.name"
+                                        @input="form.course_id = form.course"
+                                    >
+                                        <template #option="{ id, name}">
+                                            {{ id }}
+                                            <br />
+                                            <cite>{{ name }}</cite>
+                                        </template>
+                                    </v-select>
+
                                 </div>
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="course_id" class="block text-sm font-medium text-gray-700">curso</label>
-                                    <input
-                                        type="text"
-                                        name="course_id"
-                                        id="course_id"
-                                        v-model="form.course_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Bimestre</label>
                                     <input
@@ -216,14 +215,16 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Fecha</label>
                                     <input
-                                        type="date"
+                                        type="datetime-local"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
+
                                 </div>
+
                             </div>
                         </div>
                         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
@@ -265,28 +266,28 @@
                             <div class="grid grid-cols-6 gap-6">
 
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        id="id"
-                                        v-model="form.id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
-                                <div class="col-span-6 sm:col-span-2">
+
+
+                                <div class="col-span-3">
                                     <label for="course_id" class="block text-sm font-medium text-gray-700">Curso</label>
-                                    <input
-                                        type="text"
-                                        name="course_id"
-                                        id="course_id"
-                                        v-model="form.course_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    <v-select
+                                        v-model="form.course"
+                                        :filter="courseSearch"
+                                        :options="courses"
+                                        :reduce="option => option.id"
+                                        :get-option-label="course => course.id + ' ' + course.name"
+                                        @input="form.course_id = form.course"
+                                    >
+                                        <template #option="{ id, name}">
+                                            {{ id }}
+                                            <br />
+                                            <cite>{{ name }}</cite>
+                                        </template>
+                                    </v-select>
+
                                 </div>
+
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="bimestre" class="block text-sm font-medium text-gray-700">Bimestre</label>
                                     <input
@@ -301,7 +302,7 @@
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="date_" class="block text-sm font-medium text-gray-700">Fecha</label>
                                     <input
-                                        type="date"
+                                        type="datetime-local"
                                         name="date_"
                                         id="date_"
                                         v-model="form.date_"
@@ -379,15 +380,21 @@ import AppLayout from '@/Layouts/AppLayout'
 import Container from "@/Pages/Container";
 import axios from "axios";
 import DialogModal from "@/Pages/Modal";
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+import Fuse from 'fuse.js';
+
 export default {
     props: {
-        exam_schedules: Array
+        exam_schedules: Array,
+        courses: Array,
     },
 
     components: {
         DialogModal,
         AppLayout,
         Container,
+        vSelect,
     },
 
     data(){
@@ -401,11 +408,13 @@ export default {
             },
             errors: "",
             exam_schedule: Array,
+            q:"",
             form: {
                 id:                    null,
                 course_id:             null,
                 bimestre:              null,
                 date_:                 null,
+                course: {id: null},
             },
         }
     },
@@ -444,13 +453,19 @@ export default {
 
         },
         showEditModal: function (id){
-            let url = 'api/exam_schedule/' + id;
+            let url = 'api/course?' + this.form.course_id;
             axios.get(url).then(response => {
-                console.log(response.data.exam_schedule);
-                this.form = response.data.exam_schedule
+                this.courses  = response.data.courses;
+                console.log(this.courses);
+                let url = 'api/exam_schedule/' + id;
+                axios.get(url).then(response => {
+                    console.log(response.data.exam_schedule);
+                    this.form = response.data.exam_schedule
 
-                this.modals.title = "Editar"
-                this.modals.editModal = true;
+                    this.modals.title = "Editar"
+                    this.modals.editModal = true;
+                });
+
             });
 
 
@@ -501,9 +516,10 @@ export default {
         cleanForm: function (){
             console.log("hello cleanform");
             this.form = {
-                id:                 null,
-                name:               null,
-                description:        null,
+                id:                      null,
+                course_id:               null,
+                bimestre:                null,
+                _date:                   null,
 
             };
 
@@ -513,6 +529,27 @@ export default {
             this.modals.title = "Error";
             this.modals.errorModal = true;
 
+        },
+        courseSearch(options, search) {
+            let url = 'api/course?q=' + search;
+            axios.get(url).then(response => {
+                this.courses = response.data.courses;
+            });
+
+            const fuse = new Fuse(options, {
+                keys: ['id', 'name'],
+                shouldSort: true,
+            })
+            return search.length
+                ? fuse.search(search).map(({ item }) => item)
+                : fuse.list
+
+        }
+
+    },
+    watch: {
+        q: function (value) {
+            this.$inertia.replace(this.route('course.index', {q: value}))
         }
     }
 

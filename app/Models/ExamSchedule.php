@@ -10,8 +10,11 @@ class ExamSchedule extends Model
     use HasFactory;
 
     protected $table = 'exam_schedules';
-
     protected $fillable = [
         'course_id','bimestre','date_'
         ];
+
+    public function course(){
+        return $this->belongsTo(Course::class);
+    }
 }

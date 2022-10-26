@@ -25,7 +25,7 @@ class StudentController extends Controller
             $query = Str::upper($request->q);
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
-            $students = Student::with('professor.school')->orderBy('created_at', 'DESC')
+            $students = Student::orderBy('created_at', 'DESC')
                 ->whereRaw(DB::raw("upper(name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(last_name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(personal_code) like '%$query%'"))
@@ -76,13 +76,9 @@ class StudentController extends Controller
             $validated = $request->validate( [
                 'name'                              => 'required|string|max:50',
                 'last_name'                         => 'required|string|max:50',
-                'grade_id'                          => 'required|integer',
-                'section'                           => 'required|string|max:1',
                 'birth_date'                        => 'required|date',
                 'identification_document'           => 'required|string|max:5',
                 'identification_document_number'    => 'required|integer',
-                'class_schedule_id'                 => 'required|integer',
-                'professor_dpi'                     => 'required|integer',
                 'tutelary_name'                     => 'required|string:max:50',
                 'tutelary_dpi'                      => 'required|integer'
             ]);
@@ -104,7 +100,6 @@ class StudentController extends Controller
             $validated['personal_code']           = $personal_code;
             $validated['last_name']               = Str::title($validated['last_name']);
             $validated['name']                    = Str::title($validated['name']);
-            $validated['section']                 = Str::upper($validated['section']);
             $validated['identification_document'] = Str::upper(
                 $validated['identification_document']);
             $validated['tutelary_name']           = Str::title($validated['tutelary_name']);
@@ -140,7 +135,7 @@ class StudentController extends Controller
     public function show($personal_code)
     {
         try {
-            $student = Student::with('professor.school.municipality.departament', 'grade')->find(Str::upper($personal_code));
+            $student = Student::find(Str::upper($personal_code));
 
             return response()->json([
                     'status'    => 'successful',
@@ -175,22 +170,17 @@ class StudentController extends Controller
             $validated = $request->validate( [
                 'name'                              => 'required|string|max:50',
                 'last_name'                         => 'required|string|max:50',
-                'grade_id'                          => 'required|integer',
-                'section'                           => 'required|string|max:1',
                 'birth_date'                        => 'required|date',
                 'identification_document'           => 'required|string|max:5',
                 'identification_document_number'    => 'required|integer',
-                'class_schedule_id'                 => 'required|integer',
-                'professor_dpi'                     => 'required|integer',
                 'tutelary_name'                     => 'required|string:max:50',
                 'tutelary_dpi'                      => 'required|integer'
             ]);
 
             //Corregir el Case de los campos string recibidos y del personal_code
-            $personal_code                      = Str::upper($personal_code);
+            $personal_code                        = Str::upper($personal_code);
             $validated['name']                    = Str::title($validated['name']);
             $validated['last_name']               = Str::title($validated['last_name']);
-            $validated['section']                 = Str::upper($validated['section']);
             $validated['identification_document'] = Str::upper(
                 $validated['identification_document']);
             $validated['tutelary_name']           = Str::title($validated['tutelary_name']);

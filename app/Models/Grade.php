@@ -22,8 +22,8 @@ class Grade extends Model
         return $this->belongsTo(CnbLevel::class);
     }
 
-    public function students() {
-        return $this->hasMany(Student::class);
+    public function student_enrollments() {
+        return $this->hasMany(StudentEnrollment::class);
     }
 
 

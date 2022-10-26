@@ -2,17 +2,17 @@
     <app-layout>
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-                Estudiantes
+                Inscripción de estudiantes
             </h1>
         </template>
 
         <!-- List -->
         <container>
                 <button
-                    v-on:click.prevent="showCreateModal(student.personal_code)"
+                    v-on:click.prevent="showCreateModal(student_enrolments.id)"
                     class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
                 >
-                    Nuevo Estudiante
+                    Inscribir estudiante
                 </button>
                 <input type="text" placeholder="Buscar..." v-model="q" class="mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 <div class="bg-white shadow-md rounded my-6">
@@ -26,15 +26,15 @@
                         </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
-                        <tr v-for="student in students" :key="student.personal_code" class="border-b border-gray-200 hover:bg-gray-100">
+                        <tr v-for="student_enrollment in student_enrolments" :key="student.personal_code" class="border-b border-gray-200 hover:bg-gray-100">
                             <td class="py-3 px-6 text-left whitespace-nowrap">
-                                <span class="font-medium">{{ student.personal_code }}</span>
+                                <span class="font-medium">{{ student_enrolment.student_personal_code }}</span>
                             </td>
                             <td class="py-3 px-6 text-left">
-                                <span class="font-medium">{{ student.name }}</span>
+                                <span class="font-medium">{{ student_enrolment.student.name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ student.last_name }}</span>
+                                <span class="font-medium">{{ student_enrollment.studen.last_name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
@@ -45,7 +45,7 @@
                                     <!-- v-on:click.prevent="showShowModal(student.personal_code)" -->
                                     <!-- :href="route('student.index')" -->
                                     <button
-                                        v-on:click.prevent="showShowModal(student.personal_code)"
+                                        v-on:click.prevent="showShowModal(student_enrollment.id)"
 
                                     class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                                     >
@@ -56,7 +56,7 @@
                                     </button>
 
                                     <button
-                                        v-on:click.prevent="showEditModal(student.personal_code)"
+                                        v-on:click.prevent="showEditModal(student_enrollment.id)"
                                     class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -66,7 +66,7 @@
 
                                     <inertia-link
                                     method="delete"
-                                    :href="route('student.destroy', student.personal_code)"
+                                    :href="route('student.destroy', student_enrollment.id)"
                                     class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                                     as="button"
                                     >
@@ -100,12 +100,25 @@
                                     <div class="grid grid-cols-6 gap-6">
 
                                         <div class="col-span-6 sm:col-span-2">
+                                            <label for="personal_code" class="block text-sm font-medium text-gray-700">ID</label>
+                                            <input
+                                                type="text"
+                                                name="personal_code"
+                                                id="personal_code"
+                                                v-model="form.id"
+                                                disabled
+                                                autocomplete="street-address"
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
+
+                                        <div class="col-span-6 sm:col-span-2">
                                             <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                             <input
                                                 type="text"
                                                 name="personal_code"
                                                 id="personal_code"
-                                                v-model="form.personal_code"
+                                                v-model="form.student.personal_code"
                                                 disabled
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -117,7 +130,7 @@
                                                 type="text"
                                                 name="name"
                                                 id="name"
-                                                v-model="form.name"
+                                                v-model="form.student.name"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -128,11 +141,32 @@
                                                 type="text"
                                                 name="last_name"
                                                 id="last_name"
-                                                v-model="form.last_name"
+                                                v-model="form.student.last_name"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
                                         </div>
+                                        <div class="col-span-6 sm:col-span-2">
+                                            <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
+                                            <input
+                                                type="text"
+                                                name="grade_id"
+                                                id="grade_id"
+                                                v-model="form.grade.name"
+                                                autocomplete="street-address"
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                            />
+                                        </div><div class="col-span-6 sm:col-span-1">
+                                        <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
+                                        <input
+                                            type="text"
+                                            name="section"
+                                            id="section"
+                                            v-model="form.section"
+                                            autocomplete="street-address"
+                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        />
+                                    </div>
 
                                         <div class="col-span-6 sm:col-span-1">
                                             <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
@@ -140,12 +174,23 @@
                                                 type="datetime-local"
                                                 name="birth_date"
                                                 id="birth_date"
-                                                v-model="form.birth_date"
+                                                v-model="form.student.birth_date"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
                                         </div>
 
+                                        <div class="col-span-6 sm:col-span-2">
+                                            <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
+                                            <input
+                                                type="number"
+                                                name="class_schedule_id"
+                                                id="class_schedule_id"
+                                                v-model="form.class_schedule_id"
+                                                autocomplete="street-address"
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
 
                                         <div class="col-span-6 sm:col-span-1">
                                             <label for="identification_document" class="block text-sm font-medium text-gray-700">Doc. identificación</label>
@@ -153,7 +198,7 @@
                                                 type="text"
                                                 name="identification_document"
                                                 id="identification_document"
-                                                v-model="form.identification_document"
+                                                v-model="form.student.identification_document"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -164,10 +209,75 @@
                                                 type="number"
                                                 name="identification_document_number"
                                                 id="identification_document_number"
-                                                v-model="form.identification_document_number"
+                                                v-model="form.student.identification_document_number"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
+                                        </div>
+                                        <div class="col-span-1">
+                                            <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                            <select
+                                                class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                :required="true"
+                                                v-model="form.professor.school.municipality.departament.id"
+                                                @change="changeMunicipality"
+
+                                            >
+                                                <option
+                                                    v-for="departament in departaments"
+                                                    v-bind:value="departament.id"
+                                                    :key="departament.id"
+                                                >{{ departament.name }}</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-span-1">
+                                            <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
+                                            <select
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                :required="true"
+                                                v-model="form.professor.school.municipality.id"
+                                                @change="changeSchool"
+                                            >
+                                                <option
+                                                    v-for="municipality in municipalities"
+                                                    v-bind:value="municipality.id"
+                                                    :key="municipality.id"
+                                                >{{ municipality.name }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
+                                            <select
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                :required="true"
+                                                v-model="form.professor.school.id"
+                                                @change="changeProfessor"
+                                            >
+                                                <option
+                                                    v-for="school in schools"
+                                                    v-bind:value="school.id"
+                                                    :key="school.id"
+                                                >{{ school.name }}</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-span-3">
+                                            <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
+                                            <v-select
+                                                v-model="professor"
+                                                :filter="professorSearch"
+                                                :options="professors"
+
+                                                :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
+                                                @input="professorChanged"
+                                            >
+                                                <template #option="{ dpi, name, last_name }">
+                                                    {{ dpi }}
+                                                    <br />
+                                                    <cite>{{ name }} {{ last_name }}</cite>
+                                                </template>
+                                            </v-select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="tutelary_name" class="block text-sm font-medium text-gray-700">Tutelar</label>
@@ -175,7 +285,7 @@
                                                 type="text"
                                                 name="tutelary_name"
                                                 id="tutelary_name"
-                                                v-model="form.tutelary_name"
+                                                v-model="form.student.tutelary_name"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -186,7 +296,7 @@
                                                 type="number"
                                                 name="tutelary_dpi"
                                                 id="tutelary_dpi"
-                                                v-model="form.tutelary_dpi"
+                                                v-model="form.student.tutelary_dpi"
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -228,12 +338,25 @@
                             <div class="grid grid-cols-6 gap-6">
 
                                 <div class="col-span-6 sm:col-span-2">
+                                    <label for="personal_code" class="block text-sm font-medium text-gray-700">ID</label>
+                                    <input
+                                        type="text"
+                                        name="personal_code"
+                                        id="personal_code"
+                                        v-model="form.id"
+                                        disabled
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-2">
                                     <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                     <input
                                         type="text"
                                         name="personal_code"
                                         id="personal_code"
-                                        v-model="form.personal_code"
+                                        v-model="form.student.personal_code"
                                         disabled
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -245,7 +368,7 @@
                                         type="text"
                                         name="name"
                                         id="name"
-                                        v-model="form.name"
+                                        v-model="form.student.name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -256,11 +379,32 @@
                                         type="text"
                                         name="last_name"
                                         id="last_name"
-                                        v-model="form.last_name"
+                                        v-model="form.student.last_name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
+                                    <input
+                                        type="text"
+                                        name="grade_id"
+                                        id="grade_id"
+                                        v-model="form.grade.name"
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div><div class="col-span-6 sm:col-span-1">
+                                <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
+                                <input
+                                    type="text"
+                                    name="section"
+                                    id="section"
+                                    v-model="form.section"
+                                    autocomplete="street-address"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                />
+                            </div>
 
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
@@ -268,12 +412,23 @@
                                         type="datetime-local"
                                         name="birth_date"
                                         id="birth_date"
-                                        v-model="form.birth_date"
+                                        v-model="form.student.birth_date"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
 
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
+                                    <input
+                                        type="number"
+                                        name="class_schedule_id"
+                                        id="class_schedule_id"
+                                        v-model="form.class_schedule_id"
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
 
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="identification_document" class="block text-sm font-medium text-gray-700">Doc. identificación</label>
@@ -281,7 +436,7 @@
                                         type="text"
                                         name="identification_document"
                                         id="identification_document"
-                                        v-model="form.identification_document"
+                                        v-model="form.student.identification_document"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -292,10 +447,75 @@
                                         type="number"
                                         name="identification_document_number"
                                         id="identification_document_number"
-                                        v-model="form.identification_document_number"
+                                        v-model="form.student.identification_document_number"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.departament.id"
+                                        @change="changeMunicipality"
+
+                                    >
+                                        <option
+                                            v-for="departament in departaments"
+                                            v-bind:value="departament.id"
+                                            :key="departament.id"
+                                        >{{ departament.name }}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.id"
+                                        @change="changeSchool"
+                                    >
+                                        <option
+                                            v-for="municipality in municipalities"
+                                            v-bind:value="municipality.id"
+                                            :key="municipality.id"
+                                        >{{ municipality.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.id"
+                                        @change="changeProfessor"
+                                    >
+                                        <option
+                                            v-for="school in schools"
+                                            v-bind:value="school.id"
+                                            :key="school.id"
+                                        >{{ school.name }}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-span-3">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
+                                    <v-select
+                                        v-model="professor"
+                                        :filter="professorSearch"
+                                        :options="professors"
+
+                                        :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
+                                        @input="professorChanged"
+                                    >
+                                        <template #option="{ dpi, name, last_name }">
+                                            {{ dpi }}
+                                            <br />
+                                            <cite>{{ name }} {{ last_name }}</cite>
+                                        </template>
+                                    </v-select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="tutelary_name" class="block text-sm font-medium text-gray-700">Tutelar</label>
@@ -303,7 +523,7 @@
                                         type="text"
                                         name="tutelary_name"
                                         id="tutelary_name"
-                                        v-model="form.tutelary_name"
+                                        v-model="form.student.tutelary_name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -314,7 +534,7 @@
                                         type="number"
                                         name="tutelary_dpi"
                                         id="tutelary_dpi"
-                                        v-model="form.tutelary_dpi"
+                                        v-model="form.student.tutelary_dpi"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -359,13 +579,27 @@
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
+
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="personal_code" class="block text-sm font-medium text-gray-700">ID</label>
+                                    <input
+                                        type="text"
+                                        name="personal_code"
+                                        id="personal_code"
+                                        v-model="form.id"
+                                        disabled
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                     <input
                                         type="text"
                                         name="personal_code"
                                         id="personal_code"
-                                        v-model="form.personal_code"
+                                        v-model="form.student.personal_code"
                                         disabled
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -377,7 +611,7 @@
                                         type="text"
                                         name="name"
                                         id="name"
-                                        v-model="form.name"
+                                        v-model="form.student.name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -388,11 +622,32 @@
                                         type="text"
                                         name="last_name"
                                         id="last_name"
-                                        v-model="form.last_name"
+                                        v-model="form.student.last_name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
+                                    <input
+                                        type="text"
+                                        name="grade_id"
+                                        id="grade_id"
+                                        v-model="form.grade.name"
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div><div class="col-span-6 sm:col-span-1">
+                                <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
+                                <input
+                                    type="text"
+                                    name="section"
+                                    id="section"
+                                    v-model="form.section"
+                                    autocomplete="street-address"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                />
+                            </div>
 
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
@@ -400,12 +655,23 @@
                                         type="datetime-local"
                                         name="birth_date"
                                         id="birth_date"
-                                        v-model="form.birth_date"
+                                        v-model="form.student.birth_date"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
 
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
+                                    <input
+                                        type="number"
+                                        name="class_schedule_id"
+                                        id="class_schedule_id"
+                                        v-model="form.class_schedule_id"
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
 
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="identification_document" class="block text-sm font-medium text-gray-700">Doc. identificación</label>
@@ -413,7 +679,7 @@
                                         type="text"
                                         name="identification_document"
                                         id="identification_document"
-                                        v-model="form.identification_document"
+                                        v-model="form.student.identification_document"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -424,10 +690,75 @@
                                         type="number"
                                         name="identification_document_number"
                                         id="identification_document_number"
-                                        v-model="form.identification_document_number"
+                                        v-model="form.student.identification_document_number"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.departament.id"
+                                        @change="changeMunicipality"
+
+                                    >
+                                        <option
+                                            v-for="departament in departaments"
+                                            v-bind:value="departament.id"
+                                            :key="departament.id"
+                                        >{{ departament.name }}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.municipality.id"
+                                        @change="changeSchool"
+                                    >
+                                        <option
+                                            v-for="municipality in municipalities"
+                                            v-bind:value="municipality.id"
+                                            :key="municipality.id"
+                                        >{{ municipality.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.professor.school.id"
+                                        @change="changeProfessor"
+                                    >
+                                        <option
+                                            v-for="school in schools"
+                                            v-bind:value="school.id"
+                                            :key="school.id"
+                                        >{{ school.name }}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-span-3">
+                                    <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
+                                    <v-select
+                                        v-model="professor"
+                                        :filter="professorSearch"
+                                        :options="professors"
+
+                                        :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
+                                        @input="professorChanged"
+                                    >
+                                        <template #option="{ dpi, name, last_name }">
+                                            {{ dpi }}
+                                            <br />
+                                            <cite>{{ name }} {{ last_name }}</cite>
+                                        </template>
+                                    </v-select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="tutelary_name" class="block text-sm font-medium text-gray-700">Tutelar</label>
@@ -435,7 +766,7 @@
                                         type="text"
                                         name="tutelary_name"
                                         id="tutelary_name"
-                                        v-model="form.tutelary_name"
+                                        v-model="form.student.tutelary_name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -446,7 +777,7 @@
                                         type="number"
                                         name="tutelary_dpi"
                                         id="tutelary_dpi"
-                                        v-model="form.tutelary_dpi"
+                                        v-model="form.student.tutelary_dpi"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -526,7 +857,9 @@ import Fuse from 'fuse.js';
 
 export default {
     props: {
-        students: Array,
+        student_enrollments: Array,
+        professors: Array,
+        students: Object,
     },
 
     components: {
@@ -534,6 +867,9 @@ export default {
         AppLayout,
         Container,
         vSelect,
+    },
+    created: function(){
+        this.getDepartaments()
     },
 
     data(){
@@ -546,17 +882,39 @@ export default {
                 title: null,
             },
             errors: "",
-            student: Array,
+            student_enrollment: Array,
+            municipalities: Array,
+            departaments: Array,
+            schools: Array,
+            professor: Object,
             q:"",
             form: {
-                personal_code:      null,
-                name:               null,
-                last_name:          null,
-                birth_date:         null,
-                identification_document:        null,
-                identification_document_number: null,
-                tutelary_name:      null,
-                tutelary_dpi:       null,
+                student_personal_code:      null,
+                grade_id:           null,
+                section:            null,
+                class_schedule_id:  null,
+                professor_dpi:      null,
+
+                professor: {
+                    dpi: null,
+                    school:  {
+                        id:null,
+                        municipality: {
+                            id: null,
+                            departament: Object,
+                        },
+                    }
+                },
+                student: {
+                    personal_code:      null,
+                    name:               null,
+                    last_name:          null,
+                    birth_date:         null,
+                    identification_document:        null,
+                    identification_document_number: null,
+                    tutelary_name:      null,
+                    tutelary_dpi:       null,
+                },
             },
         }
     },
@@ -564,20 +922,20 @@ export default {
     methods: {
 
         getAll: function () {
-            let url = 'api/student/';
+            let url = 'api/student_enrollment/';
             axios.get(url).then(response => {
-                console.log(response.data.students);
-                this.students = response.data.students
+                console.log(response.data.student_enrollments);
+                this.student_enrollments = response.data.student_enrollments
             });
 
         },
 
         /*************************** MODALS */
-        showShowModal: function (personal_code) {
-            let url = 'api/student/' + personal_code;
+        showShowModal: function (id) {
+            let url = 'api/student_enrollment/' + id;
             axios.get(url).then(response => {
-                console.log(response.data.student);
-                this.form = response.data.student
+                console.log(response.data.student_enrollment);
+                this.form = response.data.student_enrollment
                 console.log(this.form);
 
                 console.log(this.modals.showModal);
@@ -586,24 +944,37 @@ export default {
                 this.modals.showModal = true;
             });
         },
-        showCreateModal: function () {
+        showCreateModal: function (){
 
             this.cleanForm();
 
-            this.modals.title = "Crear";
+            this.modals.title ="Crear";
 
             this.modals.createModal = true;
 
         },
-        showEditModal: function (personal_code) {
+        showEditModal: function (id){
 
-            let url = 'api/student/' + personal_code;
+            let url = 'api/student_enrollment/' + id;
             axios.get(url).then(response => {
-                console.log(response.data.student);
-                this.form = response.data.student;
+                console.log(response.data.student_enrollment);
+                this.form = response.data.student_enrollment;
 
                 this.modals.title = "Editar"
                 this.modals.editModal = true;
+
+                //Actualización options
+                this.changeMunicipality();
+                this.changeSchool();
+                this.professor = this.form.professor;
+
+                let url = 'api/professor?q=' + this.form.professor_dpi;
+                console.log('profesos_dpi', this.form.professor_dpi);
+                axios.get(url).then(response => {
+                    //this.$emit('professors', response.data.professors);
+                    console.log(this.professors);
+                    this.professors  = response.data.professors;
+                });
 
             });
 
@@ -617,13 +988,13 @@ export default {
         },
 
         /*************************** FUNCTIONS */
-        submit(form) {
+        submit(form){
 
-            let url = 'api/student';
+            let url = 'api/student_enrollment';
             axios.post(url, {
                 ...form
-            }).then(response => {
-                if (response.data.code === '1') {
+            }).then(response =>{
+                if(response.data.code === '1'){
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
@@ -632,18 +1003,18 @@ export default {
                     this.errors = response.data.error;
                     this.showErrorModal();
                 }
-            }).catch(error => {
+            }).catch(error =>{
                 this.errors = error.response.data
 
             })
 
         },
         update(form) {
-            let url = 'api/student/' + form.personal_code;
+            let url = 'api/student_enrollment/' + form.id;
             axios.put(url, {
                 ...form
-            }).then(response => {
-                if (response.data.code === '1') {
+            }).then(response =>{
+                if(response.data.code === '1'){
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
@@ -652,32 +1023,126 @@ export default {
                     this.errors = response.data.error;
                     this.showErrorModal(this.errors);
                 }
-            }).catch(error => {
+            }).catch(error =>{
                 this.errors = error.response.data
 
             })
         },
 
-        cleanForm: function () {
+        cleanForm: function (){
             console.log("hello cleanform");
             this.form = {
-                personal_code: null,
-                name: null,
-                last_name: null,
-                birth_date: null,
-                identification_document: null,
-                identification_document_number: null,
-                tutelary_name: null,
-                tutelary_dpi: null,
+                student_personal_code:      null,
+                grade_id:           null,
+                section:            null,
+                class_schedule_id:  null,
+                professor_dpi:      null,
+
+                professor: {
+                    dpi: null,
+                    school:  {
+                        id:null,
+                        municipality: {
+                            id: null,
+                            departament: Object,
+                        },
+                    }
+                },
+                student: {
+                    personal_code:      null,
+                    name:               null,
+                    last_name:          null,
+                    birth_date:         null,
+                    identification_document:        null,
+                    identification_document_number: null,
+                    tutelary_name:      null,
+                    tutelary_dpi:       null,
+                },
             };
 
         },
 
+
+        /*************************** SEARCH */
+        professorSearch(options, search) {
+            let url = 'api/professor?q=' + search;
+            axios.get(url).then(response => {
+                this.professors = response.data.professors;
+                //this.$emit('professors', response.data.professors);
+            });
+
+            const fuse = new Fuse(options, {
+                keys: ['dpi', 'name', 'last_name'],
+                shouldSort: false,
+            })
+            return search.length
+                ? fuse.search(search).map(({ item }) => item)
+                : fuse.list
+        },
+
+        studentSearch(options, search) {
+            let url = 'api/student?q=' + search;
+            axios.get(url).then(response => {
+                this.students = response.data.students;
+                //this.$emit('professors', response.data.professors);
+            });
+
+            const fuse = new Fuse(options, {
+                keys: ['personal_code', 'name', 'last_name'],
+                shouldSort: false,
+            })
+            return search.length
+                ? fuse.search(search).map(({ item }) => item)
+                : fuse.list
+        },
+
         /*************************** CHANGE VALUES */
+        changeSchool() {
+            let url = 'api/municipality/' + this.form.professor.school.municipality.id;
+            axios.get(url).then(response => {
+                this.schools = response.data.municipality.schools;
+            });
+
+        },
+        changeProfessor() {
+            let url = 'api/school/' + this.form.professor.school.id;
+            axios.get(url).then(response => {
+                this.professors = response.data.school.professors;
+            });
+
+        },
+
+        professorChanged() {
+            this.form.professor_dpi = this.professor.dpi;
+            let url = 'api/professor/' + this.professor.dpi;
+            axios.get(url).then(response => {
+                console.log(response.data.departaments);
+                this.form.professor = response.data.professor;
+                console.log(this.professor);
+                console.log(this.form.professor)
+                this.changeMunicipality();
+                this.changeSchool();
+
+            });
+        },
+        getDepartaments: function (){
+            let url = 'api/departament/';
+            axios.get(url).then(response => {
+                console.log(response.data.departaments);
+                this.departaments = response.data.departaments;
+            });
+        },
+        changeMunicipality: function (){
+            console.log('chang muni', this.form.professor.school.municipality.departament.id);
+            this.municipalities = this.departaments[this.form.professor.school.municipality.departament.id - 1].municipalities;
+            this.schools = Array;
+        }
+
     },
+
     watch: {
         q: function (value) {
-            this.$inertia.replace(this.route('student.index', {q: value}))
+            this.$inertia.replace(this.route('student_enrollment.index', {q: value}))
         }
     }
 

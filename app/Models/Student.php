@@ -19,22 +19,16 @@ class Student extends Model
         'personal_code',
         'name',
         'last_name',
-        'grade_id',
-        'section',
         'birth_date',
         'identification_document',
         'identification_document_number',
-        'class_schedule_id',
-        'professor_dpi',
         'tutelary_name',
         'tutelary_dpi'
     ];
 
-    public function professor(){
-        return $this->belongsTo(Professor::class);
+    public function student_enrollments(){
+        return $this->hasMany(StudentEnrollment::class);
     }
 
-    public function grade(){
-        return $this->belongsTo(Grade::class);
-    }
+
 }

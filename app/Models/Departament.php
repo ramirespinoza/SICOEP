@@ -18,4 +18,8 @@ class Departament extends Model
     public function municipalities() {
         return $this->hasMany(Municipality::class);
     }
+
+    public function students() {
+        return $this->hasMany(Student::class);
+    }
 }

@@ -17,21 +17,15 @@ class CreateStudentTable extends Migration
             $table->string('personal_code', '10 char')->unique()->primary();
             $table->string('name', '50 char');
             $table->string('last_name', '50 char');
-            $table->unsignedBigInteger('grade_id');
-            $table->char('section', '1 char');
             $table->date('birth_date');
             $table->string('identification_document', '5 char');
             $table->unsignedBigInteger('identification_document_number');
-            $table->unsignedBigInteger('class_schedule_id');
-            $table->unsignedBigInteger('professor_dpi');
             $table->string('tutelary_name', '50 char');
             $table->unsignedBigInteger('tutelary_dpi');
             $table->timestamps();
 
             /* En espera demás tablas para implementar foreing keys*/
             // foreing keys
-            $table->foreign('professor_dpi')->references('dpi')->on('professor');
-            $table->foreign('grade_id')->references('id')->on('grade');
         });
     }
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\ExamScheduleController;
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\CnbLevelController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -39,7 +40,16 @@ Route::get('student/{id}', [StudentController::class, 'show'])->name('api.studen
 
 Route::get('student', [StudentController::class, 'read'])->name('api.student.get');//->middleware('auth:sanctum');
 
-Route::get('students_by_school', [\App\Http\Controllers\DashboardController::class, 'students_by_school'])->name('api.students_by_school');
+//Route::get('students_by_school', [\App\Http\Controllers\DashboardController::class, 'students_by_school'])->name('api.students_by_school');
+
+
+Route::get('students_by_school', [DashboardController::class, 'students_by_school'])->name('api.students_by_school');
+Route::get('students_by_department_municipality', [DashboardController::class, 'students_by_department_municipality'])->name('api.test1');
+Route::get('students_by_professor', [DashboardController::class, 'students_by_professor'])->name('api.test1');
+
+
+Route::get('test2', [DashboardController::class, 'test2'])->name('api.test2');
+
 
 
 Route::post('course', [CourseController::class, 'store'])->name('api.course.create');

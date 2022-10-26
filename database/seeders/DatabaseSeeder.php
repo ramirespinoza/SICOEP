@@ -55,20 +55,30 @@ class DatabaseSeeder extends Seeder
                 ->for(Municipality::query()->where('departament_id', '=', $departament->id)->first())->create();
 
             foreach ($schools as $school) {
+
                 for ($x = 0; $x < 3; $x++) {
+                    $professor = Professor::factory()->for($school)->create();
+                    for ($x = 0; $x < 3; $x++) {
 
-                    $student = Student::factory()->create();
+                        $students = Student::factory(5)->create();
 
-                    foreach (range(1, 8, 1) as $count) {
+                        foreach ($students as $student) {
 
-                        Professor::factory()
-                            ->has(StudentEnrollment::factory(10)
-                                ->state(['grade_id' => $count, 'enrollment_date' => $this->getDate($year),])
-                                ->for($student), 'student_enrollments')
-                            ->for($school)
-                            ->create();
-                        $year++;
+                            foreach (range(1, 8, 1) as $count) {
+
+                                StudentEnrollment::factory()
+                                    ->state(['grade_id' => $count, 'enrollment_date' => $this->getDate($year),])
+                                    ->for($student)
+                                    ->for($professor)
+                                    ->create();
+
+                                $year++;
+                            }
+                            $year -= 9;
+                        }
+                        $year += 9;
                     }
+                    $year -= 16;
                 }
             }
         }

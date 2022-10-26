@@ -14,13 +14,13 @@ class CreateStudentTable extends Migration
     public function up()
     {
         Schema::create('student', function (Blueprint $table) {
-            $table->string('personal_code', '10 char')->unique()->primary();
-            $table->string('name', '50 char');
-            $table->string('last_name', '50 char');
+            $table->string('personal_code', 10)->unique()->primary();
+            $table->string('name', 50);
+            $table->string('last_name', 50);
             $table->date('birth_date');
-            $table->string('identification_document', '5 char');
+            $table->string('identification_document', 5);
             $table->unsignedBigInteger('identification_document_number');
-            $table->string('tutelary_name', '50 char');
+            $table->string('tutelary_name', 50);
             $table->unsignedBigInteger('tutelary_dpi');
             $table->timestamps();
 

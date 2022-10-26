@@ -12,6 +12,8 @@ class Professor extends Model
     protected $table = 'professor';
 
     protected $primaryKey = 'dpi';
+    protected $keyType = 'unsignedBigInteger';
+    public $incrementing = false;
 
     protected $fillable = [
         'dpi',

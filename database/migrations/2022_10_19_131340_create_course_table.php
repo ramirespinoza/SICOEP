@@ -15,8 +15,8 @@ class CreateCourseTable extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->id();
-            $table->string('name', '50 char');
-            $table->string('description', '100 char');
+            $table->string('name', 50);
+            $table->string('description', 100);
             $table->unsignedBigInteger('cnb_level_id');
             $table->timestamps();
 

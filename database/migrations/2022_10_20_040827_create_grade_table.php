@@ -15,8 +15,8 @@ class CreateGradeTable extends Migration
     {
         Schema::create('grade', function (Blueprint $table) {
             $table->id();
-            $table->string('name','20 CHAR');
-            $table->string('description', '100 CHAR');
+            $table->string('name',20);
+            $table->string('description', 100);
             $table->unsignedBigInteger('cnb_level_id');
             $table->timestamps();
 

@@ -15,9 +15,9 @@ class CreateStudentEnrollmentTable extends Migration
     {
         Schema::create('student_enrollment', function (Blueprint $table) {
             $table->id();
-            $table->string('student_personal_code', '10 char');
+            $table->string('student_personal_code', 10);
             $table->unsignedBigInteger('grade_id');
-            $table->char('section', '1 char');
+            $table->char('section', 1);
             $table->unsignedBigInteger('class_schedule_id');
             $table->unsignedBigInteger('professor_dpi');
             $table->timestamp('enrollment_date');

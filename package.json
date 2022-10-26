@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "fuse.js": "^6.6.2",
+        "moment": "^2.29.4",
         "vue-select": "^3.20.0"
     }
 }

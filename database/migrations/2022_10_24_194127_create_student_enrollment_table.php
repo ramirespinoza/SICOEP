@@ -28,6 +28,7 @@ class CreateStudentEnrollmentTable extends Migration
             $table->foreign('student_personal_code')->references('personal_code')->on('student');
             $table->foreign('professor_dpi')->references('dpi')->on('professor');
             $table->foreign('grade_id')->references('id')->on('grade');
+            $table->foreign('class_schedule_id')->references('id')->on('class_schedule');
         });
     }
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ExamScheduleController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\CnbLevelController;
+use App\Http\Controllers\StudentEnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('student', StudentController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+Route::resource('student_enrollment', StudentEnrollmentController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 Route::resource('school', SchoolController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 Route::resource('course', CourseController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
 Route::resource('activity', ActivityController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);

@@ -12,6 +12,8 @@ use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\CnbLevelController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentEnrollmentController;
+use App\Models\ClassSchedule;
 
 
 /*
@@ -112,3 +114,20 @@ Route::put('professor/{id}', [ProfessorController::class, 'update'])->name('api.
 Route::delete('professor/{id}', [ProfessorController::class, 'destroy'])->name('api.professor.delete');
 Route::get('professor/{id}', [ProfessorController::class, 'show'])->name('api.professor.show');
 Route::get('professor', [ProfessorController::class, 'read'])->name('api.professor.get');
+
+Route::post('student_enrollment', [StudentEnrollmentController::class, 'store'])->name('api.student_enrollment.create');
+Route::put('student_enrollment/{id}', [StudentEnrollmentController::class, 'update'])->name('api.student_enrollment.update');
+Route::delete('student_enrollment/{id}', [StudentEnrollmentController::class, 'destroy'])->name('api.student_enrollment.delete');
+Route::get('student_enrollment/{id}', [StudentEnrollmentController::class, 'show'])->name('api.student_enrollment.show');
+Route::get('student_enrollment', [StudentEnrollmentController::class, 'read'])->name('api.student_enrollment.get');
+
+
+
+Route::get('class_schedule', function (Request $request) {
+    return ClassSchedule::all();
+});
+
+
+Route::get('grade', function (Request $request) {
+    return Grade::all();
+});

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMunicipalityTable extends Migration
+class CreateClassScheduleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateMunicipalityTable extends Migration
      */
     public function up()
     {
-        Schema::create('municipality', function (Blueprint $table) {
+        Schema::create('class_schedule', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30);
-            $table->unsignedBigInteger('departament_id');
+            $table->string("journey", 15);
+            $table->string("description", 100);
             $table->timestamps();
-
-            // foreing keys
-            $table->foreign('departament_id')->references('id')->on('departament');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateMunicipalityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('municipality');
+        Schema::dropIfExists('class_schedule');
     }
 }

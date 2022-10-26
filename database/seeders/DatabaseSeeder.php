@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartamentSeeder::class);
         $this->call(MunicipalitySeeder::class);
         $this->call(CnbSeeder::class);
+        $this->call(ClassScheduleSeeder::class);
 
 
         //Con factory
@@ -56,7 +57,8 @@ class DatabaseSeeder extends Seeder
 
             foreach ($schools as $school) {
 
-                for ($x = 0; $x < 3; $x++) {
+                for ($y = 0; $y < 3; $y++) {
+
                     $professor = Professor::factory()->for($school)->create();
                     for ($x = 0; $x < 3; $x++) {
 
@@ -74,11 +76,12 @@ class DatabaseSeeder extends Seeder
 
                                 $year++;
                             }
-                            $year -= 9;
+                            $year -= 8;
                         }
-                        $year += 9;
+                        $year += 8;
                     }
-                    $year -= 16;
+
+                    $year = 1999;
                 }
             }
         }

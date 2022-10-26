@@ -51,14 +51,16 @@ class StudentEnrollmentController extends Controller
     {
         $query = Str::upper($request->q);
 
-        $student_enrollments = StudentEnrollment::with('student')->orderBy('created_at', 'DESC')
+        $student_enrollments = StudentEnrollment::with('student')
+            ->join('student', 'student.personal_code','=','student_enrollment.student_personal_code')
             ->whereRaw(DB::raw("upper(student.name) like '%$query%'"))
             ->orWhereRaw(DB::raw("upper(student.last_name) like '%$query%'"))
             ->orWhereRaw(DB::raw("upper(student.personal_code) like '%$query%'"))
+            ->orderBy('student_enrollment.created_at','DESC' )
             ->take(10)
             ->get();
 
-        return Inertia::render('Student/Index', ['student_enrollments' => $student_enrollments]);
+        return Inertia::render('StudentEnrollment/Index', ['student_enrollments' => $student_enrollments]);
     }
 
     /**
@@ -160,7 +162,7 @@ class StudentEnrollmentController extends Controller
     public function show($id)
     {
         try {
-            $student_enrollment = StudentEnrollment::with('professor.school.municipality.departament', 'grade')->find($id);
+            $student_enrollment = StudentEnrollment::with('professor.school.municipality.departament', 'grade', 'student')->find($id);
 
             return response()->json([
                 'status'    => 'successful',

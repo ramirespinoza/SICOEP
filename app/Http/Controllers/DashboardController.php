@@ -67,7 +67,7 @@ class DashboardController extends Controller
                 foreach ($grades as $grade) {
                     $school_id = $school->id;
                     $grade_id = $grade->id;
-                    $school->grades = [$count => [
+                    $school->grades += [$count => [
                         $grade->name => StudentEnrollment::join('grade', 'grade.id', '=', 'student_enrollment.grade_id')
                             ->join('professor', 'professor.dpi', '=', 'student_enrollment.professor_dpi')
                             ->join('school', 'school.id', '=', 'professor.school_id')
@@ -86,6 +86,7 @@ class DashboardController extends Controller
                         $school->grades += $actual_grade;
                         $count++;
                     }*/
+                    $count++;
 
                 }
 
@@ -99,9 +100,10 @@ class DashboardController extends Controller
     /*****************   Students by school with grade with  *********************************
      *                    filter grade and/or school and date
      * Parameters accepted:
-     *                      municipality: true, false or search.  Default:true,
-     *                      department: true, false or search. Deafult: false,
-     *                      dateEnd Default: Today, dateStart: 1900-01-01 00:00:00
+     *                      municipality: true, false  {busqueda}.  Predeterminado:true,
+     *                      department: true, false or search. Predeterminado: false,
+     *                      dateStart: [YYYY-MM-DD]. Predeterminado:1999-01-01
+     *                      dateEnd: [YYYY-MM-DD]. Predeterminado: Hoy
      */
 
     public function students_by_department_municipality(Request $request){
@@ -195,8 +197,10 @@ class DashboardController extends Controller
     /*****************   Students by professor with school with  *********************************
      *                    filter school and/or professor and date
      * Parameters accepted:
-     *                      school: true, false, search . Default:false.
-     *                      professor: serach;
+     *                      school: true, false, {busqueda}. Predeterminado:false.
+     *                      professor: {busqueda};
+     *                      dateStart: [YYYY-MM-DD]. Predeterminado:1999-01-01
+     *                      dateEnd: [YYYY-MM-DD]. Predeterminado: Hoy
      */
     public function students_by_professor(Request $request)
     {
@@ -223,6 +227,7 @@ class DashboardController extends Controller
 
 
         //----- Obtención de listado filtrado
+
         if($request->school != "false" ) {
 
             $request->school = Str::upper($request->school);
@@ -232,24 +237,23 @@ class DashboardController extends Controller
 
             $schools = School::all();
         }
-        //Array para profesores sin referencia a la escuela
-        $professors_without_school = array();
-        $index = 0; //index for professors
+
+
+        $professors_without_school = array();   //Array para profesores sin referencia a la escuela
+        $index = 0;                             //index for professors
 
         foreach ($schools as $school) {
             $count = 0;
-            $school->grades = array();
             $local_index = 0;
 
-            //Se quitan valores que no se desean mostrar
-            unset($school->created_at, $school->updated_at);
+            unset($school->created_at, $school->updated_at); //Se quitan valores que no se desean mostrar
 
             foreach ($school->professors as $professor) {
                 $school_id = $school->id;
                 $professor_dpi = $professor->dpi;
 
-                //Se quitan valores que no se desean mostrar
-                unset($professor->created_at, $professor->updated_at, $professor->school_id);
+
+                unset($professor->created_at, $professor->updated_at, $professor->school_id);  //Se quitan valores que no se desean mostrar
 
                 if(str_contains(Str::upper($professor->name), Str::upper($request->professor)) ||
                     str_contains(Str::upper($professor->last_name), Str::upper($request->professor)) ||
@@ -265,8 +269,8 @@ class DashboardController extends Controller
                         ->whereBetween('enrollment_date', [$request->dateStart, $request->dateEnd])
                         ->first();
 
-                    //Se quitan dimensiones al array
-                    $professor->count_student_enrollments = $professor->count_student_enrollments['count_student_enrollments'];
+
+                    $professor->count_student_enrollments = $professor->count_student_enrollments['count_student_enrollments'];  //Se quitan dimensiones al array
 
                     $professors_without_school += [($index) => ['id' => $professor->dpi, 'name' => $professor->name, "school" => $school->name, "count_student_enrollments" => $professor->count_student_enrollments]];
                     $index++;

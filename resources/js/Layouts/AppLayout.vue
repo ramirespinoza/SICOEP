@@ -23,6 +23,9 @@
                                 <jet-nav-link :href="route('student.index')" :active="route().current('student.index')">
                                     Estudiantes
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('student_enrollment.index')" :active="route().current('student_enrollment.index')">
+                                    Estudiantes Inscritos
+                                </jet-nav-link>
 
                                 <jet-nav-link :href="route('course.index')" :active="route().current('course.index')">
                                     Cursos

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Models\ExamSchedule;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\In;
@@ -13,17 +14,22 @@ use Illuminate\Support\Facades\Redirect;
 
 class ExamScheduleController extends Controller
 {
-    public function read()
+    public function read(Request $request)
     {
         try {
-            //Se obtiene los registros por orden de fecha de creación
-            // en forma descentiente
-            $exam_schedules = ExamSchedule::orderBy('created_at', 'DESC')->get();
+
+            $query = Str::upper($request->q);
+            $exam_schedules = ExamSchedule::with('course')->orderBy('created_at', 'DESC')
+                ->whereRaw(DB::raw("upper(id) like '%$query%'"))
+                ->take(10)
+                ->get();
+
             return response()->json([
                 'status' => 'successful',
                 'code' => '1',
                 'operation' => 'read',
-                'exam_schedules' => $exam_schedules
+                'exam_schedules' => $exam_schedules,
+
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -34,13 +40,20 @@ class ExamScheduleController extends Controller
         }
 
     }
-    public function index()
+    public function index(Request $request)
     {
-        $exam_schedules = ExamSchedule::all();
+
+
+
+
+        $query = Str::upper($request->q);
+        $exam_schedules = ExamSchedule::with('course')->orderBy('created_at', 'DESC')
+            ->whereRaw(DB::raw("upper(id) like '%$query%'"))
+            ->take(10)
+            ->get();
 
         return Inertia::render('Exam_Schedule/Index', ['exam_schedules' => $exam_schedules]);
     }
-
 
 
 
@@ -48,19 +61,21 @@ class ExamScheduleController extends Controller
     {
 
         try {
-
+            $request['date_']                        = Carbon::parse($request['date_'])->format('Y-m-d H:i:s');
             //Validación de todos los campos recibidos y el tipo
             $this->validate($request, [
                 'course_id'                  => 'required',
                 'bimestre'                   => 'required|string|max:50',
-                'date_'                      => 'required|date',
+                'date_'                   => 'required|date',
+
 
             ]);
 
 
             $request['course_id']                    = Str::title($request['course_id']);
             $request['bimestre']                     = Str::title($request['bimestre']);
-            $request['date_']                        = Str::title($request['date_']);
+
+
 
 
             //Almacenamiendo del Student en el request
@@ -92,7 +107,7 @@ class ExamScheduleController extends Controller
     public function show($id)
     {
         try {
-            $exam_schedule = ExamSchedule::find(Str::upper($id));
+            $exam_schedule = ExamSchedule::with('course')->find(Str::upper($id));
 
             return response()->json([
                 'status'    => 'successful',
@@ -135,22 +150,21 @@ class ExamScheduleController extends Controller
     {
 
         try {
-            //Validación de todos los campos recibidos y el tipo
+            $request['date_']                        = Carbon::parse($request['date_'])->format('Y-m-d H:i:s');
             $validated = $request->validate( [
                 'course_id'                              => 'required',
                 'bimestre'                               => 'required|string|max:100',
                 'date_'                                  => 'required|date',
+
             ]);
 
-            //Corregir el Case de los campos string recibidos y del personal_code
             $id                                    = Str::upper($id);
             $validated['course_id']                = Str::title($validated['course_id']);
             $validated['bimestre']              = Str::title($validated['bimestre']);
-            $validated['date_']              = Str::title($validated['date_']);
 
 
-            //Almacenamiendo del Student del el request
-            // en el registro del personal_code recibido
+
+
             ExamSchedule::find($id)->update($validated);
 
             if($request->path() == 'api/exam_schedule/'.$id) {
@@ -190,6 +204,7 @@ class ExamScheduleController extends Controller
                 'operation' => 'delete',
                 'error'     => $th->getMessage()
             ]);
+
         }
 
     }

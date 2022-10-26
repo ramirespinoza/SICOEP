@@ -14,8 +14,9 @@
                 >
                     Nueva Escuela
                 </button>
+            <input type="text" placeholder="Buscar..." v-model="q" class="mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
+                    <table v-if="schools.length!==0" class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">Id</th>
@@ -199,17 +200,7 @@
                                 </div>
                                 -->
 
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="id" class="block text-sm font-medium text-gray-700">Id</label>
-                                    <input
-                                        type="number"
-                                        name="id "
-                                        id="id"
-                                        v-model="form.id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
                                     <input
@@ -223,25 +214,39 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="departament_id" class="block text-sm font-medium text-gray-700">Departamento</label>
-                                    <input
-                                        type="number"
-                                        name="departament_id"
-                                        id="departament_id"
-                                        v-model="form.departament_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.municipality.departament_id"
+                                        @change="changeMunicipality"
+
+                                    >
+                                        <option
+                                            v-for="departament in departaments"
+                                            v-bind:value="departament.id"
+                                        >{{ departament.name }}</option>
+                                    </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="municipality_id" class="block text-sm font-medium text-gray-700">Municipio</label>
-                                    <input
-                                        type="number"
-                                        name="municipality_id"
-                                        id="municipality_id"
+                                    <label for="municipality" class="block text-sm font-medium text-gray-700">Municipio</label>
+                                    <select
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
+                                        v-model="form.municipality_id"
+                                    >
+                                        <option
+                                            v-for="municipality in municipalities"
+                                            v-bind:value="municipality.id"
+                                        >{{ municipality.name }}</option>
+                                    </select>
+                                    <!--!<input
+                                        type="text"
+                                        name="municipality"
+                                        id="municipality"
                                         v-model="form.municipality_id"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    />-->
                                 </div>
 
 

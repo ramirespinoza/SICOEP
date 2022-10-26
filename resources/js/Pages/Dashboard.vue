@@ -1,9 +1,9 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
+            <center><h1 class="estilotexto">
+                Bienvenido
+            </h1></center>
         </template>
 
         <div class="py-12">
@@ -27,3 +27,12 @@
         },
     }
 </script>
+<style scoped>
+.estilotexto {
+    font-size: 50px;
+
+
+
+}
+
+</style>

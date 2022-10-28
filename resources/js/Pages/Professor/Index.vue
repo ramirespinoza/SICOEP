@@ -36,7 +36,7 @@
                                 <span class="font-medium">{{ professor.last_name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ professor.school_id }}</span>
+                                <span class="font-medium">{{ professor.school.name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
@@ -138,7 +138,7 @@
                                                 type="text"
                                                 name="school_id"
                                                 id="school_id"
-                                                v-model="form.school_id"
+                                                v-model="form.school.name"
                                                 autocomplete="street-address"
                                                 disabled
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
@@ -233,14 +233,16 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="school_id" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                    <input
-                                        type="text"
-                                        name="school_id"
-                                        id="school_id"
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
                                         v-model="form.school_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    >
+                                        <option
+                                            v-for="school in schools"
+                                            v-bind:value="school.id"
+                                        >{{ school.name }}</option>
+                                    </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-1">
                                 </div>
@@ -336,14 +338,16 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="school_id" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                    <input
-                                        type="text"
-                                        name="school_id"
-                                        id="school_id"
+                                    <select
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        :required="true"
                                         v-model="form.school_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                    >
+                                        <option
+                                            v-for="school in schools"
+                                            v-bind:value="school.id"
+                                        >{{ school.name }}</option>
+                                    </select>
                                 </div>
 
                                 
@@ -426,6 +430,10 @@ export default {
         Container,
     },
 
+    created: function(){
+        this.getSchools()
+    },
+
     data(){
         return {
             modals:{
@@ -437,6 +445,7 @@ export default {
             },
             errors: "",
             professor: Array,
+            schools: Array,
             form: {
                 dpi:                null,
                 name:               null,
@@ -548,7 +557,14 @@ export default {
             this.modals.title = "Error";
             this.modals.errorModal = true;
 
-        }
+        },
+        getSchools: function (){
+            let url = 'api/school/';
+            axios.get(url).then(response => {
+                console.log(response.data.schools);
+                this.schools = response.data.schools;
+            });
+        },
     }
 
 

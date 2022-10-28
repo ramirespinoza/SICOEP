@@ -4043,6 +4043,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     showCreateModal: function showCreateModal() {
+      this.cleanForm();
       this.modals.title = "Crear";
       this.modals.createModal = true;
     },
@@ -4064,10 +4065,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this4.cleanForm();
           _this4.getAll();
           _this4.modals.createModal = false;
+          _this4.$page.props.flash.successful = "¡Catedrático Registrado!";
         } else {
           console.log(response.data.error);
           _this4.errors = response.data.error;
-          _this4.showErrorModal();
+          _this4.$page.props.flash.danger = "No se pudo registrar el catedrático.";
         }
       })["catch"](function (error) {
         _this4.errors = error.response.data;
@@ -4081,10 +4083,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this5.cleanForm();
           _this5.getAll();
           _this5.modals.editModal = false;
+          _this5.$page.props.flash.successful = "¡Catedrático Actualizado!";
         } else {
           console.log(response.data.error);
           _this5.errors = response.data.error;
-          _this5.showErrorModal(_this5.errors);
+          _this5.$page.props.flash.danger = "No se pudo actualizar el catedrático.";
         }
       })["catch"](function (error) {
         _this5.errors = error.response.data;
@@ -4612,6 +4615,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     showCreateModal: function showCreateModal() {
+      this.cleanForm();
       this.modals.title = "Crear";
       this.modals.createModal = true;
     },
@@ -4638,10 +4642,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this4.cleanForm();
           _this4.getAll();
           _this4.modals.createModal = false;
+          _this4.$page.props.flash.successful = "¡Escuela Actualizada";
         } else {
           console.log(response.data.error);
           _this4.errors = response.data.error;
-          _this4.showErrorModal();
+          _this4.$page.props.flash.danger = "No se pudo registrar la escuela.";
         }
       })["catch"](function (error) {
         _this4.errors = error.response.data;
@@ -4656,10 +4661,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this5.cleanForm();
           _this5.getAll();
           _this5.modals.editModal = false;
+          _this5.$page.props.flash.successful = "¡Escuela Actualizada";
         } else {
           console.log(response.data.error);
           _this5.errors = response.data.error;
-          _this5.showErrorModal(_this5.errors);
+          _this5.$page.props.flash.danger = "No se pudo registrar la escuela.";
         }
       })["catch"](function (error) {
         _this5.errors = error.response.data;
@@ -4670,10 +4676,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form = {
         id: null,
         name: null,
+        municipality_id: null,
         departament_id: null,
-        municipality_id: null
+        municipality: Object // {name: null},
       };
     },
+
     showErrorModal: function showErrorModal() {
       this.modals.title = "Error";
       this.modals.errorModal = true;
@@ -10334,7 +10342,7 @@ var render = function render() {
         return _vm.showCreateModal(_vm.professor);
       }
     }
-  }, [_vm._v("\n                Nuevo Catedratico\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n            Nuevo Catedratico\n        ")]), _vm._v(" "), _c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -10372,7 +10380,7 @@ var render = function render() {
       staticClass: "py-3 px-6 text-center"
     }, [_c("span", {
       staticClass: "font-medium"
-    }, [_vm._v(_vm._s(professor.school_id))])]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(professor.school.name))])]), _vm._v(" "), _c("td", {
       staticClass: "py-3 px-6 text-center"
     }, [_c("div", {
       staticClass: "flex item-center justify-center"
@@ -10583,8 +10591,8 @@ var render = function render() {
           directives: [{
             name: "model",
             rawName: "v-model",
-            value: _vm.form.school_id,
-            expression: "form.school_id"
+            value: _vm.form.school.name,
+            expression: "form.school.name"
           }],
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
           attrs: {
@@ -10595,12 +10603,12 @@ var render = function render() {
             disabled: ""
           },
           domProps: {
-            value: _vm.form.school_id
+            value: _vm.form.school.name
           },
           on: {
             input: function input($event) {
               if ($event.target.composing) return;
-              _vm.$set(_vm.form, "school_id", $event.target.value);
+              _vm.$set(_vm.form.school, "name", $event.target.value);
             }
           }
         })]), _vm._v(" "), _c("div", {
@@ -10614,7 +10622,7 @@ var render = function render() {
               _vm.modals.showModal = false;
             }
           }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])])];
       },
       proxy: true
     }])
@@ -11011,7 +11019,7 @@ var render = function render() {
               _vm.modals.errorModal = false;
             }
           }
-        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
+        }, [_vm._v("\n                        Cerrar\n                    ")])])])];
       },
       proxy: true
     }])
@@ -11850,7 +11858,7 @@ var render = function render() {
         return _vm.showCreateModal(_vm.schools.id);
       }
     }
-  }, [_vm._v("\n                Nueva Escuela\n            ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n            Nueva Escuela\n        ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -12149,7 +12157,7 @@ var render = function render() {
               _vm.modals.showModal = false;
             }
           }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])])];
       },
       proxy: true
     }])
@@ -12204,6 +12212,7 @@ var render = function render() {
             type: "text",
             name: "name",
             id: "name",
+            required: true,
             autocomplete: "street-address"
           },
           domProps: {
@@ -12360,11 +12369,12 @@ var render = function render() {
             value: _vm.form.id,
             expression: "form.id"
           }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
           attrs: {
             type: "number",
             name: "id",
             id: "id",
+            disabled: "",
             autocomplete: "street-address"
           },
           domProps: {
@@ -12534,7 +12544,7 @@ var render = function render() {
               _vm.modals.errorModal = false;
             }
           }
-        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
+        }, [_vm._v("\n                        Cerrar\n                    ")])])])];
       },
       proxy: true
     }])

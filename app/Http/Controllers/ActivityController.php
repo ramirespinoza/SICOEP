@@ -147,15 +147,11 @@ class ActivityController extends Controller
             $activity = Activity::find($id);
             $activity->delete();
 
-            return Redirect::route('activity.index');
+            return Redirect::route('activity.index')->with('successful', '¡Actividad Eliminada!');
 
         } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => 'failed',
-                'code'      => '0',
-                'operation' => 'delete',
-                'error'     => $th->getMessage()
-            ]);
+            return Redirect::route('activity.index')->with('danger', 'No se pudo eliminar la actividad.');
+
         }
     }
 }

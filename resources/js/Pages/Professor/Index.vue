@@ -6,6 +6,7 @@
             </h1>
         </template>
 
+        <!-- List -->
         <container>
                 <button
                     v-on:click.prevent="showCreateModal(professor)"
@@ -36,7 +37,7 @@
                                 <span class="font-medium">{{ professor.last_name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <span class="font-medium">{{ professor.school_id }}</span>
+                                <span class="font-medium">{{ professor.school.name }}</span>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
@@ -82,6 +83,7 @@
                     </table>
                 </div>
         </container>
+
         <!-- Show Modal -->
         <dialog-modal :show="modals.showModal" @close="modals.showModal = false">
             <template #title>
@@ -138,7 +140,7 @@
                                                 type="text"
                                                 name="school_id"
                                                 id="school_id"
-                                                v-model="form.school_id"
+                                                v-model="form.school.name"
                                                 autocomplete="street-address"
                                                 disabled
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
@@ -181,22 +183,6 @@
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
-                                <!--
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
-                                    <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-                                -->
 
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="dpi" class="block text-sm font-medium text-gray-700">Numero de DPI</label>
@@ -346,7 +332,7 @@
                                     />
                                 </div>
 
-                                
+
                             </div>
                         </div>
 
@@ -474,6 +460,8 @@ export default {
         },
         showCreateModal: function (){
 
+            this.cleanForm();
+
             this.modals.title ="Crear";
 
             this.modals.createModal = true;
@@ -501,10 +489,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
+                    this.$page.props.flash.successful = "¡Catedrático Registrado!"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal();
+                    this.$page.props.flash.danger = "No se pudo registrar el catedrático."
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -521,10 +510,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
+                    this.$page.props.flash.successful = "¡Catedrático Actualizado!"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal(this.errors);
+                    this.$page.props.flash.danger = "No se pudo actualizar el catedrático."
                 }
             }).catch(error =>{
                 this.errors = error.response.data

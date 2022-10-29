@@ -195,15 +195,11 @@ class ExamScheduleController extends Controller
             $exam_schedule = ExamSchedule::find(Str::upper($id));
             $exam_schedule->delete();
 
-            return Redirect::route('exam_schedule.index');
+            return Redirect::route('exam_schedule.index')->with('successful', '¡Horario de examenes eliminado!');
 
         } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => 'failed',
-                'code'      => '0',
-                'operation' => 'delete',
-                'error'     => $th->getMessage()
-            ]);
+            return Redirect::route('exam_schedule.index')->with('danger', 'No se pudo eliminar el horario de examenes.');
+
 
         }
 

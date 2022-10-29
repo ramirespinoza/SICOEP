@@ -391,6 +391,8 @@ export default {
         },
         showCreateModal: function (){
 
+            this.cleanForm();
+
             this.modals.title ="Crear";
 
             this.modals.createModal = true;
@@ -420,10 +422,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
+                    this.$page.props.flash.successful = "¡Curso Registrado!"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal();
+                    this.$page.props.flash.danger = "¡No se pudo registrar el curso."
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -440,10 +443,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
+                    this.$page.props.flash.successful = "¡Curso Actualizado"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal(this.errors);
+                    this.$page.props.flash.danger = "No se pudo actualizar el curso."
                 }
             }).catch(error =>{
                 this.errors = error.response.data

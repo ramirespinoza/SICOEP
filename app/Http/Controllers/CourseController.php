@@ -182,15 +182,11 @@ class CourseController extends Controller
             $course = Course::find(Str::upper($id));
             $course->delete();
 
-            return Redirect::route('course.index');
+            return Redirect::route('course.index')->with('successful', '¡Curso Eliminado!');
 
         } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => 'failed',
-                'code'      => '0',
-                'operation' => 'delete',
-                'error'     => $th->getMessage()
-            ]);
+            return Redirect::route('course.index')->with('danger', 'No se pudo eliminar el curso.');
+
         }
 
     }

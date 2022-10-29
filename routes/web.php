@@ -11,7 +11,7 @@ use App\Http\Controllers\ExamScheduleController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\CnbLevelController;
 use App\Http\Controllers\StudentEnrollmentController;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +45,9 @@ Route::resource('exam_schedule', ExamScheduleController::class, ['except' => 'sh
 Route::resource('school', SchoolController::class, ['except' => 'show', 'create', 'edit']);
 Route::resource('CnbLevel', CnbLevelController::class, ['except' => 'show',]);
 Route::resource('professor', ProfessorController::class, ['except' => 'show', 'create', 'edit'])->middleware(['auth:sanctum', 'verified']);
+
+//Reportes
+Route::get('students_by_school_report', [DashboardController::class,'students_by_school_report'])->middleware(['auth:sanctum', 'verified'])->name('students_by_school_report');
 
 
 

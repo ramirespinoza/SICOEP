@@ -212,7 +212,7 @@ class StudentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($personal_code)
     {
@@ -220,15 +220,10 @@ class StudentController extends Controller
             $student = Student::find(Str::upper($personal_code));
             $student->delete();
 
-            return Redirect::route('student.index');
+            return Redirect::route('student.index')->with('successful', '¡Alumno eliminado!');
 
         } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => 'failed',
-                'code'      => '0',
-                'operation' => 'delete',
-                'error'     => $th->getMessage()
-            ]);
+            return Redirect::route('student.index')->with('danger', 'No es posible eliminar.');
         }
 
     }

@@ -11,6 +11,7 @@ use App\Models\StudentEnrollment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class DashboardController extends Controller
@@ -67,18 +68,26 @@ class DashboardController extends Controller
                 foreach ($grades as $grade) {
                     $school_id = $school->id;
                     $grade_id = $grade->id;
-                    $school->grades += [$count => [
-                        $grade->name => StudentEnrollment::join('grade', 'grade.id', '=', 'student_enrollment.grade_id')
-                            ->join('professor', 'professor.dpi', '=', 'student_enrollment.professor_dpi')
-                            ->join('school', 'school.id', '=', 'professor.school_id')
-                            ->selectRaw('count(*) as count_student_enrollments')
-                            ->where([
-                                ['school.id', '=', "$school_id"],
-                                ['grade.id', '=', "$grade_id"]])
-                            ->whereBetween('enrollment_date', [$request->dateStart, $request->dateEnd])
-                            ->first()
+                    $consult = StudentEnrollment::join('grade', 'grade.id', '=', 'student_enrollment.grade_id')
+                        ->join('professor', 'professor.dpi', '=', 'student_enrollment.professor_dpi')
+                        ->join('school', 'school.id', '=', 'professor.school_id')
+                        ->selectRaw('count(*) as count_student_enrollments')
+                        ->where([
+                            ['school.id', '=', "$school_id"],
+                            ['grade.id', '=', "$grade_id"]])
+                        ->whereBetween('enrollment_date', [$request->dateStart, $request->dateEnd])
+                        ->first();
 
-                    ]];
+                    $consult = array($consult);
+
+                    $school->grades += [$count => [
+                        'name'      => $grade->name,
+                        'count_student_enrollments' => $consult[0]->count_student_enrollments
+
+                    ]
+                    ];
+
+
 
                     /*/Se comprueba que el grado contenga estudiantes
                     if($actual_grade[$count][$grade->name]['count_student_enrollments'] != 0) {
@@ -95,6 +104,8 @@ class DashboardController extends Controller
             return $schools;
         }
     }
+
+
 
 
     /*****************   Students by school with grade with  *********************************
@@ -125,7 +136,7 @@ class DashboardController extends Controller
 
             $request->department = Str::upper($request->department);
             $departaments = Departament::whereRaw("id LIKE '%$request->department%'")
-                                    ->orWhereRaw("upper(name) LIKE '%$request->department%'")->get();
+                ->orWhereRaw("upper(name) LIKE '%$request->department%'")->get();
 
             $request->department = "true";
         } else {
@@ -159,27 +170,27 @@ class DashboardController extends Controller
                 //Se quitan valores que no se desean mostrar
                 unset($municipality->created_at, $municipality->updated_at, $municipality->departament_id);
 
-                 if(str_contains(Str::upper($municipality->name), Str::upper($request->municipality)) || $request->municipality == "true" || $request->municipality == "false") {
-                     $municipality->count_student_enrollments = StudentEnrollment::join('grade', 'grade.id', '=', 'student_enrollment.grade_id')
-                         ->join('professor', 'professor.dpi', '=', 'student_enrollment.professor_dpi')
-                         ->join('school', 'school.id', '=', 'professor.school_id')
-                         ->join('municipality', 'municipality.id', '=', 'school.municipality_id')
-                         ->selectRaw('count(*) as count_student_enrollments')
-                         ->where('municipality.id', '=', $municipality->id)
-                         ->whereBetween('student_enrollment.enrollment_date', [$request->dateStart, $request->dateEnd])
-                         ->get();
+                if(str_contains(Str::upper($municipality->name), Str::upper($request->municipality)) || $request->municipality == "true" || $request->municipality == "false") {
+                    $municipality->count_student_enrollments = StudentEnrollment::join('grade', 'grade.id', '=', 'student_enrollment.grade_id')
+                        ->join('professor', 'professor.dpi', '=', 'student_enrollment.professor_dpi')
+                        ->join('school', 'school.id', '=', 'professor.school_id')
+                        ->join('municipality', 'municipality.id', '=', 'school.municipality_id')
+                        ->selectRaw('count(*) as count_student_enrollments')
+                        ->where('municipality.id', '=', $municipality->id)
+                        ->whereBetween('student_enrollment.enrollment_date', [$request->dateStart, $request->dateEnd])
+                        ->get();
 
-                     //Se quitan dimensiones al array
-                     $municipality->count_student_enrollments = $municipality->count_student_enrollments[0]->count_student_enrollments;
+                    //Se quitan dimensiones al array
+                    $municipality->count_student_enrollments = $municipality->count_student_enrollments[0]->count_student_enrollments;
 
-                     $municipalities += [($municipality->id - 1) => ['id' => $municipality->id, 'name' => $municipality->name, "count_student_enrollments" => $municipality->count_student_enrollments]];
+                    $municipalities += [($municipality->id - 1) => ['id' => $municipality->id, 'name' => $municipality->name, "count_student_enrollments" => $municipality->count_student_enrollments]];
 
-                     $index++;
-                     $count += $municipality->count_student_enrollments;
+                    $index++;
+                    $count += $municipality->count_student_enrollments;
 
-                 } else {
-                     unset($departament->municipalities[$index]);
-                 }
+                } else {
+                    unset($departament->municipalities[$index]);
+                }
                 $index++;
             }
 
@@ -193,6 +204,8 @@ class DashboardController extends Controller
         else{return $municipalities;}
 
     }
+
+
 
     /*****************   Students by professor with school with  *********************************
      *                    filter school and/or professor and date
@@ -297,6 +310,35 @@ class DashboardController extends Controller
         return $schools;
 
     }
+
+
+
+
+
+    /*************************************************************************************
+     **************************   REPORTES  ******************************************
+     ********************************************************************************
+     */
+
+
+    /**************** filter grade and/or school and date
+     *
+     */
+    public function students_by_school_report(Request $request){
+
+        if ($request->dateStart == "") {$request->dateStart = '2022-01-01';}
+        if ($request->dateEnd == "") {$request->dateEnd = Carbon::now()->format('Y-m-d');}
+
+        $students_by_school_report = $this->students_by_school($request);
+        return Inertia::render('StudentsBySchoolReport/Index',
+            ['students_by_school_report' => $students_by_school_report,
+                'dateEnd' => $request->dateEnd,
+                'dateStart' => $request->dateStart]);
+
+    }
+
+
+
 
     /*****************   Students by school with grade with  *********************************
      *                    filter grade and/or school and date

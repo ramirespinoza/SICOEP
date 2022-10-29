@@ -18,12 +18,13 @@ class StudentEnrollmentController extends Controller
     {
         try {
             $query = Str::upper($request->q);
-            //Se obtiene los registros por orden de fecha de creación
-            // en forma descentiente
-            $student_enrollments = StudentEnrollment::with('professor.school', 'student')->orderBy('created_at', 'DESC')
+
+            $student_enrollments = StudentEnrollment::with('student')
+                ->join('student', 'student.personal_code','=','student_enrollment.student_personal_code')
                 ->whereRaw(DB::raw("upper(student.name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(student.last_name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(student.personal_code) like '%$query%'"))
+                ->orderBy('student_enrollment.created_at','DESC' )
                 ->take(10)
                 ->get();
             return response()->json([
@@ -75,14 +76,15 @@ class StudentEnrollmentController extends Controller
 
             //Validación de todos los campos recibidos y el tipo
             $validated_student_enrollment = $request->validate( [
-                'student_personal_code'             => 'required|string|8',
                 'grade_id'                          => 'required|integer',
                 'section'                           => 'required|string|max:1',
                 'class_schedule_id'                 => 'required|integer',
                 'professor_dpi'                     => 'required|integer',
+                'student_personal_code'             => 'required|string|max:8',
             ]);
 
-            if(Student::find($validated_student_enrollment['personal_code']) === null) {
+            /*
+            if(Student::find($validated_student_enrollment['student_personal_code']) === null) {
 
                 $validated_student = $request->validate([
                     'name' => 'required|string|max:50',
@@ -121,13 +123,14 @@ class StudentEnrollmentController extends Controller
                 $new_student = true;
 
             }
+            */
 
 
             //Corregir el Case de los campos string recibidos del StudentEnrollment
 
-            $new_student = true;
             $validated_student_enrollment['section']                 = Str::upper($validated_student_enrollment['section']);
             $validated_student_enrollment['enrollment_date'] = Carbon::now()->format('Y-m-d H:i:s');
+            $validated_student_enrollment['student_personal_code'] = Str::upper($validated_student_enrollment['student_personal_code']);
 
 
             //Almacenamiendo del StudentEnrollment en el request
@@ -137,7 +140,6 @@ class StudentEnrollmentController extends Controller
                 'status'    => 'successful',
                 'code'      => '1',
                 'operation' => 'create',
-                'new_student' => $new_student,
                 'student_enrollment'   => $request
             ]);
 
@@ -189,7 +191,7 @@ class StudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $student_personal_code)
+    public function update(Request $request, $id)
     {
         try {
             //Validación de todos los campos recibidos y el tipo
@@ -199,25 +201,28 @@ class StudentEnrollmentController extends Controller
                 'section'                           => 'required|string|max:1',
                 'class_schedule_id'                 => 'required|integer',
                 'professor_dpi'                     => 'required|integer',
+                'student_personal_code'             => 'required|string|max:8',
             ]);
 
             $validated_student = $request->validate( [
-                'tutelary_name'                     => 'required|string:max:50',
-                'tutelary_dpi'                      => 'required|integer'
+                'student.tutelary_name'                     => 'required|string:max:50',
+                'student.tutelary_dpi'                      => 'required|integer'
             ]);
 
+            $validated_student = $validated_student['student'];
             //Corregir el Case de los campos string recibidos y del personal_code
 
-            $validated_student_enrollment['student_personal_code']                 = Str::upper($student_personal_code);
+            $validated_student_enrollment['student_personal_code']                 = Str::upper($validated_student_enrollment['student_personal_code']);
             $validated_student_enrollment['section']                 = Str::upper($validated_student_enrollment['section']);
             $validated_student['tutelary_name']           = Str::title($validated_student['tutelary_name']);
 
             //Almacenamiendo del Student del el request
             // en el registro del personal_code recibido
-            $student_enrollment = StudentEnrollment::find($student_personal_code);
+            $student_enrollment = StudentEnrollment::find($id);
             $student_enrollment->update($validated_student_enrollment);
-            $student = StudentEnrollment::find($validated_student_enrollment['student_personal_code']);
-            $student->update($validated_student);
+
+            Student::where('personal_code',$validated_student_enrollment['student_personal_code'])
+                ->update(['tutelary_name' => $validated_student['tutelary_name'], 'tutelary_dpi' => $validated_student['tutelary_dpi']]);
 
 
             return response()->json([
@@ -241,7 +246,7 @@ class StudentEnrollmentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -249,15 +254,11 @@ class StudentEnrollmentController extends Controller
             $student_enrollment = StudentEnrollment::find(Str::upper($id));
             $student_enrollment->delete();
 
-            return Redirect::route('student_enrollment.index');
+            return Redirect::route('student_enrollment.index')->with('successful', 'Inscripción eliminada');
 
         } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => 'failed',
-                'code'      => '0',
-                'operation' => 'delete',
-                'error'     => $th->getMessage()
-            ]);
+            return Redirect::route('student_enrollment.index')->with('danger', 'No se pudo eliminar la inscripción');
+
         }
     }
 }

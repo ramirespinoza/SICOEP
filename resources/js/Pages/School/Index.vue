@@ -183,23 +183,6 @@
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
-                                <!--
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
-                                    <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                                </div>
-                                -->
-
 
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
@@ -207,6 +190,7 @@
                                         type="text"
                                         name="name"
                                         id="name"
+                                        :required="true"
                                         v-model="form.name"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -295,9 +279,10 @@
                                         type="number"
                                         name="id"
                                         id="id"
+                                        disabled
                                         v-model="form.id"
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
@@ -485,6 +470,8 @@ export default {
         },
         showCreateModal: function (){
 
+            this.cleanForm();
+
             this.modals.title ="Crear";
 
             this.modals.createModal = true;
@@ -517,10 +504,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
+                    this.$page.props.flash.successful = "¡Escuela Actualizada"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal();
+                    this.$page.props.flash.danger = "No se pudo registrar la escuela."
                 }
             }).catch(error =>{
                 this.errors = error.response.data;
@@ -538,10 +526,11 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
+                    this.$page.props.flash.successful = "¡Escuela Actualizada"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal(this.errors);
+                    this.$page.props.flash.danger = "No se pudo registrar la escuela."
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -554,8 +543,9 @@ export default {
             this.form = {
                 id:                 null,
                 name:               null,
-                departament_id:     null,
                 municipality_id:    null,
+                departament_id: null,
+                municipality: Object,// {name: null},
 
             };
 

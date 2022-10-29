@@ -19,6 +19,7 @@
                     <table v-if="student_enrollments.length!==0" class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">ID Inscripción</th>
                             <th class="py-3 px-6 text-left">Código Personal</th>
                             <th class="py-3 px-6 text-left">Nombre</th>
                             <th class="py-3 px-6 text-center">Apellido</th>
@@ -27,6 +28,9 @@
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
                         <tr v-for="student_enrollment in student_enrollments" :key="student_enrollment.id" class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <span class="font-medium">{{ student_enrollment.id }}</span>
+                            </td>
                             <td class="py-3 px-6 text-left whitespace-nowrap">
                                 <span class="font-medium">{{ student_enrollment.student_personal_code }}</span>
                             </td>
@@ -99,7 +103,7 @@
                                 <div class="bg-white px-4 py-5 sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
 
-                                        <div class="col-span-6 sm:col-span-2">
+                                        <div class="col-span-6 sm:col-span-1">
                                             <label for="personal_code" class="block text-sm font-medium text-gray-700">ID</label>
                                             <input
                                                 type="text"
@@ -112,7 +116,7 @@
                                             />
                                         </div>
 
-                                        <div class="col-span-6 sm:col-span-2">
+                                        <div class="col-span-6 sm:col-span-1">
                                             <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                             <input
                                                 type="text"
@@ -148,25 +152,43 @@
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                             />
                                         </div>
-                                        <div class="col-span-6 sm:col-span-2">
+                                        <div class="col-span-6 sm:col-span-1">
                                             <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
+                                            <select
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
+                                                :required="true"
+                                                disabled
+                                                v-model="form.grade_id"
+                                            >
+                                                <option
+                                                    v-for="grade in grades"
+                                                    v-bind:value="grade.id"
+                                                    :key="grade.id"
+                                                >{{ grade.name }}</option>
+                                            </select>
+                                        </div><div class="col-span-6 sm:col-span-1">
+                                        <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
+                                        <select
+                                            class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
+                                            :required="true"
+                                            disabled
+                                            v-model="form.section"
+                                        >
+                                            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+                                            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+                                        </select>
+                                    </div>
+
+                                        <div class="col-span-6 sm:col-span-1">
+                                            <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de inscripción</label>
                                             <input
-                                                type="text"
-                                                name="grade_id"
-                                                id="grade_id"
-                                                v-model="form.grade.name"
+                                                type="date"
+                                                name="birth_date"
+                                                id="birth_date"
+                                                v-model="form.enrollment_date"
                                                 disabled
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                            />
-                                        </div>
-                                        <div class="col-span-6 sm:col-span-1">
-                                            <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
-                                            <input
-                                                type="text"
-                                                class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                                v-model="form.section"
-                                                disabled
                                             />
                                         </div>
 
@@ -183,15 +205,20 @@
                                             />
                                         </div>
 
-                                        <div class="col-span-6 sm:col-span-2">
+                                        <div class="col-span-6 sm:col-span-1">
                                             <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
-                                            <input
-                                                id="class_schedule_id"
-                                                type="text"
-                                                v-model="form.class_schedule_id"
-                                                disabled
+                                            <select
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                            />
+                                                :required="true"
+                                                disabled
+                                                v-model="form.class_schedule_id"
+                                            >
+                                                <option
+                                                    v-for="class_schedule in class_schedules"
+                                                    v-bind:value="class_schedule.id"
+                                                    :key="class_schedule.id"
+                                                >{{ class_schedule.journey }}</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-1">
@@ -220,48 +247,84 @@
                                         </div>
                                         <div class="col-span-1">
                                             <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
-                                            <input
-                                                type="text"
+                                            <select
                                                 class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                                v-model="form.professor.school.municipality.departament.name"
+                                                :required="true"
                                                 disabled
-                                            />
+                                                v-model="form.professor.school.municipality.departament.id"
+                                                @change="changeMunicipality"
+
+                                            >
+                                                <option
+                                                    v-for="departament in departaments"
+                                                    v-bind:value="departament.id"
+                                                    :key="departament.id"
+                                                >{{ departament.name }}</option>
+                                            </select>
 
                                         </div>
-                                        <div class="col-span-1">
+                                        <div class="col-span-2">
                                             <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
-                                            <input
-                                                type="text"
-                                                class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                                v-model="form.professor.school.municipality.name"
+                                            <select
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
+                                                :required="true"
+                                                v-model="form.professor.school.municipality.id"
                                                 disabled
-                                            />
+                                                @change="changeSchool"
+                                            >
+                                                <option
+                                                    v-for="municipality in municipalities"
+                                                    v-bind:value="municipality.id"
+                                                    :key="municipality.id"
+                                                    disabled
+                                                >{{ municipality.name }}</option>
+                                            </select>
                                         </div>
                                         <div class="col-span-2">
                                             <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                            <input
-                                                type="text"
-                                                class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                                v-model="form.professor.school.name"
+                                            <select
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
+                                                :required="true"
+                                                v-model="form.professor.school.id"
                                                 disabled
-                                            />
+                                                @change="changeProfessor"
+                                            >
+                                                <option
+                                                    v-for="school in schools"
+                                                    v-bind:value="school.id"
+                                                    :key="school.id"
+                                                >{{ school.name }}</option>
+                                            </select>
 
                                         </div>
-                                        <div class="col-span-2">
+                                        <div class="col-span-3">
                                             <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Catedrático</label>
-                                            <label
-                                                type="text"
+                                            <v-select
+                                                v-model="professor"
+                                                disabled
+                                                :filter="professorSearch"
+                                                :options="professors"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
-                                            > {{ form.professor.id }} {{ form.professor.name }} {{ form.professor.last_name }}</label>
+
+
+                                                :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
+                                                @input="professorChanged"
+                                            >
+                                                <template #option="{ dpi, name, last_name }">
+                                                    {{ dpi }}
+                                                    <br />
+                                                    <cite>{{ name }} {{ last_name }}</cite>
+                                                </template>
+                                            </v-select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-2">
                                             <label for="tutelary_name" class="block text-sm font-medium text-gray-700">Tutelar</label>
                                             <input
+                                                disabled
                                                 type="text"
                                                 name="tutelary_name"
                                                 id="tutelary_name"
                                                 v-model="form.student.tutelary_name"
-                                                disabled
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                             />
@@ -270,15 +333,14 @@
                                             <label for="tutelary_dpi" class="block text-sm font-medium text-gray-700">DPI del tutelar</label>
                                             <input
                                                 type="number"
+                                                disabled
                                                 name="tutelary_dpi"
                                                 id="tutelary_dpi"
                                                 v-model="form.student.tutelary_dpi"
-                                                disabled
                                                 autocomplete="street-address"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                             />
                                         </div>
-
                                     </div>
 
                                 </div>
@@ -314,13 +376,15 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
+
                                 <div class="col-span-6 sm:col-span-2">
                                     <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                     <input
                                         type="text"
                                         name="personal_code"
                                         id="personal_code"
-                                        v-model="form.student.personal_code"
+                                        v-model="form.student_personal_code"
+                                        :required="true"
                                         autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
@@ -334,7 +398,7 @@
                                         v-model="form.student.name"
                                         disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
                                 <div class="col-span-6 sm:col-span-2">
@@ -346,19 +410,22 @@
                                         v-model="form.student.last_name"
                                         disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
-                                    <input
-                                        type="text"
-                                        name="grade_id"
-                                        id="grade_id"
-                                        v-model="form.grade.id"
-                                        autocomplete="street-address"
+                                    <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                        :required="true"
+                                        v-model="form.grade_id"
+                                    >
+                                        <option
+                                            v-for="grade in grades"
+                                            v-bind:value="grade.id"
+                                            :key="grade.id"
+                                        >{{ grade.name }}</option>
+                                    </select>
                                 </div><div class="col-span-6 sm:col-span-1">
                                 <label for="section" class="block text-sm font-medium text-gray-700">Sección</label>
                                 <select
@@ -374,26 +441,29 @@
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
                                     <input
-                                        type="datetime-local"
+                                        type="date"
                                         name="birth_date"
                                         id="birth_date"
                                         v-model="form.student.birth_date"
                                         disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
 
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
-                                    <input
-                                        type="number"
-                                        name="class_schedule_id"
-                                        id="class_schedule_id"
-                                        v-model="form.class_schedule_id"
-                                        autocomplete="street-address"
+                                    <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                        :required="true"
+                                        v-model="form.class_schedule_id"
+                                    >
+                                        <option
+                                            v-for="class_schedule in class_schedules"
+                                            v-bind:value="class_schedule.id"
+                                            :key="class_schedule.id"
+                                        >{{ class_schedule.journey }}</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-1">
@@ -405,7 +475,7 @@
                                         v-model="form.student.identification_document"
                                         disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
                                 <div class="col-span-6 sm:col-span-1">
@@ -417,10 +487,10 @@
                                         v-model="form.student.identification_document_number"
                                         disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
-                                <div class="col-span-1">
+                                <div class="col-span-2">
                                     <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Departamento</label>
                                     <select
                                         class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -437,7 +507,7 @@
                                     </select>
 
                                 </div>
-                                <div class="col-span-1">
+                                <div class="col-span-2">
                                     <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
                                     <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -477,6 +547,7 @@
 
                                         :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
                                         @input="professorChanged"
+                                        class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     >
                                         <template #option="{ dpi, name, last_name }">
                                             {{ dpi }}
@@ -548,7 +619,7 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
 
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="personal_code" class="block text-sm font-medium text-gray-700">ID</label>
                                     <input
                                         type="text"
@@ -561,7 +632,7 @@
                                     />
                                 </div>
 
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="personal_code" class="block text-sm font-medium text-gray-700">Código Personal</label>
                                     <input
                                         type="text"
@@ -597,7 +668,7 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="grade_id" class="block text-sm font-medium text-gray-700">Grado</label>
                                     <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -623,18 +694,32 @@
                             </div>
 
                                 <div class="col-span-6 sm:col-span-1">
+                                    <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de inscripción</label>
+                                    <input
+                                        type="date"
+                                        name="birth_date"
+                                        id="birth_date"
+                                        v-model="form.enrollment_date"
+                                        disabled
+                                        autocomplete="street-address"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
+                                    />
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="birth_date" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
                                     <input
                                         type="date"
                                         name="birth_date"
                                         id="birth_date"
                                         v-model="form.student.birth_date"
+                                        disabled
                                         autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100"
                                     />
                                 </div>
 
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-6 sm:col-span-1">
                                     <label for="class_schedule_id" class="block text-sm font-medium text-gray-700">Horario de clases</label>
                                     <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -645,7 +730,7 @@
                                             v-for="class_schedule in class_schedules"
                                             v-bind:value="class_schedule.id"
                                             :key="class_schedule.id"
-                                        >{{ class_schedule.name }}</option>
+                                        >{{ class_schedule.journey }}</option>
                                     </select>
                                 </div>
 
@@ -690,7 +775,7 @@
                                     </select>
 
                                 </div>
-                                <div class="col-span-1">
+                                <div class="col-span-2">
                                     <label for="professor_dpi" class="block text-sm font-medium text-gray-700">Municipio</label>
                                     <select
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -727,7 +812,7 @@
                                         v-model="professor"
                                         :filter="professorSearch"
                                         :options="professors"
-
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                         :get-option-label="professor => professor.dpi + ' ' + professor.name + ' ' + professor.last_name"
                                         @input="professorChanged"
                                     >
@@ -937,6 +1022,7 @@ export default {
         showCreateModal: function (){
 
             this.cleanForm();
+            this.professor="";
 
             this.modals.title ="Crear";
 
@@ -990,10 +1076,12 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
+                    this.$page.props.flash.successful = "¡Inscripción Registrado"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal();
+
+                    this.$page.props.flash.danger = "No se pudo registrar la inscripción";
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -1010,10 +1098,13 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
+
+                    this.$page.props.flash.successful = "¡Inscripción Actualizada"
                 } else {
                     console.log(response.data.error);
                     this.errors = response.data.error;
-                    this.showErrorModal(this.errors);
+
+                    this.$page.props.flash.danger = "No se pudo registrar la actualización."
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -1132,14 +1223,14 @@ export default {
         getClassSchedules: function (){
             let url = 'api/class_schedule/';
             axios.get(url).then(response => {
-                this.class_schedules = response.data.class_schedules;
+                this.class_schedules = response.data;
             });
         },
         getGrades: function (){
             let url = 'api/grade/';
             axios.get(url).then(response => {
                 console.log(response.data.departaments);
-                this.grades = response.data.grades;
+                this.grades = response.data;
             });
         },
         changeMunicipality: function (){

@@ -402,9 +402,10 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.createModal = false;
+                    this.$page.props.flash.successful = "¡Actividad Registrada!"
                 } else {
                     this.errors = response.data.error;
-                    this.showErrorModal();
+                    this.$page.props.flash.danger = "¡No se pudo registrar la actividad"
                 }
             }).catch(error =>{
                 this.errors = error.response.data
@@ -421,9 +422,10 @@ export default {
                     this.cleanForm();
                     this.getAll();
                     this.modals.editModal = false;
+                    this.$page.props.flash.successful = "¡Actividad Actualizada!"
                 } else {
                     this.errors = response.data.error;
-                    this.showErrorModal();
+                    this.$page.props.flash.danger = "¡No se pudo actualizar la actividad"
                 }
             }).catch(error =>{
                 this.errors = error.response.data

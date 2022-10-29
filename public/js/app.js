@@ -4101,9 +4101,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {
-    this.getSchools();
-  },
   data: function data() {
     return {
       modals: {
@@ -4115,7 +4112,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       errors: "",
       professor: Array,
-      schools: Array,
       form: {
         dpi: null,
         name: null,
@@ -9034,15 +9030,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("app-layout", [_c("container", [_c("button", {
-    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.showShowModal(_vm.CnbLevels.id);
-      }
-    }
-  }, [_vm._v("\n                    Visualizar Nivel Cnb\n                ")]), _vm._v(" "), _c("div", {
+  return _c("app-layout", [_c("container", [_c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -9336,15 +9324,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("app-layout", [_c("container", [_c("button", {
-    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.showCreateModal(_vm.course);
-      }
-    }
-  }, [_vm._v("\n            Nuevo Curso\n        ")]), _vm._v(" "), _c("div", {
+  return _c("app-layout", [_c("container", [_c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -11229,43 +11209,47 @@ var render = function render() {
             }
           }
         })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
+          staticClass: "col-span-6 sm:col-span-1"
+        }), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
             "for": "school_id"
           }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.school_id,
-            expression: "form.school_id"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("v-select", {
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           attrs: {
-            required: true
+            filter: _vm.schoolSearch,
+            options: _vm.schools,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(school) {
+              return school.id + " " + school.name;
+            }
           },
           on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "school_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            input: function input($event) {
+              _vm.form.school_id = _vm.form.school_id;
             }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref) {
+              var id = _ref.id,
+                name = _ref.name;
+              return [_vm._v("\n                                           " + _vm._s(id) + "\n                                           "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.school_id,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "school_id", $$v);
+            },
+            expression: "form.school_id"
           }
-        }, _vm._l(_vm.schools, function (school) {
-          return _c("option", {
-            domProps: {
-              value: school.id
-            }
-          }, [_vm._v(_vm._s(school.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        })])]), _vm._v(" "), _c("div", {
+        })], 1)])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
@@ -11417,41 +11401,45 @@ var render = function render() {
             }
           }
         })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
+          staticClass: "col-span-3"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
             "for": "school_id"
           }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.school_id,
-            expression: "form.school_id"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("v-select", {
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           attrs: {
-            required: true
+            filter: _vm.schoolSearch,
+            options: _vm.schools,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(school) {
+              return school.id + " " + school.name;
+            }
           },
           on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "school_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            input: function input($event) {
+              _vm.form.school_id = _vm.form.school_id;
             }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref2) {
+              var id = _ref2.id,
+                name = _ref2.name;
+              return [_vm._v("\n                                           " + _vm._s(id) + "\n                                           "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.school_id,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "school_id", $$v);
+            },
+            expression: "form.school_id"
           }
-        }, _vm._l(_vm.schools, function (school) {
-          return _c("option", {
-            domProps: {
-              value: school.id
-            }
-          }, [_vm._v(_vm._s(school.name))]);
-        }), 0)])])]), _vm._v(" "), _c("div", {
+        })], 1)])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",

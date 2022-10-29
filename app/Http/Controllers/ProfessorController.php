@@ -19,7 +19,8 @@ class ProfessorController extends Controller
             $query = Str::upper($request->q);
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
-            $professors = Professor::with('school')->orderBy('created_at', 'DESC')
+            $professors = Professor::with('school')
+                ->orderBy('created_at', 'DESC')
                 ->whereRaw(DB::raw("upper(name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(last_name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(dpi) like '%$query%'"))
@@ -45,7 +46,8 @@ class ProfessorController extends Controller
             $query = Str::upper($request->q);
             //Se obtiene los registros por orden de fecha de creación
             // en forma descentiente
-            $professors = Professor::with('school')->orderBy('created_at', 'DESC')
+            $professors = Professor::with('school')
+                ->orderBy('created_at', 'DESC')
                 ->whereRaw(DB::raw("upper(name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(last_name) like '%$query%'"))
                 ->orWhereRaw(DB::raw("upper(dpi) like '%$query%'"))

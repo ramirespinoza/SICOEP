@@ -1,10 +1,12 @@
 <template>
     <app-layout>
+        <!--
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
                 Cursos
             </h1>
         </template>
+        -->
 
         <container>
             <button

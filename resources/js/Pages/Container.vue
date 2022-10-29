@@ -1,11 +1,11 @@
 <template>
-    <div class="py-12">
+    <div class="py-12" >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg sm:py-6 lg:py-12">
+            <div class="bg-white  shadow-xl sm:rounded-lg sm:py-6 lg:py-22">
                 <!-- component -->
-                <div class="overflow-x-auto">
-                    <div class="min-w-screen bg-white flex justify-center bg-white font-sans overflow-hidden">
-                        <div class="w-full lg:w-5/6">
+                <div class="overflow-x-auto" style="background-color: rgb(227, 242, 253)">
+                    <div class="min-w-screen bg-white flex justify-center bg-white font-sans overflow-hidden" >
+                        <div class="w-full lg:w-5/6" >
                             <div v-if="$page.props.flash.danger" class="my-3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                                 <strong class="font-bold">{{ $page.props.flash.danger }}</strong>
                                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">

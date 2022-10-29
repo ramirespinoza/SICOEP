@@ -1,11 +1,12 @@
 <template>
     <app-layout>
+        <!--
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
                 Estudiantes
             </h1>
         </template>
-
+        -->
         <!-- List -->
         <container>
             <button

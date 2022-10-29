@@ -33,11 +33,11 @@
                     <tbody class="text-gray-600 text-sm font-light">
                     <tr v-for="school in students_by_school_report" :key="school.id" class="border-b border-gray-200 hover:bg-gray-100">
 
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                        <td class="py-3 pl-6 w-0 text-left whitespace-nowrap align-text-top text-xl font-semibold text-gray-800 leading-tight">
                             <span class="font-medium">{{ school.id }}</span>
                         </td>
 
-                        <td class="py-3 px-6 text-left">
+                        <td class="py-3 px-0 text-left align-text-top font-bold text-gray-800 leading-tight">
                             <span class="font-medium">{{ school.name }}</span>
                         </td>
 

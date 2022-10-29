@@ -16,7 +16,7 @@
 
 
         </div>
-            <div>
+            <div >
                 <img src="https://cnbguatemala.org/images/8/89/Logo_MINEDUC.png">
             </div>
 

@@ -1,11 +1,12 @@
 <template xmlns="http://www.w3.org/1999/html">
     <app-layout>
+        <!--
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
                 Inscripción de estudiantes
             </h1>
         </template>
-
+-->
         <!-- List -->
         <container>
                 <button

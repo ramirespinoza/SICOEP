@@ -1,12 +1,13 @@
 <template>
     <app-layout>
         <template #header>
+            <div style="width: 200px">
             <center><h1 class="estilotexto">
                 Reportes
             </h1></center>
             <nav class="bg-white border-b border-gray-100">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden" style="display: flex; flex-direction: column">
                     <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                         Bienvenido
                     </jet-nav-link>
@@ -17,13 +18,10 @@
                         Reporte de estudiantes inscritos por catedrático
                     </jet-nav-link>
 
-                    <jet-nav-link :href="route('course.index')" :active="route().current('course.index')">
-                        Cursos
+                    <jet-nav-link :href="route('students_by_professor_department')" :active="route().current('students_by_professor_department')">
+                        Reporte de estudiantes por departamento y municipio
                     </jet-nav-link>
 
-                    <jet-nav-link :href="route('activity.index')" :active="route().current('activity.index')">
-                        Actividades
-                    </jet-nav-link>
                 </div>
 
 
@@ -69,12 +67,13 @@
                     </div>
                 </div>
             </nav>
+            </div>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-10">
-                    <slot></slot>
+                    <slot ></slot>
                 </div>
             </div>
         </div>
@@ -106,7 +105,7 @@ export default {
 </script>
 <style scoped>
 .estilotexto {
-    font-size: 50px;
+    font-size: 25px;
 
 
 

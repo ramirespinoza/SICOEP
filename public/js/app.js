@@ -4709,322 +4709,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
-/* harmony import */ var _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Modal */ "./resources/js/Jetstream/Modal.vue");
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Modal: _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: {
-    errors: Object
-  },
-  data: function data() {
-    return {
-      form: {
-        personal_code: null,
-        name: null,
-        last_name: null,
-        grade_id: null,
-        section: null,
-        birth_date: null,
-        identification_document: null,
-        identification_document_number: null,
-        class_schedule_id: null,
-        professor_dpi: null,
-        tutelary_name: null,
-        tutelary_dpi: null
-      }
-    };
-  },
-  methods: {
-    submit: function submit() {
-      this.$inertia.post(route('student.store'), this.form);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Edit.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Edit.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: ['student', {
-    errors: Object
-  }],
-  data: function data() {
-    return {
-      form: {
-        personal_code: this.$props.student.personal_code,
-        name: this.$props.student.name,
-        last_name: this.$props.student.last_name,
-        grade_id: this.$props.student.grade_id,
-        section: this.$props.student.section,
-        birth_date: this.$props.student.birth_date,
-        identification_document: this.$props.student.identification_document,
-        identification_document_number: this.$props.student.identification_document_number,
-        class_schedule_id: this.$props.student.class_schedule_id,
-        professor_dpi: this.$props.student.professor_dpi,
-        tutelary_name: this.$props.student.tutelary_name,
-        tutelary_dpi: this.$props.student.tutelary_dpi
-      }
-    };
-  },
-  methods: {
-    submit: function submit() {
-      this.$inertia.put(route('student.update', this.$props.student.personal_code), this.form);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Index.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Index.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Modal */ "./resources/js/Pages/Modal.vue");
-/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
-/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    students: Array
-  },
-  components: {
-    DialogModal: _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__["default"],
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
-    vSelect: (vue_select__WEBPACK_IMPORTED_MODULE_4___default())
-  },
-  data: function data() {
-    return {
-      modals: {
-        showModal: false,
-        createModal: false,
-        editModal: false,
-        errorModal: false,
-        title: null
-      },
-      errors: "",
-      student: Array,
-      q: "",
-      form: {
-        personal_code: null,
-        name: null,
-        last_name: null,
-        birth_date: null,
-        identification_document: null,
-        identification_document_number: null,
-        tutelary_name: null,
-        tutelary_dpi: null
-      }
-    };
-  },
-  methods: {
-    getAll: function getAll() {
-      var _this = this;
-      var url = 'api/student/';
-      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        console.log(response.data.students);
-        _this.students = response.data.students;
-      });
-    },
-    /*************************** MODALS */
-    showShowModal: function showShowModal(personal_code) {
-      var _this2 = this;
-      var url = 'api/student/' + personal_code;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        console.log(response.data.student);
-        _this2.form = response.data.student;
-        console.log(_this2.form);
-        console.log(_this2.modals.showModal);
-        _this2.modals.title = "Ver";
-        _this2.modals.showModal = true;
-      });
-    },
-    showCreateModal: function showCreateModal() {
-      this.cleanForm();
-      this.modals.title = "Crear";
-      this.modals.createModal = true;
-    },
-    showEditModal: function showEditModal(personal_code) {
-      var _this3 = this;
-      var url = 'api/student/' + personal_code;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
-        console.log(response.data.student);
-        _this3.form = response.data.student;
-        _this3.modals.title = "Editar";
-        _this3.modals.editModal = true;
-      });
-    },
-    showErrorModal: function showErrorModal() {
-      this.modals.title = "Error";
-      this.modals.errorModal = true;
-    },
-    /*************************** FUNCTIONS */submit: function submit(form) {
-      var _this4 = this;
-      var url = 'api/student';
-      axios__WEBPACK_IMPORTED_MODULE_2___default().post(url, _objectSpread({}, form)).then(function (response) {
-        if (response.data.code === '1') {
-          _this4.cleanForm();
-          _this4.getAll();
-          _this4.modals.createModal = false;
-          _this4.$page.props.flash.successful = "¡Alumno Registrado!";
-        } else {
-          console.log(response.data.error);
-          _this4.errors = response.data.error;
-          _this4.$page.props.flash.successful = "No se pudo registart el alumno!";
-        }
-      })["catch"](function (error) {
-        _this4.errors = error.response.data;
-      });
-    },
-    update: function update(form) {
-      var _this5 = this;
-      var url = 'api/student/' + form.personal_code;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().put(url, _objectSpread({}, form)).then(function (response) {
-        if (response.data.code === '1') {
-          _this5.cleanForm();
-          _this5.getAll();
-          _this5.modals.editModal = false;
-          _this5.$page.props.flash.successful = "¡Alumno Actualizado!";
-        } else {
-          console.log(response.data.error);
-          _this5.errors = response.data.error;
-          _this5.$page.props.flash.danger = "No se pudo actualizar el alumno!";
-        }
-      })["catch"](function (error) {
-        _this5.errors = error.response.data;
-      });
-    },
-    cleanForm: function cleanForm() {
-      console.log("hello cleanform");
-      this.form = {
-        personal_code: null,
-        name: null,
-        last_name: null,
-        birth_date: null,
-        identification_document: null,
-        identification_document_number: null,
-        tutelary_name: null,
-        tutelary_dpi: null
-      };
-    }
-
-    /*************************** CHANGE VALUES */
-  },
-
-  watch: {
-    q: function q(value) {
-      this.$inertia.replace(this.route('student.index', {
-        q: value
-      }));
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: ['student', {
-    errors: Object
-  }],
-  data: function data() {
-    return {
-      form: {
-        personal_code: this.$props.student.personal_code,
-        name: this.$props.student.name,
-        last_name: this.$props.student.last_name,
-        grade_id: this.$props.student.grade_id,
-        section: this.$props.student.section,
-        birth_date: this.$props.student.birth_date,
-        identification_document: this.$props.student.identification_document,
-        identification_document_number: this.$props.student.identification_document_number,
-        class_schedule_id: this.$props.student.class_schedule_id,
-        professor_dpi: this.$props.student.professor_dpi,
-        tutelary_name: this.$props.student.tutelary_name,
-        tutelary_dpi: this.$props.student.tutelary_dpi
-      }
-    };
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js& ***!
@@ -5355,6 +5039,322 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         q: value
       }));
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
+/* harmony import */ var _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Modal */ "./resources/js/Jetstream/Modal.vue");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Modal: _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    errors: Object
+  },
+  data: function data() {
+    return {
+      form: {
+        personal_code: null,
+        name: null,
+        last_name: null,
+        grade_id: null,
+        section: null,
+        birth_date: null,
+        identification_document: null,
+        identification_document_number: null,
+        class_schedule_id: null,
+        professor_dpi: null,
+        tutelary_name: null,
+        tutelary_dpi: null
+      }
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.post(route('student.store'), this.form);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Edit.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Edit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['student', {
+    errors: Object
+  }],
+  data: function data() {
+    return {
+      form: {
+        personal_code: this.$props.student.personal_code,
+        name: this.$props.student.name,
+        last_name: this.$props.student.last_name,
+        grade_id: this.$props.student.grade_id,
+        section: this.$props.student.section,
+        birth_date: this.$props.student.birth_date,
+        identification_document: this.$props.student.identification_document,
+        identification_document_number: this.$props.student.identification_document_number,
+        class_schedule_id: this.$props.student.class_schedule_id,
+        professor_dpi: this.$props.student.professor_dpi,
+        tutelary_name: this.$props.student.tutelary_name,
+        tutelary_dpi: this.$props.student.tutelary_dpi
+      }
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.put(route('student.update', this.$props.student.personal_code), this.form);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Index.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Index.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Modal */ "./resources/js/Pages/Modal.vue");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    students: Array
+  },
+  components: {
+    DialogModal: _Pages_Modal__WEBPACK_IMPORTED_MODULE_3__["default"],
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
+    vSelect: (vue_select__WEBPACK_IMPORTED_MODULE_4___default())
+  },
+  data: function data() {
+    return {
+      modals: {
+        showModal: false,
+        createModal: false,
+        editModal: false,
+        errorModal: false,
+        title: null
+      },
+      errors: "",
+      student: Array,
+      q: "",
+      form: {
+        personal_code: null,
+        name: null,
+        last_name: null,
+        birth_date: null,
+        identification_document: null,
+        identification_document_number: null,
+        tutelary_name: null,
+        tutelary_dpi: null
+      }
+    };
+  },
+  methods: {
+    getAll: function getAll() {
+      var _this = this;
+      var url = 'api/student/';
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        console.log(response.data.students);
+        _this.students = response.data.students;
+      });
+    },
+    /*************************** MODALS */
+    showShowModal: function showShowModal(personal_code) {
+      var _this2 = this;
+      var url = 'api/student/' + personal_code;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        console.log(response.data.student);
+        _this2.form = response.data.student;
+        console.log(_this2.form);
+        console.log(_this2.modals.showModal);
+        _this2.modals.title = "Ver";
+        _this2.modals.showModal = true;
+      });
+    },
+    showCreateModal: function showCreateModal() {
+      this.cleanForm();
+      this.modals.title = "Crear";
+      this.modals.createModal = true;
+    },
+    showEditModal: function showEditModal(personal_code) {
+      var _this3 = this;
+      var url = 'api/student/' + personal_code;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
+        console.log(response.data.student);
+        _this3.form = response.data.student;
+        _this3.modals.title = "Editar";
+        _this3.modals.editModal = true;
+      });
+    },
+    showErrorModal: function showErrorModal() {
+      this.modals.title = "Error";
+      this.modals.errorModal = true;
+    },
+    /*************************** FUNCTIONS */submit: function submit(form) {
+      var _this4 = this;
+      var url = 'api/student';
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post(url, _objectSpread({}, form)).then(function (response) {
+        if (response.data.code === '1') {
+          _this4.cleanForm();
+          _this4.getAll();
+          _this4.modals.createModal = false;
+          _this4.$page.props.flash.successful = "¡Alumno Registrado!";
+        } else {
+          console.log(response.data.error);
+          _this4.errors = response.data.error;
+          _this4.$page.props.flash.successful = "No se pudo registart el alumno!";
+        }
+      })["catch"](function (error) {
+        _this4.errors = error.response.data;
+      });
+    },
+    update: function update(form) {
+      var _this5 = this;
+      var url = 'api/student/' + form.personal_code;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().put(url, _objectSpread({}, form)).then(function (response) {
+        if (response.data.code === '1') {
+          _this5.cleanForm();
+          _this5.getAll();
+          _this5.modals.editModal = false;
+          _this5.$page.props.flash.successful = "¡Alumno Actualizado!";
+        } else {
+          console.log(response.data.error);
+          _this5.errors = response.data.error;
+          _this5.$page.props.flash.danger = "No se pudo actualizar el alumno!";
+        }
+      })["catch"](function (error) {
+        _this5.errors = error.response.data;
+      });
+    },
+    cleanForm: function cleanForm() {
+      console.log("hello cleanform");
+      this.form = {
+        personal_code: null,
+        name: null,
+        last_name: null,
+        birth_date: null,
+        identification_document: null,
+        identification_document_number: null,
+        tutelary_name: null,
+        tutelary_dpi: null
+      };
+    }
+
+    /*************************** CHANGE VALUES */
+  },
+
+  watch: {
+    q: function q(value) {
+      this.$inertia.replace(this.route('student.index', {
+        q: value
+      }));
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Pages_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Container */ "./resources/js/Pages/Container.vue");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Container: _Pages_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['student', {
+    errors: Object
+  }],
+  data: function data() {
+    return {
+      form: {
+        personal_code: this.$props.student.personal_code,
+        name: this.$props.student.name,
+        last_name: this.$props.student.last_name,
+        grade_id: this.$props.student.grade_id,
+        section: this.$props.student.section,
+        birth_date: this.$props.student.birth_date,
+        identification_document: this.$props.student.identification_document,
+        identification_document_number: this.$props.student.identification_document_number,
+        class_schedule_id: this.$props.student.class_schedule_id,
+        professor_dpi: this.$props.student.professor_dpi,
+        tutelary_name: this.$props.student.tutelary_name,
+        tutelary_dpi: this.$props.student.tutelary_dpi
+      }
+    };
   }
 });
 
@@ -7490,7 +7490,7 @@ var render = function render() {
         return _vm.showCreateModal();
       }
     }
-  }, [_vm._v("\n                Nueva Actividad\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n            Nueva Actividad\n        ")]), _vm._v(" "), _c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -7725,7 +7725,7 @@ var render = function render() {
               _vm.modals.showModal = false;
             }
           }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])])];
       },
       proxy: true
     }])
@@ -8031,7 +8031,7 @@ var render = function render() {
               _vm.modals.errorModal = false;
             }
           }
-        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
+        }, [_vm._v("\n                        Cerrar\n                    ")])])])];
       },
       proxy: true
     }])
@@ -10486,7 +10486,7 @@ var render = function render() {
         return _vm.showCreateModal(_vm.professor);
       }
     }
-  }, [_vm._v("\n                Nuevo Catedratico\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n            Nuevo Catedratico\n        ")]), _vm._v(" "), _c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -10766,7 +10766,7 @@ var render = function render() {
               _vm.modals.showModal = false;
             }
           }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])])];
       },
       proxy: true
     }])
@@ -10924,7 +10924,46 @@ var render = function render() {
           }
         })]), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-1"
-        })])]), _vm._v(" "), _c("div", {
+        }), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "school_id"
+          }
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("v-select", {
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            filter: _vm.schoolSearch,
+            options: _vm.schools,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(school) {
+              return school.id + " " + school.name;
+            }
+          },
+          on: {
+            input: function input($event) {
+              _vm.form.school_id = _vm.form.school_id;
+            }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref) {
+              var id = _ref.id,
+                name = _ref.name;
+              return [_vm._v("\n                                        " + _vm._s(id) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.school_id,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "school_id", $$v);
+            },
+            expression: "form.school_id"
+          }
+        })], 1)])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
@@ -11163,7 +11202,7 @@ var render = function render() {
               _vm.modals.errorModal = false;
             }
           }
-        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
+        }, [_vm._v("\n                        Cerrar\n                    ")])])])];
       },
       proxy: true
     }])
@@ -12002,7 +12041,7 @@ var render = function render() {
         return _vm.showCreateModal(_vm.schools.id);
       }
     }
-  }, [_vm._v("\n                Nueva Escuela\n            ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n            Nueva Escuela\n        ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -12301,7 +12340,7 @@ var render = function render() {
               _vm.modals.showModal = false;
             }
           }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+        }, [_vm._v("\n                            Cerrar\n                        ")])])])])];
       },
       proxy: true
     }])
@@ -12631,6 +12670,2062 @@ var render = function render() {
             }
           }, [_vm._v(_vm._s(municipality.name))]);
         }), 0)])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: function click($event) {
+              _vm.modals.editModal = false;
+            }
+          }
+        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "submit"
+          }
+        }, [_vm._v("\n                            Actualizar\n                        ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.errorModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.errorModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700"
+        }, [_vm._v(_vm._s(_vm.errors))])])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          on: {
+            click: function click($event) {
+              _vm.modals.errorModal = false;
+            }
+          }
+        }, [_vm._v("\n                        Cerrar\n                    ")])])])];
+      },
+      proxy: true
+    }])
+  })], 1);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("app-layout", {
+    scopedSlots: _vm._u([{
+      key: "header",
+      fn: function fn() {
+        return [_c("h1", {
+          staticClass: "font-semibold text-xl text-gray-800 leading-tight"
+        }, [_vm._v("\n            Inscripción de estudiantes\n        ")])];
+      },
+      proxy: true
+    }])
+  }, [_vm._v(" "), _c("container", [_c("button", {
+    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.showCreateModal(_vm.student_enrollments.id);
+      }
+    }
+  }, [_vm._v("\n                Inscribir estudiante\n            ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.q,
+      expression: "q"
+    }],
+    staticClass: "mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+    attrs: {
+      type: "text",
+      placeholder: "Buscar..."
+    },
+    domProps: {
+      value: _vm.q
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.q = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "bg-white shadow-md rounded my-6"
+  }, [_vm.student_enrollments.length !== 0 ? _c("table", {
+    staticClass: "min-w-max w-full table-auto"
+  }, [_c("thead", [_c("tr", {
+    staticClass: "bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+  }, [_c("th", {
+    staticClass: "py-3 px-6 text-left"
+  }, [_vm._v("ID Inscripción")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-left"
+  }, [_vm._v("Código Personal")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-left"
+  }, [_vm._v("Nombre")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-center"
+  }, [_vm._v("Apellido")]), _vm._v(" "), _c("th", {
+    staticClass: "py-3 px-6 text-center"
+  }, [_vm._v("Actions")])])]), _vm._v(" "), _c("tbody", {
+    staticClass: "text-gray-600 text-sm font-light"
+  }, _vm._l(_vm.student_enrollments, function (student_enrollment) {
+    return _c("tr", {
+      key: student_enrollment.id,
+      staticClass: "border-b border-gray-200 hover:bg-gray-100"
+    }, [_c("td", {
+      staticClass: "py-3 px-6 text-left whitespace-nowrap"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student_enrollment.id))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-left whitespace-nowrap"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student_enrollment.student_personal_code))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-left"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student_enrollment.student.name))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-center"
+    }, [_c("span", {
+      staticClass: "font-medium"
+    }, [_vm._v(_vm._s(student_enrollment.student.last_name))])]), _vm._v(" "), _c("td", {
+      staticClass: "py-3 px-6 text-center"
+    }, [_c("div", {
+      staticClass: "flex item-center justify-center"
+    }, [_c("button", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.showShowModal(student_enrollment.id);
+        }
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      }
+    }), _vm._v(" "), _c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+      }
+    })])]), _vm._v(" "), _c("button", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.showEditModal(student_enrollment.id);
+        }
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+      }
+    })])]), _vm._v(" "), _c("inertia-link", {
+      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
+      attrs: {
+        method: "delete",
+        href: _vm.route("student_enrollment.destroy", student_enrollment.id),
+        as: "button"
+      }
+    }, [_c("svg", {
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }
+    }, [_c("path", {
+      attrs: {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+      }
+    })])])], 1)])]);
+  }), 0)]) : _vm._e(), _vm._v(" "), _vm.student_enrollments.length === 0 ? _c("h1", {
+    staticClass: "font-semibold text-xl text-gray-800 leading-tight px-36"
+  }, [_vm._v("\n                    **Sin resultados**\n                ")]) : _vm._e()])]), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.showModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.showModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.modals.showModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.id,
+            expression: "form.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "id", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.personal_code,
+            expression: "form.student.personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "name"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.name,
+            expression: "form.student.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "last_name"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.last_name,
+            expression: "form.student.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "grade_id"
+          }
+        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.grades, function (grade) {
+          return _c("option", {
+            key: grade.id,
+            domProps: {
+              value: grade.id
+            }
+          }, [_vm._v(_vm._s(grade.name))]);
+        }), 0)]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "section"
+          }
+        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, [_c("option", {
+          attrs: {
+            value: "A"
+          }
+        }, [_vm._v("A")]), _c("option", {
+          attrs: {
+            value: "B"
+          }
+        }, [_vm._v("B")]), _c("option", {
+          attrs: {
+            value: "C"
+          }
+        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
+          attrs: {
+            value: "D"
+          }
+        }, [_vm._v("D")]), _c("option", {
+          attrs: {
+            value: "E"
+          }
+        }, [_vm._v("E")]), _c("option", {
+          attrs: {
+            value: "F"
+          }
+        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de inscripción")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.enrollment_date,
+            expression: "form.enrollment_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.enrollment_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "enrollment_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.birth_date,
+            expression: "form.student.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "class_schedule_id"
+          }
+        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.class_schedules, function (class_schedule) {
+          return _c("option", {
+            key: class_schedule.id,
+            domProps: {
+              value: class_schedule.id
+            }
+          }, [_vm._v(_vm._s(class_schedule.journey))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document"
+          }
+        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document,
+            expression: "form.student.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document_number"
+          }
+        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document_number,
+            expression: "form.student.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.departament.id,
+            expression: "form.professor.school.municipality.departament.id"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeMunicipality]
+          }
+        }, _vm._l(_vm.departaments, function (departament) {
+          return _c("option", {
+            key: departament.id,
+            domProps: {
+              value: departament.id
+            }
+          }, [_vm._v(_vm._s(departament.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.id,
+            expression: "form.professor.school.municipality.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeSchool]
+          }
+        }, _vm._l(_vm.municipalities, function (municipality) {
+          return _c("option", {
+            key: municipality.id,
+            attrs: {
+              disabled: ""
+            },
+            domProps: {
+              value: municipality.id
+            }
+          }, [_vm._v(_vm._s(municipality.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.id,
+            expression: "form.professor.school.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            required: true,
+            disabled: ""
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeProfessor]
+          }
+        }, _vm._l(_vm.schools, function (school) {
+          return _c("option", {
+            key: school.id,
+            domProps: {
+              value: school.id
+            }
+          }, [_vm._v(_vm._s(school.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            disabled: "",
+            filter: _vm.professorSearch,
+            options: _vm.professors,
+            "get-option-label": function getOptionLabel(professor) {
+              return professor.dpi + " " + professor.name + " " + professor.last_name;
+            }
+          },
+          on: {
+            input: _vm.professorChanged
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref) {
+              var dpi = _ref.dpi,
+                name = _ref.name,
+                last_name = _ref.last_name;
+              return [_vm._v("\n                                                " + _vm._s(dpi) + "\n                                                "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
+            }
+          }]),
+          model: {
+            value: _vm.professor,
+            callback: function callback($$v) {
+              _vm.professor = $$v;
+            },
+            expression: "professor"
+          }
+        })], 1), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_name"
+          }
+        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_name,
+            expression: "form.student.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            disabled: "",
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_dpi"
+          }
+        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_dpi,
+            expression: "form.student.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            disabled: "",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          on: {
+            click: function click($event) {
+              _vm.modals.showModal = false;
+            }
+          }
+        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.createModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.createModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.submit(_vm.form);
+              _vm.modals.createModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student_personal_code,
+            expression: "form.student_personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            required: true,
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student_personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "student_personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "name"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.name,
+            expression: "form.student.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "last_name"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.last_name,
+            expression: "form.student.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "grade_id"
+          }
+        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.grades, function (grade) {
+          return _c("option", {
+            key: grade.id,
+            domProps: {
+              value: grade.id
+            }
+          }, [_vm._v(_vm._s(grade.name))]);
+        }), 0)]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "section"
+          }
+        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, [_c("option", {
+          attrs: {
+            value: "A"
+          }
+        }, [_vm._v("A")]), _c("option", {
+          attrs: {
+            value: "B"
+          }
+        }, [_vm._v("B")]), _c("option", {
+          attrs: {
+            value: "C"
+          }
+        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
+          attrs: {
+            value: "D"
+          }
+        }, [_vm._v("D")]), _c("option", {
+          attrs: {
+            value: "E"
+          }
+        }, [_vm._v("E")]), _c("option", {
+          attrs: {
+            value: "F"
+          }
+        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.birth_date,
+            expression: "form.student.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "class_schedule_id"
+          }
+        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.class_schedules, function (class_schedule) {
+          return _c("option", {
+            key: class_schedule.id,
+            domProps: {
+              value: class_schedule.id
+            }
+          }, [_vm._v(_vm._s(class_schedule.journey))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document"
+          }
+        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document,
+            expression: "form.student.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document_number"
+          }
+        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document_number,
+            expression: "form.student.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.departament.id,
+            expression: "form.professor.school.municipality.departament.id"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeMunicipality]
+          }
+        }, _vm._l(_vm.departaments, function (departament) {
+          return _c("option", {
+            key: departament.id,
+            domProps: {
+              value: departament.id
+            }
+          }, [_vm._v(_vm._s(departament.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.id,
+            expression: "form.professor.school.municipality.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeSchool]
+          }
+        }, _vm._l(_vm.municipalities, function (municipality) {
+          return _c("option", {
+            key: municipality.id,
+            domProps: {
+              value: municipality.id
+            }
+          }, [_vm._v(_vm._s(municipality.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.id,
+            expression: "form.professor.school.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeProfessor]
+          }
+        }, _vm._l(_vm.schools, function (school) {
+          return _c("option", {
+            key: school.id,
+            domProps: {
+              value: school.id
+            }
+          }, [_vm._v(_vm._s(school.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            filter: _vm.professorSearch,
+            options: _vm.professors,
+            "get-option-label": function getOptionLabel(professor) {
+              return professor.dpi + " " + professor.name + " " + professor.last_name;
+            }
+          },
+          on: {
+            input: _vm.professorChanged
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref2) {
+              var dpi = _ref2.dpi,
+                name = _ref2.name,
+                last_name = _ref2.last_name;
+              return [_vm._v("\n                                        " + _vm._s(dpi) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
+            }
+          }]),
+          model: {
+            value: _vm.professor,
+            callback: function callback($$v) {
+              _vm.professor = $$v;
+            },
+            expression: "professor"
+          }
+        })], 1), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_name"
+          }
+        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_name,
+            expression: "form.student.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_dpi"
+          }
+        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_dpi,
+            expression: "form.student.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
+          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
+        }, [_c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: _vm.cleanForm
+          }
+        }, [_vm._v("\n                            Limpiar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: function click($event) {
+              _vm.modals.createModal = false;
+            }
+          }
+        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
+          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+          attrs: {
+            type: "submit"
+          }
+        }, [_vm._v("\n                            Guardar\n                        ")])])])])];
+      },
+      proxy: true
+    }])
+  }), _vm._v(" "), _c("dialog-modal", {
+    attrs: {
+      show: _vm.modals.editModal
+    },
+    on: {
+      close: function close($event) {
+        _vm.modals.editModal = false;
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "title",
+      fn: function fn() {
+        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
+      },
+      proxy: true
+    }, {
+      key: "content",
+      fn: function fn() {
+        return [_c("form", {
+          on: {
+            submit: function submit($event) {
+              $event.preventDefault();
+              _vm.update(_vm.form);
+              _vm.modals.editModal = false;
+            }
+          }
+        }, [_c("div", {
+          staticClass: "overflow-hidden shadow sm:rounded-md"
+        }, [_c("div", {
+          staticClass: "bg-white px-4 py-5 sm:p-6"
+        }, [_c("div", {
+          staticClass: "grid grid-cols-6 gap-6"
+        }, [_c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.id,
+            expression: "form.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.id
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "id", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "personal_code"
+          }
+        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.personal_code,
+            expression: "form.student.personal_code"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "personal_code",
+            id: "personal_code",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.personal_code
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "personal_code", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "name"
+          }
+        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.name,
+            expression: "form.student.name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "name",
+            id: "name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "last_name"
+          }
+        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.last_name,
+            expression: "form.student.last_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "last_name",
+            id: "last_name",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.last_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "last_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "grade_id"
+          }
+        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.grade_id,
+            expression: "form.grade_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.grades, function (grade) {
+          return _c("option", {
+            key: grade.id,
+            domProps: {
+              value: grade.id
+            }
+          }, [_vm._v(_vm._s(grade.name))]);
+        }), 0)]), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "section"
+          }
+        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.section,
+            expression: "form.section"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, [_c("option", {
+          attrs: {
+            value: "A"
+          }
+        }, [_vm._v("A")]), _c("option", {
+          attrs: {
+            value: "B"
+          }
+        }, [_vm._v("B")]), _c("option", {
+          attrs: {
+            value: "C"
+          }
+        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
+          attrs: {
+            value: "D"
+          }
+        }, [_vm._v("D")]), _c("option", {
+          attrs: {
+            value: "E"
+          }
+        }, [_vm._v("E")]), _c("option", {
+          attrs: {
+            value: "F"
+          }
+        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de inscripción")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.enrollment_date,
+            expression: "form.enrollment_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.enrollment_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form, "enrollment_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "birth_date"
+          }
+        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.birth_date,
+            expression: "form.student.birth_date"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "date",
+            name: "birth_date",
+            id: "birth_date",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.birth_date
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "class_schedule_id"
+          }
+        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.class_schedule_id,
+            expression: "form.class_schedule_id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }
+          }
+        }, _vm._l(_vm.class_schedules, function (class_schedule) {
+          return _c("option", {
+            key: class_schedule.id,
+            domProps: {
+              value: class_schedule.id
+            }
+          }, [_vm._v(_vm._s(class_schedule.journey))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document"
+          }
+        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document,
+            expression: "form.student.identification_document"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "text",
+            name: "identification_document",
+            id: "identification_document",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "identification_document_number"
+          }
+        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.identification_document_number,
+            expression: "form.student.identification_document_number"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
+          attrs: {
+            type: "number",
+            name: "identification_document_number",
+            id: "identification_document_number",
+            disabled: "",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.identification_document_number
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.departament.id,
+            expression: "form.professor.school.municipality.departament.id"
+          }],
+          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeMunicipality]
+          }
+        }, _vm._l(_vm.departaments, function (departament) {
+          return _c("option", {
+            key: departament.id,
+            domProps: {
+              value: departament.id
+            }
+          }, [_vm._v(_vm._s(departament.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.municipality.id,
+            expression: "form.professor.school.municipality.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeSchool]
+          }
+        }, _vm._l(_vm.municipalities, function (municipality) {
+          return _c("option", {
+            key: municipality.id,
+            domProps: {
+              value: municipality.id
+            }
+          }, [_vm._v(_vm._s(municipality.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.professor.school.id,
+            expression: "form.professor.school.id"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            required: true
+          },
+          on: {
+            change: [function ($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                return o.selected;
+              }).map(function (o) {
+                var val = "_value" in o ? o._value : o.value;
+                return val;
+              });
+              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            }, _vm.changeProfessor]
+          }
+        }, _vm._l(_vm.schools, function (school) {
+          return _c("option", {
+            key: school.id,
+            domProps: {
+              value: school.id
+            }
+          }, [_vm._v(_vm._s(school.name))]);
+        }), 0)]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-3"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "professor_dpi"
+          }
+        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            filter: _vm.professorSearch,
+            options: _vm.professors,
+            "get-option-label": function getOptionLabel(professor) {
+              return professor.dpi + " " + professor.name + " " + professor.last_name;
+            }
+          },
+          on: {
+            input: _vm.professorChanged
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref3) {
+              var dpi = _ref3.dpi,
+                name = _ref3.name,
+                last_name = _ref3.last_name;
+              return [_vm._v("\n                                        " + _vm._s(dpi) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
+            }
+          }]),
+          model: {
+            value: _vm.professor,
+            callback: function callback($$v) {
+              _vm.professor = $$v;
+            },
+            expression: "professor"
+          }
+        })], 1), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-2"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_name"
+          }
+        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_name,
+            expression: "form.student.tutelary_name"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "text",
+            name: "tutelary_name",
+            id: "tutelary_name",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
+            }
+          }
+        })]), _vm._v(" "), _c("div", {
+          staticClass: "col-span-6 sm:col-span-1"
+        }, [_c("label", {
+          staticClass: "block text-sm font-medium text-gray-700",
+          attrs: {
+            "for": "tutelary_dpi"
+          }
+        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.student.tutelary_dpi,
+            expression: "form.student.tutelary_dpi"
+          }],
+          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+          attrs: {
+            type: "number",
+            name: "tutelary_dpi",
+            id: "tutelary_dpi",
+            autocomplete: "street-address"
+          },
+          domProps: {
+            value: _vm.form.student.tutelary_dpi
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
+            }
+          }
+        })])])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
@@ -15031,2062 +17126,6 @@ var render = function render() {
       href: _vm.route("student.index")
     }
   }, [_vm._v("\n                            Cerrar\n                        ")])], 1)])])])])], 1);
-};
-var staticRenderFns = [];
-render._withStripped = true;
-
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("app-layout", {
-    scopedSlots: _vm._u([{
-      key: "header",
-      fn: function fn() {
-        return [_c("h1", {
-          staticClass: "font-semibold text-xl text-gray-800 leading-tight"
-        }, [_vm._v("\n            Inscripción de estudiantes\n        ")])];
-      },
-      proxy: true
-    }])
-  }, [_vm._v(" "), _c("container", [_c("button", {
-    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.showCreateModal(_vm.student_enrollments.id);
-      }
-    }
-  }, [_vm._v("\n                Inscribir estudiante\n            ")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.q,
-      expression: "q"
-    }],
-    staticClass: "mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-    attrs: {
-      type: "text",
-      placeholder: "Buscar..."
-    },
-    domProps: {
-      value: _vm.q
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.q = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "bg-white shadow-md rounded my-6"
-  }, [_vm.student_enrollments.length !== 0 ? _c("table", {
-    staticClass: "min-w-max w-full table-auto"
-  }, [_c("thead", [_c("tr", {
-    staticClass: "bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
-  }, [_c("th", {
-    staticClass: "py-3 px-6 text-left"
-  }, [_vm._v("ID Inscripción")]), _vm._v(" "), _c("th", {
-    staticClass: "py-3 px-6 text-left"
-  }, [_vm._v("Código Personal")]), _vm._v(" "), _c("th", {
-    staticClass: "py-3 px-6 text-left"
-  }, [_vm._v("Nombre")]), _vm._v(" "), _c("th", {
-    staticClass: "py-3 px-6 text-center"
-  }, [_vm._v("Apellido")]), _vm._v(" "), _c("th", {
-    staticClass: "py-3 px-6 text-center"
-  }, [_vm._v("Actions")])])]), _vm._v(" "), _c("tbody", {
-    staticClass: "text-gray-600 text-sm font-light"
-  }, _vm._l(_vm.student_enrollments, function (student_enrollment) {
-    return _c("tr", {
-      key: student_enrollment.id,
-      staticClass: "border-b border-gray-200 hover:bg-gray-100"
-    }, [_c("td", {
-      staticClass: "py-3 px-6 text-left whitespace-nowrap"
-    }, [_c("span", {
-      staticClass: "font-medium"
-    }, [_vm._v(_vm._s(student_enrollment.id))])]), _vm._v(" "), _c("td", {
-      staticClass: "py-3 px-6 text-left whitespace-nowrap"
-    }, [_c("span", {
-      staticClass: "font-medium"
-    }, [_vm._v(_vm._s(student_enrollment.student_personal_code))])]), _vm._v(" "), _c("td", {
-      staticClass: "py-3 px-6 text-left"
-    }, [_c("span", {
-      staticClass: "font-medium"
-    }, [_vm._v(_vm._s(student_enrollment.student.name))])]), _vm._v(" "), _c("td", {
-      staticClass: "py-3 px-6 text-center"
-    }, [_c("span", {
-      staticClass: "font-medium"
-    }, [_vm._v(_vm._s(student_enrollment.student.last_name))])]), _vm._v(" "), _c("td", {
-      staticClass: "py-3 px-6 text-center"
-    }, [_c("div", {
-      staticClass: "flex item-center justify-center"
-    }, [_c("button", {
-      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
-      on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.showShowModal(student_enrollment.id);
-        }
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }
-    }, [_c("path", {
-      attrs: {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-      }
-    }), _vm._v(" "), _c("path", {
-      attrs: {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-      }
-    })])]), _vm._v(" "), _c("button", {
-      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
-      on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.showEditModal(student_enrollment.id);
-        }
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }
-    }, [_c("path", {
-      attrs: {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-      }
-    })])]), _vm._v(" "), _c("inertia-link", {
-      staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
-      attrs: {
-        method: "delete",
-        href: _vm.route("student_enrollment.destroy", student_enrollment.id),
-        as: "button"
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }
-    }, [_c("path", {
-      attrs: {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-      }
-    })])])], 1)])]);
-  }), 0)]) : _vm._e(), _vm._v(" "), _vm.student_enrollments.length === 0 ? _c("h1", {
-    staticClass: "font-semibold text-xl text-gray-800 leading-tight px-36"
-  }, [_vm._v("\n                    **Sin resultados**\n                ")]) : _vm._e()])]), _vm._v(" "), _c("dialog-modal", {
-    attrs: {
-      show: _vm.modals.showModal
-    },
-    on: {
-      close: function close($event) {
-        _vm.modals.showModal = false;
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "title",
-      fn: function fn() {
-        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
-      },
-      proxy: true
-    }, {
-      key: "content",
-      fn: function fn() {
-        return [_c("form", {
-          on: {
-            submit: function submit($event) {
-              $event.preventDefault();
-              _vm.modals.showModal = false;
-            }
-          }
-        }, [_c("div", {
-          staticClass: "overflow-hidden shadow sm:rounded-md"
-        }, [_c("div", {
-          staticClass: "bg-white px-4 py-5 sm:p-6"
-        }, [_c("div", {
-          staticClass: "grid grid-cols-6 gap-6"
-        }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "personal_code"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "personal_code",
-            id: "personal_code",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "personal_code"
-          }
-        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.personal_code,
-            expression: "form.student.personal_code"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "personal_code",
-            id: "personal_code",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.personal_code
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "personal_code", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "name"
-          }
-        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.name,
-            expression: "form.student.name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "name",
-            id: "name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "last_name"
-          }
-        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.last_name,
-            expression: "form.student.last_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "last_name",
-            id: "last_name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.last_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "last_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "grade_id"
-          }
-        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.grade_id,
-            expression: "form.grade_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.grades, function (grade) {
-          return _c("option", {
-            key: grade.id,
-            domProps: {
-              value: grade.id
-            }
-          }, [_vm._v(_vm._s(grade.name))]);
-        }), 0)]), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "section"
-          }
-        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.section,
-            expression: "form.section"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, [_c("option", {
-          attrs: {
-            value: "A"
-          }
-        }, [_vm._v("A")]), _c("option", {
-          attrs: {
-            value: "B"
-          }
-        }, [_vm._v("B")]), _c("option", {
-          attrs: {
-            value: "C"
-          }
-        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
-          attrs: {
-            value: "D"
-          }
-        }, [_vm._v("D")]), _c("option", {
-          attrs: {
-            value: "E"
-          }
-        }, [_vm._v("E")]), _c("option", {
-          attrs: {
-            value: "F"
-          }
-        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "birth_date"
-          }
-        }, [_vm._v("Fecha de inscripción")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.enrollment_date,
-            expression: "form.enrollment_date"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "date",
-            name: "birth_date",
-            id: "birth_date",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.enrollment_date
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "enrollment_date", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "birth_date"
-          }
-        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.birth_date,
-            expression: "form.student.birth_date"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "date",
-            name: "birth_date",
-            id: "birth_date",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.birth_date
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "class_schedule_id"
-          }
-        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.class_schedule_id,
-            expression: "form.class_schedule_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.class_schedules, function (class_schedule) {
-          return _c("option", {
-            key: class_schedule.id,
-            domProps: {
-              value: class_schedule.id
-            }
-          }, [_vm._v(_vm._s(class_schedule.journey))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document"
-          }
-        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document,
-            expression: "form.student.identification_document"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "identification_document",
-            id: "identification_document",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document_number"
-          }
-        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document_number,
-            expression: "form.student.identification_document_number"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "number",
-            name: "identification_document_number",
-            id: "identification_document_number",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document_number
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.departament.id,
-            expression: "form.professor.school.municipality.departament.id"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeMunicipality]
-          }
-        }, _vm._l(_vm.departaments, function (departament) {
-          return _c("option", {
-            key: departament.id,
-            domProps: {
-              value: departament.id
-            }
-          }, [_vm._v(_vm._s(departament.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.id,
-            expression: "form.professor.school.municipality.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeSchool]
-          }
-        }, _vm._l(_vm.municipalities, function (municipality) {
-          return _c("option", {
-            key: municipality.id,
-            attrs: {
-              disabled: ""
-            },
-            domProps: {
-              value: municipality.id
-            }
-          }, [_vm._v(_vm._s(municipality.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.id,
-            expression: "form.professor.school.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            required: true,
-            disabled: ""
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeProfessor]
-          }
-        }, _vm._l(_vm.schools, function (school) {
-          return _c("option", {
-            key: school.id,
-            domProps: {
-              value: school.id
-            }
-          }, [_vm._v(_vm._s(school.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-3"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            disabled: "",
-            filter: _vm.professorSearch,
-            options: _vm.professors,
-            "get-option-label": function getOptionLabel(professor) {
-              return professor.dpi + " " + professor.name + " " + professor.last_name;
-            }
-          },
-          on: {
-            input: _vm.professorChanged
-          },
-          scopedSlots: _vm._u([{
-            key: "option",
-            fn: function fn(_ref) {
-              var dpi = _ref.dpi,
-                name = _ref.name,
-                last_name = _ref.last_name;
-              return [_vm._v("\n                                                " + _vm._s(dpi) + "\n                                                "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
-            }
-          }]),
-          model: {
-            value: _vm.professor,
-            callback: function callback($$v) {
-              _vm.professor = $$v;
-            },
-            expression: "professor"
-          }
-        })], 1), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_name"
-          }
-        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_name,
-            expression: "form.student.tutelary_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            disabled: "",
-            type: "text",
-            name: "tutelary_name",
-            id: "tutelary_name",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_dpi"
-          }
-        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_dpi,
-            expression: "form.student.tutelary_dpi"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "number",
-            disabled: "",
-            name: "tutelary_dpi",
-            id: "tutelary_dpi",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_dpi
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
-            }
-          }
-        })])])]), _vm._v(" "), _c("div", {
-          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
-        }, [_c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          on: {
-            click: function click($event) {
-              _vm.modals.showModal = false;
-            }
-          }
-        }, [_vm._v("\n                                    Cerrar\n                                ")])])])])];
-      },
-      proxy: true
-    }])
-  }), _vm._v(" "), _c("dialog-modal", {
-    attrs: {
-      show: _vm.modals.createModal
-    },
-    on: {
-      close: function close($event) {
-        _vm.modals.createModal = false;
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "title",
-      fn: function fn() {
-        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
-      },
-      proxy: true
-    }, {
-      key: "content",
-      fn: function fn() {
-        return [_c("form", {
-          on: {
-            submit: function submit($event) {
-              $event.preventDefault();
-              _vm.submit(_vm.form);
-              _vm.modals.createModal = false;
-            }
-          }
-        }, [_c("div", {
-          staticClass: "overflow-hidden shadow sm:rounded-md"
-        }, [_c("div", {
-          staticClass: "bg-white px-4 py-5 sm:p-6"
-        }, [_c("div", {
-          staticClass: "grid grid-cols-6 gap-6"
-        }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "personal_code"
-          }
-        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student_personal_code,
-            expression: "form.student_personal_code"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "personal_code",
-            id: "personal_code",
-            required: true,
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student_personal_code
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "student_personal_code", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "name"
-          }
-        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.name,
-            expression: "form.student.name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "name",
-            id: "name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "last_name"
-          }
-        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.last_name,
-            expression: "form.student.last_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "last_name",
-            id: "last_name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.last_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "last_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "grade_id"
-          }
-        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.grade_id,
-            expression: "form.grade_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.grades, function (grade) {
-          return _c("option", {
-            key: grade.id,
-            domProps: {
-              value: grade.id
-            }
-          }, [_vm._v(_vm._s(grade.name))]);
-        }), 0)]), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "section"
-          }
-        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.section,
-            expression: "form.section"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, [_c("option", {
-          attrs: {
-            value: "A"
-          }
-        }, [_vm._v("A")]), _c("option", {
-          attrs: {
-            value: "B"
-          }
-        }, [_vm._v("B")]), _c("option", {
-          attrs: {
-            value: "C"
-          }
-        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
-          attrs: {
-            value: "D"
-          }
-        }, [_vm._v("D")]), _c("option", {
-          attrs: {
-            value: "E"
-          }
-        }, [_vm._v("E")]), _c("option", {
-          attrs: {
-            value: "F"
-          }
-        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "birth_date"
-          }
-        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.birth_date,
-            expression: "form.student.birth_date"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "date",
-            name: "birth_date",
-            id: "birth_date",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.birth_date
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "class_schedule_id"
-          }
-        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.class_schedule_id,
-            expression: "form.class_schedule_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.class_schedules, function (class_schedule) {
-          return _c("option", {
-            key: class_schedule.id,
-            domProps: {
-              value: class_schedule.id
-            }
-          }, [_vm._v(_vm._s(class_schedule.journey))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document"
-          }
-        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document,
-            expression: "form.student.identification_document"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "identification_document",
-            id: "identification_document",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document_number"
-          }
-        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document_number,
-            expression: "form.student.identification_document_number"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "number",
-            name: "identification_document_number",
-            id: "identification_document_number",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document_number
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.departament.id,
-            expression: "form.professor.school.municipality.departament.id"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeMunicipality]
-          }
-        }, _vm._l(_vm.departaments, function (departament) {
-          return _c("option", {
-            key: departament.id,
-            domProps: {
-              value: departament.id
-            }
-          }, [_vm._v(_vm._s(departament.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.id,
-            expression: "form.professor.school.municipality.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeSchool]
-          }
-        }, _vm._l(_vm.municipalities, function (municipality) {
-          return _c("option", {
-            key: municipality.id,
-            domProps: {
-              value: municipality.id
-            }
-          }, [_vm._v(_vm._s(municipality.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.id,
-            expression: "form.professor.school.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeProfessor]
-          }
-        }, _vm._l(_vm.schools, function (school) {
-          return _c("option", {
-            key: school.id,
-            domProps: {
-              value: school.id
-            }
-          }, [_vm._v(_vm._s(school.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-3"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            filter: _vm.professorSearch,
-            options: _vm.professors,
-            "get-option-label": function getOptionLabel(professor) {
-              return professor.dpi + " " + professor.name + " " + professor.last_name;
-            }
-          },
-          on: {
-            input: _vm.professorChanged
-          },
-          scopedSlots: _vm._u([{
-            key: "option",
-            fn: function fn(_ref2) {
-              var dpi = _ref2.dpi,
-                name = _ref2.name,
-                last_name = _ref2.last_name;
-              return [_vm._v("\n                                        " + _vm._s(dpi) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
-            }
-          }]),
-          model: {
-            value: _vm.professor,
-            callback: function callback($$v) {
-              _vm.professor = $$v;
-            },
-            expression: "professor"
-          }
-        })], 1), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_name"
-          }
-        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_name,
-            expression: "form.student.tutelary_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "tutelary_name",
-            id: "tutelary_name",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_dpi"
-          }
-        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_dpi,
-            expression: "form.student.tutelary_dpi"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "number",
-            name: "tutelary_dpi",
-            id: "tutelary_dpi",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_dpi
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
-            }
-          }
-        })])])]), _vm._v(" "), _c("div", {
-          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
-        }, [_c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          attrs: {
-            type: "button"
-          },
-          on: {
-            click: _vm.cleanForm
-          }
-        }, [_vm._v("\n                            Limpiar\n                        ")]), _vm._v(" "), _c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          attrs: {
-            type: "button"
-          },
-          on: {
-            click: function click($event) {
-              _vm.modals.createModal = false;
-            }
-          }
-        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          attrs: {
-            type: "submit"
-          }
-        }, [_vm._v("\n                            Guardar\n                        ")])])])])];
-      },
-      proxy: true
-    }])
-  }), _vm._v(" "), _c("dialog-modal", {
-    attrs: {
-      show: _vm.modals.editModal
-    },
-    on: {
-      close: function close($event) {
-        _vm.modals.editModal = false;
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "title",
-      fn: function fn() {
-        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
-      },
-      proxy: true
-    }, {
-      key: "content",
-      fn: function fn() {
-        return [_c("form", {
-          on: {
-            submit: function submit($event) {
-              $event.preventDefault();
-              _vm.update(_vm.form);
-              _vm.modals.editModal = false;
-            }
-          }
-        }, [_c("div", {
-          staticClass: "overflow-hidden shadow sm:rounded-md"
-        }, [_c("div", {
-          staticClass: "bg-white px-4 py-5 sm:p-6"
-        }, [_c("div", {
-          staticClass: "grid grid-cols-6 gap-6"
-        }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "personal_code"
-          }
-        }, [_vm._v("ID")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.id,
-            expression: "form.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "personal_code",
-            id: "personal_code",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "personal_code"
-          }
-        }, [_vm._v("Código Personal")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.personal_code,
-            expression: "form.student.personal_code"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "personal_code",
-            id: "personal_code",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.personal_code
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "personal_code", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "name"
-          }
-        }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.name,
-            expression: "form.student.name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "name",
-            id: "name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "last_name"
-          }
-        }, [_vm._v("Apellidos")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.last_name,
-            expression: "form.student.last_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "last_name",
-            id: "last_name",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.last_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "last_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "grade_id"
-          }
-        }, [_vm._v("Grado")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.grade_id,
-            expression: "form.grade_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "grade_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.grades, function (grade) {
-          return _c("option", {
-            key: grade.id,
-            domProps: {
-              value: grade.id
-            }
-          }, [_vm._v(_vm._s(grade.name))]);
-        }), 0)]), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "section"
-          }
-        }, [_vm._v("Sección")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.section,
-            expression: "form.section"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "section", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, [_c("option", {
-          attrs: {
-            value: "A"
-          }
-        }, [_vm._v("A")]), _c("option", {
-          attrs: {
-            value: "B"
-          }
-        }, [_vm._v("B")]), _c("option", {
-          attrs: {
-            value: "C"
-          }
-        }, [_vm._v("C")]), _vm._v(" "), _c("option", {
-          attrs: {
-            value: "D"
-          }
-        }, [_vm._v("D")]), _c("option", {
-          attrs: {
-            value: "E"
-          }
-        }, [_vm._v("E")]), _c("option", {
-          attrs: {
-            value: "F"
-          }
-        }, [_vm._v("F")])])]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "birth_date"
-          }
-        }, [_vm._v("Fecha de inscripción")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.enrollment_date,
-            expression: "form.enrollment_date"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "date",
-            name: "birth_date",
-            id: "birth_date",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.enrollment_date
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "enrollment_date", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "birth_date"
-          }
-        }, [_vm._v("Fecha de nacimiento")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.birth_date,
-            expression: "form.student.birth_date"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "date",
-            name: "birth_date",
-            id: "birth_date",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.birth_date
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "birth_date", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "class_schedule_id"
-          }
-        }, [_vm._v("Horario de clases")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.class_schedule_id,
-            expression: "form.class_schedule_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: function change($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form, "class_schedule_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }
-          }
-        }, _vm._l(_vm.class_schedules, function (class_schedule) {
-          return _c("option", {
-            key: class_schedule.id,
-            domProps: {
-              value: class_schedule.id
-            }
-          }, [_vm._v(_vm._s(class_schedule.journey))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document"
-          }
-        }, [_vm._v("Doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document,
-            expression: "form.student.identification_document"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "text",
-            name: "identification_document",
-            id: "identification_document",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "identification_document_number"
-          }
-        }, [_vm._v("No. doc. identificación")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.identification_document_number,
-            expression: "form.student.identification_document_number"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100",
-          attrs: {
-            type: "number",
-            name: "identification_document_number",
-            id: "identification_document_number",
-            disabled: "",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.identification_document_number
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "identification_document_number", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Departamento")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.departament.id,
-            expression: "form.professor.school.municipality.departament.id"
-          }],
-          staticClass: "form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality.departament, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeMunicipality]
-          }
-        }, _vm._l(_vm.departaments, function (departament) {
-          return _c("option", {
-            key: departament.id,
-            domProps: {
-              value: departament.id
-            }
-          }, [_vm._v(_vm._s(departament.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Municipio")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.municipality.id,
-            expression: "form.professor.school.municipality.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school.municipality, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeSchool]
-          }
-        }, _vm._l(_vm.municipalities, function (municipality) {
-          return _c("option", {
-            key: municipality.id,
-            domProps: {
-              value: municipality.id
-            }
-          }, [_vm._v(_vm._s(municipality.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("select", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.professor.school.id,
-            expression: "form.professor.school.id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            required: true
-          },
-          on: {
-            change: [function ($event) {
-              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-                return o.selected;
-              }).map(function (o) {
-                var val = "_value" in o ? o._value : o.value;
-                return val;
-              });
-              _vm.$set(_vm.form.professor.school, "id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-            }, _vm.changeProfessor]
-          }
-        }, _vm._l(_vm.schools, function (school) {
-          return _c("option", {
-            key: school.id,
-            domProps: {
-              value: school.id
-            }
-          }, [_vm._v(_vm._s(school.name))]);
-        }), 0)]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-3"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "professor_dpi"
-          }
-        }, [_vm._v("Catedrático")]), _vm._v(" "), _c("v-select", {
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            filter: _vm.professorSearch,
-            options: _vm.professors,
-            "get-option-label": function getOptionLabel(professor) {
-              return professor.dpi + " " + professor.name + " " + professor.last_name;
-            }
-          },
-          on: {
-            input: _vm.professorChanged
-          },
-          scopedSlots: _vm._u([{
-            key: "option",
-            fn: function fn(_ref3) {
-              var dpi = _ref3.dpi,
-                name = _ref3.name,
-                last_name = _ref3.last_name;
-              return [_vm._v("\n                                        " + _vm._s(dpi) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name) + " " + _vm._s(last_name))])];
-            }
-          }]),
-          model: {
-            value: _vm.professor,
-            callback: function callback($$v) {
-              _vm.professor = $$v;
-            },
-            expression: "professor"
-          }
-        })], 1), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_name"
-          }
-        }, [_vm._v("Tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_name,
-            expression: "form.student.tutelary_name"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "tutelary_name",
-            id: "tutelary_name",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_name
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_name", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-1"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "tutelary_dpi"
-          }
-        }, [_vm._v("DPI del tutelar")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.student.tutelary_dpi,
-            expression: "form.student.tutelary_dpi"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "number",
-            name: "tutelary_dpi",
-            id: "tutelary_dpi",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.student.tutelary_dpi
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form.student, "tutelary_dpi", $event.target.value);
-            }
-          }
-        })])])]), _vm._v(" "), _c("div", {
-          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
-        }, [_c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          attrs: {
-            type: "button"
-          },
-          on: {
-            click: function click($event) {
-              _vm.modals.editModal = false;
-            }
-          }
-        }, [_vm._v("\n                            Cancelar\n                        ")]), _vm._v(" "), _c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          attrs: {
-            type: "submit"
-          }
-        }, [_vm._v("\n                            Actualizar\n                        ")])])])])];
-      },
-      proxy: true
-    }])
-  }), _vm._v(" "), _c("dialog-modal", {
-    attrs: {
-      show: _vm.modals.errorModal
-    },
-    on: {
-      close: function close($event) {
-        _vm.modals.errorModal = false;
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "title",
-      fn: function fn() {
-        return [_vm._v("\n            " + _vm._s(_vm.modals.title) + "\n        ")];
-      },
-      proxy: true
-    }, {
-      key: "content",
-      fn: function fn() {
-        return [_c("div", {
-          staticClass: "overflow-hidden shadow sm:rounded-md"
-        }, [_c("div", {
-          staticClass: "bg-white px-4 py-5 sm:p-6"
-        }, [_c("div", {
-          staticClass: "grid grid-cols-6 gap-6"
-        }, [_c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700"
-        }, [_vm._v(_vm._s(_vm.errors))])])])]), _vm._v(" "), _c("div", {
-          staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
-        }, [_c("button", {
-          staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-          on: {
-            click: function click($event) {
-              _vm.modals.errorModal = false;
-            }
-          }
-        }, [_vm._v("\n                            Cerrar\n                        ")])])])];
-      },
-      proxy: true
-    }])
-  })], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -65635,6 +65674,45 @@ component.options.__file = "resources/js/Pages/School/Index.vue"
 
 /***/ }),
 
+/***/ "./resources/js/Pages/StudentEnrollment/Index.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/Pages/StudentEnrollment/Index.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
+/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/StudentEnrollment/Index.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Student/Create.vue":
 /*!***********************************************!*\
   !*** ./resources/js/Pages/Student/Create.vue ***!
@@ -65787,45 +65865,6 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/Pages/Student/Show.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/Pages/StudentEnrollment/Index.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/Pages/StudentEnrollment/Index.vue ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/Pages/StudentEnrollment/Index.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -66683,6 +66722,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js&":
 /*!************************************************************************!*\
   !*** ./resources/js/Pages/Student/Create.vue?vue&type=script&lang=js& ***!
@@ -66744,22 +66799,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -67712,6 +67751,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
+/*!***********************************************************************************************************************************!*\
+  !*** ./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
+  \***********************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Student/Create.vue?vue&type=template&id=12c8fd4e&":
 /*!******************************************************************************!*\
   !*** ./resources/js/Pages/Student/Create.vue?vue&type=template&id=12c8fd4e& ***!
@@ -67776,23 +67832,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_5677001a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_5677001a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Show.vue?vue&type=template&id=5677001a& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Student/Show.vue?vue&type=template&id=5677001a&");
-
-
-/***/ }),
-
-/***/ "./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
-/*!***********************************************************************************************************************************!*\
-  !*** ./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
-  \***********************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_237630ae_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/StudentEnrollment/Index.vue?vue&type=template&id=237630ae&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
 
 
 /***/ }),

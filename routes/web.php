@@ -48,7 +48,7 @@ Route::resource('professor', ProfessorController::class, ['except' => 'show', 'c
 
 //Reportes
 Route::get('students_by_school_report', [DashboardController::class,'students_by_school_report'])->middleware(['auth:sanctum', 'verified'])->name('students_by_school_report');
-Route::get('students_by_professor_report', [DashboardController::class,'students_by_school_report'])->middleware(['auth:sanctum', 'verified'])->name('students_by_school_report');
+Route::get('students_by_professor_report', function () {return Inertia::render('StudentsByProfessor/Index');})->middleware(['auth:sanctum', 'verified'])->name('students_by_professor_report');
 
 
 

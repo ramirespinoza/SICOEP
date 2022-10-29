@@ -9863,10 +9863,10 @@ var render = function render() {
           }
         }, [_vm._v("\n                    Reporte de estudiantes inscritos por escuela.\n                ")]), _vm._v(" "), _c("jet-nav-link", {
           attrs: {
-            href: _vm.route("student_enrollment.index"),
-            active: _vm.route().current("student_enrollment.index")
+            href: _vm.route("students_by_professor_report"),
+            active: _vm.route().current("students_by_professor_report")
           }
-        }, [_vm._v("\n                    Estudiantes Inscritos\n                ")]), _vm._v(" "), _c("jet-nav-link", {
+        }, [_vm._v("\n                    Reporte de estudiantes inscritos por catedrático\n                ")]), _vm._v(" "), _c("jet-nav-link", {
           attrs: {
             href: _vm.route("course.index"),
             active: _vm.route().current("course.index")
@@ -17438,19 +17438,19 @@ var render = function render() {
       staticClass: "py-3 px-6 text-center"
     }, [_vm._v("Cantidad de alumnos")])])]), _vm._v(" "), _c("tbody", {
       staticClass: "text-gray-600 text-sm font-light"
-    }, _vm._l(_vm.students_professors, function (students_professor) {
+    }, _vm._l(schools_professor.professors, function (professor) {
       return _c("tr", {
-        key: students_professor.id,
+        key: professor.id,
         staticClass: "border-b border-gray-200 hover:bg-gray-100"
       }, [_c("td", {
         staticClass: "py-3 px-6 text-center"
       }, [_c("span", {
         staticClass: "font-medium"
-      }, [_vm._v(_vm._s(students_professor.name))])]), _vm._v(" "), _c("td", {
+      }, [_vm._v(_vm._s(professor.name))])]), _vm._v(" "), _c("td", {
         staticClass: "py-3 px-6 text-center"
       }, [_c("span", {
         staticClass: "font-medium"
-      }, [_vm._v(_vm._s(students_professor.count_student_enrollments))])])]);
+      }, [_vm._v(_vm._s(professor.count_student_enrollments))])])]);
     }), 0)])]);
   })], 2);
 };

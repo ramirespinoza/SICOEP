@@ -34,12 +34,12 @@
                     </tr>
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
-                    <tr v-for="students_professor in students_professors" :key="students_professor.id" class="border-b border-gray-200 hover:bg-gray-100">
+                    <tr v-for="professor in schools_professor.professors" :key="professor.id" class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-center">
-                            <span class="font-medium">{{ students_professor.name }}</span>
+                            <span class="font-medium">{{ professor.name }}</span>
                         </td>
                         <td class="py-3 px-6 text-center">
-                            <span class="font-medium">{{ students_professor.count_student_enrollments }}</span>
+                            <span class="font-medium">{{ professor.count_student_enrollments }}</span>
                         </td>
                     </tr>
                     </tbody>

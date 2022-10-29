@@ -13,8 +13,8 @@
                     <jet-nav-link :href="route('students_by_school_report')" :active="route().current('students_by_school_report')">
                         Reporte de estudiantes inscritos por escuela.
                     </jet-nav-link>
-                    <jet-nav-link :href="route('student_enrollment.index')" :active="route().current('student_enrollment.index')">
-                        Estudiantes Inscritos
+                    <jet-nav-link :href="route('students_by_professor_report')" :active="route().current('students_by_professor_report')">
+                        Reporte de estudiantes inscritos por catedrático
                     </jet-nav-link>
 
                     <jet-nav-link :href="route('course.index')" :active="route().current('course.index')">

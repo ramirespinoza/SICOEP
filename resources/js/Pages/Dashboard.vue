@@ -1,29 +1,34 @@
 <template>
-    <app-layout>
-        <template #header>
-            <center><h1 class="estilotexto">
-                Bienvenido
-            </h1></center>
-        </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
-                </div>
-            </div>
-        </div>
-    </app-layout>
+    <dashboard-container>
+
+        <welcome/>
+
+    </dashboard-container>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from '@/Jetstream/Welcome'
+    import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetBanner from '@/Jetstream/Banner'
+    import JetDropdown from '@/Jetstream/Dropdown'
+    import JetDropdownLink from '@/Jetstream/DropdownLink'
+    import JetNavLink from '@/Jetstream/NavLink'
+    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import DashboardContainer from "@/Pages/DashboardContainer";
 
     export default {
         components: {
+            DashboardContainer,
             AppLayout,
             Welcome,
+                JetApplicationMark,
+                JetBanner,
+                JetDropdown,
+                JetDropdownLink,
+                JetNavLink,
+                JetResponsiveNavLink,
         },
     }
 </script>

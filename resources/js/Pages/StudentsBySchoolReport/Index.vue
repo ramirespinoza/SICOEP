@@ -1,13 +1,13 @@
 <template xmlns="http://www.w3.org/1999/html">
-    <app-layout>
-        <template #header>
+    <dashboard-container>
+
+    <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">
                 Inscripción de estudiantes
             </h1>
         </template>
 
         <!-- List -->
-        <container>
 
             <input type="text" placeholder="Buscar escuela..." v-model="qschool" class="mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
             <input type="text" placeholder="Buscar grados..." v-model="qgrade" class="mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
@@ -70,11 +70,9 @@
                     **Sin resultados**
                 </h1>
             </div>
-        </container>
+        </dashboard-container>
 
 
-
-    </app-layout>
 </template>
 
 <script>
@@ -84,8 +82,10 @@ import axios from "axios";
 import DialogModal from "@/Pages/Modal";
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
+import dashboard from "@/Pages/Dashboard";
 import moment from 'moment';
 import Fuse from 'fuse.js';
+import DashboardContainer from "@/Pages/DashboardContainer";
 
 export default {
     props: {
@@ -95,6 +95,7 @@ export default {
     },
 
     components: {
+        DashboardContainer,
         DialogModal,
         AppLayout,
         Container,

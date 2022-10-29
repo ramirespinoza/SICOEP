@@ -113,14 +113,14 @@ class ProfessorController extends Controller
 
     public function show($dpi)
     {
-         try {
-             $professor = Professor::with('school.municipality.departament')->find($dpi);
-             return response()->json([
-                 'status'    => 'failed',
-                 'code'      => '0',
-                 'operation' => 'edit',
-                 'professor' => $professor
-             ]);
+        try {
+            $professor = Professor::with('school.municipality.departament')->find($dpi);
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'edit',
+                'professor' => $professor
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -190,7 +190,7 @@ class ProfessorController extends Controller
                 'code'      => '0',
                 'operation' => 'edit',
                 'error'     => $th->getMessage(),
-        ]);
+            ]);
         }
 
     }

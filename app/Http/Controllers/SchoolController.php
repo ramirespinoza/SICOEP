@@ -80,29 +80,29 @@ class SchoolController extends Controller
     public function store(Request $request)
     {
         try {
-        $this->validate($request, [
+            $this->validate($request, [
 
-            'name' => 'required',
-            'municipality_id' => 'required',
-        ]);
+                'name' => 'required',
+                'municipality_id' => 'required',
+            ]);
 
-        School ::create($request->all());
+            School ::create($request->all());
 
 
-        return response()->json([
-            'status'    => 'successful',
-            'code'      => '1',
-            'operation' => 'create',
-            'school'   => $request->all()
-        ]);
+            return response()->json([
+                'status'    => 'successful',
+                'code'      => '1',
+                'operation' => 'create',
+                'school'   => $request->all()
+            ]);
 
-    } catch (\Throwable $th) {
-              return response()->json([
-             'status'    => 'failed',
-              'code'      => '0',
-              'operation' => 'create',
-              'error'     => $th->getMessage(),
-               'school'   => $request->all()
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'create',
+                'error'     => $th->getMessage(),
+                'school'   => $request->all()
             ]);
         }
     }
@@ -116,12 +116,12 @@ class SchoolController extends Controller
     public function update(Request $request, $id)
     {
         try {
-        $this->validate($request, [
-            'name' => 'required',
-            'municipality_id' => 'required',
-        ]);
+            $this->validate($request, [
+                'name' => 'required',
+                'municipality_id' => 'required',
+            ]);
 
-        School ::find($id)->update($request->all());
+            School ::find($id)->update($request->all());
 
             return response()->json([
                 'status'    => 'successful',

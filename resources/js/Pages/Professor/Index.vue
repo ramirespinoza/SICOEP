@@ -217,17 +217,6 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
-                                <div class="col-span-6 sm:col-span-2">
-                                    <label for="school_id" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                    <input
-                                        type="text"
-                                        name="school_id"
-                                        id="school_id"
-                                        v-model="form.school_id"
-                                        autocomplete="street-address"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
-                                </div>
                                 <div class="col-span-6 sm:col-span-1">
                                 </div>
                                 <div class="col-span-3">
@@ -339,16 +328,24 @@
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     />
                                 </div>
-                                <div class="col-span-6 sm:col-span-2">
+                                <div class="col-span-3">
                                     <label for="school_id" class="block text-sm font-medium text-gray-700">Escuela</label>
-                                    <input
-                                        type="text"
-                                        name="school_id"
-                                        id="school_id"
+                                    <v-select
                                         v-model="form.school_id"
-                                        autocomplete="street-address"
+                                        :filter="schoolSearch"
+                                        :options="schools"
+                                        :reduce="option => option.id"
+                                        :get-option-label="school => school.id + ' ' + school.name"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    />
+                                        @input="form.school_id = form.school_id"
+                                    >
+                                        <template #option="{ id, name}">
+                                            {{ id }}
+                                            <br />
+                                            <cite>{{ name }}</cite>
+                                        </template>
+                                    </v-select>
+
                                 </div>
 
 

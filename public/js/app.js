@@ -10893,36 +10893,6 @@ var render = function render() {
             }
           }
         })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
-        }, [_c("label", {
-          staticClass: "block text-sm font-medium text-gray-700",
-          attrs: {
-            "for": "school_id"
-          }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.school_id,
-            expression: "form.school_id"
-          }],
-          staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-          attrs: {
-            type: "text",
-            name: "school_id",
-            id: "school_id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.school_id
-          },
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "school_id", $event.target.value);
-            }
-          }
-        })]), _vm._v(" "), _c("div", {
           staticClass: "col-span-6 sm:col-span-1"
         }), _vm._v(" "), _c("div", {
           staticClass: "col-span-3"
@@ -11115,36 +11085,45 @@ var render = function render() {
             }
           }
         })]), _vm._v(" "), _c("div", {
-          staticClass: "col-span-6 sm:col-span-2"
+          staticClass: "col-span-3"
         }, [_c("label", {
           staticClass: "block text-sm font-medium text-gray-700",
           attrs: {
             "for": "school_id"
           }
-        }, [_vm._v("Escuela")]), _vm._v(" "), _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.school_id,
-            expression: "form.school_id"
-          }],
+        }, [_vm._v("Escuela")]), _vm._v(" "), _c("v-select", {
           staticClass: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           attrs: {
-            type: "text",
-            name: "school_id",
-            id: "school_id",
-            autocomplete: "street-address"
-          },
-          domProps: {
-            value: _vm.form.school_id
+            filter: _vm.schoolSearch,
+            options: _vm.schools,
+            reduce: function reduce(option) {
+              return option.id;
+            },
+            "get-option-label": function getOptionLabel(school) {
+              return school.id + " " + school.name;
+            }
           },
           on: {
             input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.$set(_vm.form, "school_id", $event.target.value);
+              _vm.form.school_id = _vm.form.school_id;
             }
+          },
+          scopedSlots: _vm._u([{
+            key: "option",
+            fn: function fn(_ref2) {
+              var id = _ref2.id,
+                name = _ref2.name;
+              return [_vm._v("\n                                        " + _vm._s(id) + "\n                                        "), _c("br"), _vm._v(" "), _c("cite", [_vm._v(_vm._s(name))])];
+            }
+          }]),
+          model: {
+            value: _vm.form.school_id,
+            callback: function callback($$v) {
+              _vm.$set(_vm.form, "school_id", $$v);
+            },
+            expression: "form.school_id"
           }
-        })])])]), _vm._v(" "), _c("div", {
+        })], 1)])]), _vm._v(" "), _c("div", {
           staticClass: "bg-gray-50 px-4 py-3 text-right sm:px-6"
         }, [_c("button", {
           staticClass: "inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",

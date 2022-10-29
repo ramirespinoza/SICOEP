@@ -173,7 +173,7 @@
             </template>
 
             <template #content>
-                <!-- Form with data --->
+               
                 <form @submit.prevent="submit(form); modals.createModal = false" >
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">

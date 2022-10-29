@@ -8781,15 +8781,7 @@ var render = function render() {
       },
       proxy: true
     }])
-  }, [_vm._v(" "), _c("container", [_c("button", {
-    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.showShowModal(_vm.CnbLevels.id);
-      }
-    }
-  }, [_vm._v("\n                Visualizar Nivel Cnb\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" "), _c("container", [_c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"
@@ -9090,15 +9082,7 @@ var render = function render() {
       },
       proxy: true
     }])
-  }, [_vm._v(" "), _c("container", [_c("button", {
-    staticClass: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.showCreateModal(_vm.course);
-      }
-    }
-  }, [_vm._v("\n            Nuevo Curso\n        ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" "), _c("container", [_c("div", {
     staticClass: "bg-white shadow-md rounded my-6"
   }, [_c("table", {
     staticClass: "min-w-max w-full table-auto"

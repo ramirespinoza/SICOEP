@@ -7,12 +7,7 @@
         </template>
 
         <container>
-                <button
-                    v-on:click.prevent="showShowModal(CnbLevels.id)"
-                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
-                >
-                    Visualizar Nivel Cnb
-                </button>
+
                 <div class="bg-white shadow-md rounded my-6">
                     <table class="min-w-max w-full table-auto">
                         <thead>
